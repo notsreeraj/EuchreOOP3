@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace EuchreOOP3
 {
     public partial class Form1 : Form
@@ -15,6 +16,7 @@ namespace EuchreOOP3
         public Form1()
         {
             InitializeComponent();
+            
         }
     }
 }
