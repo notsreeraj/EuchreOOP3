@@ -1,4 +1,4 @@
-﻿namespace EuchreModel
+﻿namespace EuchreControll
 {
     public class Class1
     {
