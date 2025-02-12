@@ -52,6 +52,24 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainMenu.Designer.cs">
+      <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOptions.Designer.cs">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegister.Designer.cs">
+      <DependentUpon>frmRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +78,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainMenu.resx">
+      <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOptions.resx">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegister.resx">
+      <DependentUpon>frmRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplash.resx">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -68,6 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -81,6 +115,61 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\91JHdtugVQL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\horror-game-background_670382-279176.avif" />
+    <None Include="Resources\imageLoginPage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\label1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cards1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cards2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Switch.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\opening.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\opening2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Opening 3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4466ab764530ff148c63aff0b72183c9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngegg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\knight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\king.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
