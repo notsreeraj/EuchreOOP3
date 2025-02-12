@@ -68,7 +68,6 @@
             this.bthGuest.TabIndex = 1;
             this.bthGuest.Text = "GUEST";
             this.bthGuest.UseVisualStyleBackColor = true;
-            this.bthGuest.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSignIn
             // 
@@ -95,7 +94,6 @@
             this.Controls.Add(this.btnExit);
             this.Name = "frmLogin";
             this.Text = "frmLogin";
-            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
 
         }
