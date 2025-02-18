@@ -12,42 +12,30 @@ namespace EuchreOOP3
 {
     public partial class frmOptions : Form
     {
+        #region 
+        private static Panel[] panOptions = new Panel[4];
+        private static Button[] btnOptions = new Button[4];
+        #endregion
+
         public frmOptions()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSound_Click(object sender, EventArgs e)
-        {
-            panelSound.Visible = true;
-            panelThemes.Visible = false;
-
-        }
 
         private void bthExit2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnThemes_Click(object sender, EventArgs e)
+
+
+        private void OptionsSwitchEvent(object sender, EventArgs e)
         {
-            panelThemes.Visible = true;
-            
+            // use this event handler for all buttons
+            // take in the buttontxt and switch the panel according to it
         }
 
-        private void frmOptions_Load(object sender, EventArgs e)
-        {
-
-        }
+        // method to add buttons and panels to their respective arrays
     }
 }

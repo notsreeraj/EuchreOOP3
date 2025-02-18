@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlOptionMenu = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnResume = new System.Windows.Forms.Button();
             this.btnSound = new System.Windows.Forms.Button();
             this.btnThemes = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
@@ -37,15 +37,13 @@
             this.bthExit2 = new System.Windows.Forms.Button();
             this.panelSound = new System.Windows.Forms.Panel();
             this.panelThemes = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlOptionMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlOptionMenu
             // 
             this.pnlOptionMenu.BackColor = System.Drawing.Color.Transparent;
-            this.pnlOptionMenu.Controls.Add(this.button1);
+            this.pnlOptionMenu.Controls.Add(this.btnResume);
             this.pnlOptionMenu.Controls.Add(this.btnSound);
             this.pnlOptionMenu.Controls.Add(this.btnThemes);
             this.pnlOptionMenu.Controls.Add(this.btnHelp);
@@ -55,24 +53,23 @@
             this.pnlOptionMenu.Size = new System.Drawing.Size(260, 381);
             this.pnlOptionMenu.TabIndex = 0;
             // 
-            // button1
+            // btnResume
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(257, 69);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "RESUME";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnResume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnResume.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnResume.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResume.ForeColor = System.Drawing.Color.Transparent;
+            this.btnResume.Location = new System.Drawing.Point(3, 3);
+            this.btnResume.Name = "btnResume";
+            this.btnResume.Size = new System.Drawing.Size(257, 69);
+            this.btnResume.TabIndex = 1;
+            this.btnResume.Text = "RESUME";
+            this.btnResume.UseVisualStyleBackColor = false;
+            this.btnResume.Click += new System.EventHandler(this.OptionsSwitchEvent);
             // 
             // btnSound
             // 
-            this.btnSound.BackColor = System.Drawing.Color.Transparent;
-            this.btnSound.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch;
+            this.btnSound.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnSound.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSound.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSound.ForeColor = System.Drawing.Color.Transparent;
@@ -82,12 +79,11 @@
             this.btnSound.TabIndex = 1;
             this.btnSound.Text = "SOUND";
             this.btnSound.UseVisualStyleBackColor = false;
-            this.btnSound.Click += new System.EventHandler(this.btnSound_Click);
+            this.btnSound.Click += new System.EventHandler(this.OptionsSwitchEvent);
             // 
             // btnThemes
             // 
-            this.btnThemes.BackColor = System.Drawing.Color.Transparent;
-            this.btnThemes.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch;
+            this.btnThemes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnThemes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnThemes.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemes.ForeColor = System.Drawing.Color.Transparent;
@@ -97,12 +93,11 @@
             this.btnThemes.TabIndex = 1;
             this.btnThemes.Text = "THEMES";
             this.btnThemes.UseVisualStyleBackColor = false;
-            this.btnThemes.Click += new System.EventHandler(this.btnThemes_Click);
+            this.btnThemes.Click += new System.EventHandler(this.OptionsSwitchEvent);
             // 
             // btnHelp
             // 
-            this.btnHelp.BackColor = System.Drawing.Color.Transparent;
-            this.btnHelp.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch;
+            this.btnHelp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHelp.ForeColor = System.Drawing.Color.Transparent;
@@ -112,11 +107,11 @@
             this.btnHelp.TabIndex = 1;
             this.btnHelp.Text = "HELP";
             this.btnHelp.UseVisualStyleBackColor = false;
+            this.btnHelp.Click += new System.EventHandler(this.OptionsSwitchEvent);
             // 
             // btnAboutUs
             // 
-            this.btnAboutUs.BackColor = System.Drawing.Color.Transparent;
-            this.btnAboutUs.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch;
+            this.btnAboutUs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnAboutUs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAboutUs.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAboutUs.ForeColor = System.Drawing.Color.Transparent;
@@ -126,17 +121,17 @@
             this.btnAboutUs.TabIndex = 1;
             this.btnAboutUs.Text = "ABOUT US";
             this.btnAboutUs.UseVisualStyleBackColor = false;
+            this.btnAboutUs.Click += new System.EventHandler(this.OptionsSwitchEvent);
             // 
             // bthExit2
             // 
-            this.bthExit2.BackColor = System.Drawing.Color.Transparent;
-            this.bthExit2.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch;
+            this.bthExit2.BackColor = System.Drawing.Color.Red;
             this.bthExit2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bthExit2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bthExit2.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bthExit2.ForeColor = System.Drawing.Color.Transparent;
-            this.bthExit2.Location = new System.Drawing.Point(932, 674);
+            this.bthExit2.Location = new System.Drawing.Point(1094, 722);
             this.bthExit2.Name = "bthExit2";
-            this.bthExit2.Size = new System.Drawing.Size(257, 69);
+            this.bthExit2.Size = new System.Drawing.Size(197, 68);
             this.bthExit2.TabIndex = 1;
             this.bthExit2.Text = "EXIT";
             this.bthExit2.UseVisualStyleBackColor = false;
@@ -153,41 +148,26 @@
             // panelThemes
             // 
             this.panelThemes.BackColor = System.Drawing.Color.Silver;
-            this.panelThemes.Location = new System.Drawing.Point(338, 157);
+            this.panelThemes.Location = new System.Drawing.Point(369, 94);
             this.panelThemes.Name = "panelThemes";
-            this.panelThemes.Size = new System.Drawing.Size(848, 369);
+            this.panelThemes.Size = new System.Drawing.Size(1020, 479);
             this.panelThemes.TabIndex = 3;
             this.panelThemes.Visible = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::EuchreOOP3.Properties.Resources.pngegg;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(27, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 121);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // frmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.BackgroundImage = global::EuchreOOP3.Properties.Resources.game_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1217, 765);
+            this.ClientSize = new System.Drawing.Size(1444, 819);
             this.Controls.Add(this.panelThemes);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlOptionMenu);
             this.Controls.Add(this.bthExit2);
             this.Controls.Add(this.panelSound);
             this.Name = "frmOptions";
             this.Text = "frmOptions";
-            this.Load += new System.EventHandler(this.frmOptions_Load);
             this.pnlOptionMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -195,7 +175,7 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel pnlOptionMenu;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnResume;
         private System.Windows.Forms.Button btnSound;
         private System.Windows.Forms.Button btnThemes;
         private System.Windows.Forms.Button btnHelp;
@@ -203,6 +183,5 @@
         private System.Windows.Forms.Button bthExit2;
         private System.Windows.Forms.Panel panelSound;
         private System.Windows.Forms.Panel panelThemes;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

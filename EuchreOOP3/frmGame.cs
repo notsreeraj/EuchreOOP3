@@ -8,13 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Test
+namespace EuchreOOP3
 {
-    public partial class Form1 : Form
+    public partial class frmGame : Form
     {
-        public Form1()
+        public frmGame()
         {
             InitializeComponent();
         }
+
+        private void frmGame_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panBottom_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
     }
 }
