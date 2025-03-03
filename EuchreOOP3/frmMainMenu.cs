@@ -21,5 +21,13 @@ namespace EuchreOOP3
         {
             this.Close();
         }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            frmOptions newForm = new frmOptions(); // Create an instance of frmOptions
+            newForm.Show(); // Show frmOptions
+            this.Hide(); // Hide the current form
+
+        }
     }
 }

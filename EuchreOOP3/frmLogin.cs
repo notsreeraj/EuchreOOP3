@@ -16,5 +16,12 @@ namespace EuchreOOP3
         {
             InitializeComponent();
         }
+
+        private void btnSignIn_Click(object sender, EventArgs e)
+        {
+            frmRegister newForm = new frmRegister(); 
+            newForm.Show(); 
+            this.Hide(); 
+        }
     }
 }

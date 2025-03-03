@@ -16,7 +16,8 @@ namespace EuchreOOP3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmOptions());
+            Application.Run(new frmLogin());
+            
         }
     }
 }
