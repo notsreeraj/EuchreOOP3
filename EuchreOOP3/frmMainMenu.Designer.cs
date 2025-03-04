@@ -32,13 +32,13 @@
             this.btnCoUp = new System.Windows.Forms.Button();
             this.btnOptions = new System.Windows.Forms.Button();
             this.btnExit3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnQuickPlay
             // 
             this.btnQuickPlay.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch_2;
-            this.btnQuickPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuickPlay.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuickPlay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnQuickPlay.Location = new System.Drawing.Point(136, 217);
             this.btnQuickPlay.Name = "btnQuickPlay";
@@ -50,7 +50,7 @@
             // btnCoUp
             // 
             this.btnCoUp.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch_2;
-            this.btnCoUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCoUp.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCoUp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCoUp.Location = new System.Drawing.Point(136, 293);
             this.btnCoUp.Name = "btnCoUp";
@@ -62,7 +62,7 @@
             // btnOptions
             // 
             this.btnOptions.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch_2;
-            this.btnOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOptions.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOptions.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnOptions.Location = new System.Drawing.Point(136, 372);
             this.btnOptions.Name = "btnOptions";
@@ -75,7 +75,7 @@
             // btnExit3
             // 
             this.btnExit3.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch_2;
-            this.btnExit3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit3.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExit3.Location = new System.Drawing.Point(136, 454);
             this.btnExit3.Name = "btnExit3";
@@ -85,32 +85,32 @@
             this.btnExit3.UseVisualStyleBackColor = true;
             this.btnExit3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(136, 98);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(308, 73);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "EUCHRE";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Font = new System.Drawing.Font("Comic Sans MS", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.Black;
+            this.lblTitle.Location = new System.Drawing.Point(136, 98);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(295, 90);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "EUCHRE";
             // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::EuchreOOP3.Properties.Resources.opening2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1120, 718);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnExit3);
             this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.btnCoUp);
             this.Controls.Add(this.btnQuickPlay);
             this.Name = "frmMainMenu";
             this.Text = "frmMainMenu";
+            this.Load += new System.EventHandler(this.frmMainMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,6 +122,6 @@
         private System.Windows.Forms.Button btnCoUp;
         private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.Button btnExit3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
     }
 }

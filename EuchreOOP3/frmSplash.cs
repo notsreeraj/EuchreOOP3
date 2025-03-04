@@ -26,9 +26,7 @@ namespace EuchreOOP3
 
         private void label2_Click(object sender, EventArgs e)
         {
-            frmLogin newForm = new frmLogin(); // Create an instance of frmOptions
-            newForm.Show(); // Show frmOptions
-            this.Hide(); 
+
         }
     }
 }

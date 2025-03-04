@@ -20,6 +20,7 @@ namespace EuchreOOP3
         public frmOptions()
         {
             InitializeComponent();
+            Console.WriteLine("frmOption is called");
         }
 
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,27 +23,29 @@ namespace DBAL
             return true;
         }
 
-
         /// <summary>
-        /// hasing method using sha256 algorithm (Secure Hash Algorithm 2)
+        /// Hashing method using SHA-256 algorithm (Secure Hash Algorithm 2)
         /// </summary>
         /// <param name="password"></param>
         /// <returns></returns>
-        public static int HashPasswordToInt(int password)
+        public static string HashPassword(string password)
         {
-            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            using (var sha256 = SHA256.Create())
             {
-                // Convert the integer to a string
-                string passwordString = password.ToString();
-
                 // Convert the string to bytes
-                byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(passwordString);
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
 
                 // Compute the hash
                 byte[] hashBytes = sha256.ComputeHash(passwordBytes);
 
-                // Take the first 4 bytes of the hash and convert to an integer
-                return BitConverter.ToInt32(hashBytes, 0); // Converts 4 bytes to an integer
+                // Convert the byte array to a hexadecimal string
+                StringBuilder hashString = new StringBuilder();
+                foreach (byte b in hashBytes)
+                {
+                    hashString.Append(b.ToString("x2"));
+                }
+
+                return hashString.ToString();
             }
         }
 
