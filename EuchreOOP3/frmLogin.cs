@@ -12,8 +12,10 @@ namespace EuchreOOP3
 {
     public partial class frmLogin : Form
     {
-        public frmLogin()
+        frmMainMenu MainMenu;
+        public frmLogin( frmMainMenu mm)
         {
+            MainMenu = mm;
             InitializeComponent();
         }
 
@@ -22,6 +24,25 @@ namespace EuchreOOP3
             frmRegister newForm = new frmRegister(); 
             newForm.Show(); 
             this.Hide(); 
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            // validate the current user typed in user credentials 
+            // set the current user reference to the same user in the users list
+
+
+
+
+
+            // load the main form back
+            MainMenu.Show();
+            this.Close();
+        }
+
+        private void btnGuest_Click(object sender, EventArgs e)
+        {
+            // create a default user and set them as the current user
         }
     }
 }
