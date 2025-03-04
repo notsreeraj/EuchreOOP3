@@ -48,7 +48,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch_2;
+
             this.btnLogin.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLogin.Location = new System.Drawing.Point(261, 387);
@@ -61,7 +61,7 @@
             // 
             // btnGuest
             // 
-            this.btnGuest.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch_2;
+
             this.btnGuest.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuest.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnGuest.Location = new System.Drawing.Point(729, 387);
@@ -74,7 +74,7 @@
             // 
             // btnSignIn
             // 
-            this.btnSignIn.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch_2;
+
             this.btnSignIn.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignIn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSignIn.Location = new System.Drawing.Point(504, 387);

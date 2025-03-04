@@ -63,36 +63,6 @@ namespace EuchreOOP3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cards1 {
-            get {
-                object obj = ResourceManager.GetObject("cards1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cards2 {
-            get {
-                object obj = ResourceManager.GetObject("cards2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap game_background {
-            get {
-                object obj = ResourceManager.GetObject("game_background", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Image {
             get {
                 object obj = ResourceManager.GetObject("Image", resourceCulture);
@@ -106,16 +76,6 @@ namespace EuchreOOP3.Properties {
         internal static System.Drawing.Bitmap imageLoginPage {
             get {
                 object obj = ResourceManager.GetObject("imageLoginPage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap imgSplashScreen {
-            get {
-                object obj = ResourceManager.GetObject("imgSplashScreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -235,16 +195,6 @@ namespace EuchreOOP3.Properties {
         internal static System.Drawing.Bitmap Switch {
             get {
                 object obj = ResourceManager.GetObject("Switch", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Switch_2 {
-            get {
-                object obj = ResourceManager.GetObject("Switch 2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

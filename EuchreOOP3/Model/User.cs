@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Text;
@@ -50,17 +51,173 @@ namespace DBAL
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Genders Gender{ get; set; }
-  
+        public string Email { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public int MatchesPlayed { get; set; }
+        public int Win { get; set; }
+        public int Loss { get; set; }
+        public int Draw { get; set; }
+
 
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public User()
+        {
+            //setDefault();
+        }
+        
+        public User(string firstName,string lastName,Genders gender,string email,string userName,string password)
+        {
+            UserId = 0;
+            FirstName = firstName;
+            LastName = lastName;
+            Gender = gender;
+            Email = email;
+            Username = userName;
+            Password = password;
+            MatchesPlayed = 0;
+            Win = 0;
+            Loss = 0;
+            Draw = 0;
+            
+            // adding this user to the users list
+            Users.Add(this);
+
+        }
         #endregion
 
         #region Instance Method
+
+
+        // Return serilaized string of user details
+        public override string ToString()
+        {
+            return $@"
+*****************************************************
+                    UserID : {UserId}
+                    FirstName : {FirstName}
+                    LastName : {LastName}
+                    Gender : {(Genders)Gender}
+                    Email : {Email}
+                    Username : {Username}  
+                    Password : {Password}
+                    Matches Played: {MatchesPlayed}
+                    Win : {Win}
+                    Loss : {Loss}
+                    Draw : {Draw}
+*****************************************************
+                    ";
+        }
+
+        /// <summary>
+        /// populate users
+        /// </summary>
+        /// <exception cref="Exception"></exception>
+        public static void PopulateUsers()
+        {
+            if (Users != null)
+            {
+                Users.Clear();
+                Console.WriteLine("Users cleared");
+            }
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Settings.Default.EuchreUserDB))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandText = @"SELECT * FROM [User]";
+                    cmd.CommandType = CommandType.Text;
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Genders gender;
+                        Enum.TryParse(reader["Gender"].ToString(), out gender);
+
+                        User user = new User(
+                            reader["FirstName"].ToString(),
+                            reader["LastName"].ToString(),
+                            gender,
+                            reader["Email"].ToString(),
+                            reader["Username"].ToString(),
+                            reader["Password"].ToString()
+                        );
+
+                        user.MatchesPlayed = reader["MatchesPlayed"] != DBNull.Value ? Convert.ToInt32(reader["MatchesPlayed"]) : 0;
+                        user.Win = reader["Win"] != DBNull.Value ? Convert.ToInt32(reader["Win"]) : 0;
+                        user.Loss = reader["Loss"] != DBNull.Value ? Convert.ToInt32(reader["Loss"]) : 0;
+                        user.Draw = reader["Draw"] != DBNull.Value ? Convert.ToInt32(reader["Draw"]) : 0;
+
+                        Users.Add(user);
+                    }
+                    reader.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"[ERROR] Failed to Populate Users => {ex} ");
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Update user stats
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="matchesPlayed"></param>
+        /// <param name="win"></param>
+        /// <param name="loss"></param>
+        /// <param name="draw"></param>
+        /// <exception cref="Exception"></exception>
+        public static void UpdateUserStats(int userId, int matchesPlayed, int win, int loss, int draw)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Settings.Default.EuchreUserDB))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("spUpdateUserStats", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@UserID", userId);
+                    cmd.Parameters.AddWithValue("@MatchesPlayed", matchesPlayed);
+                    cmd.Parameters.AddWithValue("@Win", win);
+                    cmd.Parameters.AddWithValue("@Loss", loss);
+                    cmd.Parameters.AddWithValue("@Draw", draw);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"[ERROR] Failed to Update User Stats => {ex} ");
+            }
+        }
+
+
         #endregion
 
         #region Static Method
+
+        public static void PrintAllUsers()
+        {
+            foreach(User user in Users)
+            {
+                Console.WriteLine(user.ToString());
+            }
+        }
         #endregion
 
 
