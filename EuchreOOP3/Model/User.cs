@@ -50,6 +50,7 @@ namespace DBAL
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Genders Gender{ get; set; }
+  
 
         #endregion
 

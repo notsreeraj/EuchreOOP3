@@ -129,9 +129,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\91JHdtugVQL.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\horror-game-background_670382-279176.avif" />
     <None Include="Resources\imageLoginPage.jpg" />
   </ItemGroup>
@@ -148,12 +145,6 @@
     <None Include="Resources\Login4.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cards1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cards2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Switch.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -163,13 +154,7 @@
     <None Include="Resources\opening2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\game background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Opening 3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\4466ab764530ff148c63aff0b72183c9.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pngegg.png" />
