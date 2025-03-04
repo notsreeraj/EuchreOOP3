@@ -61,4 +61,4 @@ namespace DBAL
             return true;
         }
     }
-}
+} // namespace ends here.
