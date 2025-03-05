@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,8 +22,8 @@ namespace EuchreOOP3
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            frmRegister newForm = new frmRegister(); 
-            newForm.Show(); 
+            frmRegister formRegister = new frmRegister(); 
+            formRegister.ShowDialog(); 
             this.Hide(); 
         }
 
@@ -30,7 +31,16 @@ namespace EuchreOOP3
         {
             // validate the current user typed in user credentials 
             // set the current user reference to the same user in the users list
+             User.CurrentUser = User.IsUserValid(txbEmail.Text, txbPassword.Text);
+            if (User.CurrentUser == null)
+            {
+                MessageBox.Show("[Error] Invalid User Credenrials");
+            }
+            else
+            {
+                MessageBox.Show($"{User.CurrentUser.Username} Has logged in");
 
+            }
 
 
 

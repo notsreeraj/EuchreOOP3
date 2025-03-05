@@ -29,7 +29,7 @@ namespace DBAL
         #region 
         public static List<User> Users = new List<User>();
         private static int AutoUserId = 1000;
-
+        public static User CurrentUser;
         public  enum Genders 
         { 
             Male,
@@ -41,6 +41,8 @@ namespace DBAL
 
         #region Propoerties
         private int _userId;
+        private string _emailID;
+        private string _passWord;   
         public int UserId {
             get { return _userId; } 
             set 
@@ -52,9 +54,37 @@ namespace DBAL
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Genders Gender{ get; set; }
-        public string Email { get; set; }
+        public string Email
+        {
+            get
+            {
+                return _emailID;
+            }
+            set
+            {
+                try
+                {
+                    // call the method to verify the email id from the database
+                    if (IsEmailUnique(value) && IsEmailValid(value))
+                    {
+                        _emailID = value;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
         public string Username { get; set; }
-        public string Password { get; set; }
+        public string Password
+        {
+            get { return _passWord; }
+            set
+            {
+                _passWord = Tools.HashPassword(value);
+            }
+        }
         public int MatchesPlayed { get; set; }
         public int Win { get; set; }
         public int Loss { get; set; }
@@ -69,7 +99,7 @@ namespace DBAL
         /// </summary>
         public User()
         {
-            //setDefault();
+            SetDefault();
             Users.Add(this);
         }
         
@@ -269,7 +299,67 @@ namespace DBAL
         #endregion
 
         #region Static Method
+        /// <summary>
+        /// Return a User if the credentials is valid
+        /// </summary>
+        /// <param name="emailid"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static User IsUserValid(string emailid,string password)
+        {
+            foreach(User user in Users)
+            {
+                Console.WriteLine($"emailid Input {emailid}");
+                Console.WriteLine($"Password Input {Tools.HashPassword(password)}");
+                if(user.Email == emailid && user.Password == Tools.HashPassword(password))
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
 
+
+
+        /// <summary>
+        /// method to validate email id
+        /// </summary>
+        /// <param name="passkey"></param>
+        /// <returns></returns>
+        public static bool IsEmailValid(string email)
+        {
+
+            if (string.IsNullOrWhiteSpace(email)) throw new Exception("White spaces are not allowed");
+            // regex pattern for a valid email address
+            var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!Regex.IsMatch(email, emailPattern)) throw new Exception("Invalid EmailID Format ");
+            return true;
+
+
+        }
+
+
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static bool IsEmailUnique(string email)
+        {
+            foreach (User user in Users)
+            {
+                if (string.Equals(user.Email, email, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new Exception("Email ID is already in use");
+                }
+            }
+            return true;
+        }
+
+
+
+        /// <summary>
+        /// Testing Users list
+        /// </summary>
         public static void PrintAllUsers()
         {
             foreach(User user in Users)
