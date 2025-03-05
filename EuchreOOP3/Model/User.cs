@@ -16,6 +16,7 @@ using System.Windows.Forms;
 
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace DBAL
@@ -32,7 +33,7 @@ namespace DBAL
         public  enum Genders 
         { 
             Male,
-            Femal,
+            Female,
             Other
         }
 
@@ -69,6 +70,7 @@ namespace DBAL
         public User()
         {
             //setDefault();
+            Users.Add(this);
         }
         
         public User(string firstName,string lastName,Genders gender,string email,string userName,string password)
@@ -92,6 +94,23 @@ namespace DBAL
         #endregion
 
         #region Instance Method
+        /// <summary>
+        /// method to set default values properties
+        /// </summary>
+        private void SetDefault()
+        {
+            UserId = 0;
+            FirstName = "firstName";
+            LastName = "lastName";
+            Gender = Genders.Male;
+            Email = "email";
+            Username = "userName";
+            Password = "password";
+            MatchesPlayed = 0;
+            Win = 0;
+            Loss = 0;
+            Draw = 0;
+        }
 
 
         // Return serilaized string of user details
@@ -172,7 +191,7 @@ namespace DBAL
 
 
         /// <summary>
-        /// Update user stats
+        /// Update user stats 
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="matchesPlayed"></param>
