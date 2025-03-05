@@ -225,6 +225,45 @@ namespace DBAL
             }
         }
 
+        /// <summary>
+        /// Insert a new user into the database
+        /// </summary>
+        /// <param name="user">User object to insert</param>
+        /// <returns>True if successful, false otherwise</returns>
+        /// <exception cref="Exception">Throws exception if insert fails</exception>
+        public static bool InsertUser(User user)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Settings.Default.EuchreUserDB))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("spInsertUser", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters
+                    cmd.Parameters.AddWithValue("@UserID", user.UserId);
+                    cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
+                    cmd.Parameters.AddWithValue("@LastName", user.LastName);
+                    cmd.Parameters.AddWithValue("@Gender", user.Gender.ToString());
+                    cmd.Parameters.AddWithValue("@Email", user.Email);
+                    cmd.Parameters.AddWithValue("@Username", user.Username);
+                    cmd.Parameters.AddWithValue("@Password", user.Password);
+                    cmd.Parameters.AddWithValue("@MatchesPlayed", user.MatchesPlayed);
+                    cmd.Parameters.AddWithValue("@Win", user.Win);
+                    cmd.Parameters.AddWithValue("@Loss", user.Loss);
+                    cmd.Parameters.AddWithValue("@Draw", user.Draw);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"[ERROR] Failed to Insert User => {ex}");
+            }
+        }
 
         #endregion
 

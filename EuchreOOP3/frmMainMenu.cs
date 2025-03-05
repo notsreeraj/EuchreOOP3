@@ -30,6 +30,11 @@ namespace EuchreOOP3
                 Console.WriteLine(ex.ToString());
                 MessageBox.Show(ex.ToString());
             }
+
+            // load the the login page
+            frmLogin formLogin = new frmLogin(this);
+            this.Hide();
+            formLogin.ShowDialog();
         }
     }
 }
