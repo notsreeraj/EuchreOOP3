@@ -16,6 +16,7 @@ using System.Windows.Forms;
 
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace DBAL
@@ -32,7 +33,7 @@ namespace DBAL
         public  enum Genders 
         { 
             Male,
-            Femal,
+            Female,
             Other
         }
 
@@ -69,6 +70,7 @@ namespace DBAL
         public User()
         {
             //setDefault();
+            Users.Add(this);
         }
         
         public User(string firstName,string lastName,Genders gender,string email,string userName,string password)
@@ -92,6 +94,23 @@ namespace DBAL
         #endregion
 
         #region Instance Method
+        /// <summary>
+        /// method to set default values properties
+        /// </summary>
+        private void SetDefault()
+        {
+            UserId = 0;
+            FirstName = "firstName";
+            LastName = "lastName";
+            Gender = Genders.Male;
+            Email = "email";
+            Username = "userName";
+            Password = "password";
+            MatchesPlayed = 0;
+            Win = 0;
+            Loss = 0;
+            Draw = 0;
+        }
 
 
         // Return serilaized string of user details
@@ -153,10 +172,10 @@ namespace DBAL
                             reader["Password"].ToString()
                         );
 
-                        user.MatchesPlayed = reader["MatchesPlayed"] != DBNull.Value ? Convert.ToInt32(reader["MatchesPlayed"]) : 0;
-                        user.Win = reader["Win"] != DBNull.Value ? Convert.ToInt32(reader["Win"]) : 0;
-                        user.Loss = reader["Loss"] != DBNull.Value ? Convert.ToInt32(reader["Loss"]) : 0;
-                        user.Draw = reader["Draw"] != DBNull.Value ? Convert.ToInt32(reader["Draw"]) : 0;
+                        user.MatchesPlayed = (int)reader["MatchesPlayed"];
+                        user.Win = (int)reader["Win"];
+                        user.Loss = (int)reader["Loss"];
+                        user.Draw = (int)reader["Draw"];
 
                         Users.Add(user);
                     }
@@ -173,7 +192,7 @@ namespace DBAL
 
 
         /// <summary>
-        /// Update user stats
+        /// Update user stats 
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="matchesPlayed"></param>
