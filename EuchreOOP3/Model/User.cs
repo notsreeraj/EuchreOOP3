@@ -127,6 +127,7 @@ namespace DBAL
             }
             try
             {
+                Console.WriteLine("Connecting to server");
                 using (SqlConnection conn = new SqlConnection(Settings.Default.EuchreUserDB))
                 {
                     conn.Open();
