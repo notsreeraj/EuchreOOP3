@@ -152,10 +152,10 @@ namespace DBAL
                             reader["Password"].ToString()
                         );
 
-                        user.MatchesPlayed = reader["MatchesPlayed"] != DBNull.Value ? Convert.ToInt32(reader["MatchesPlayed"]) : 0;
-                        user.Win = reader["Win"] != DBNull.Value ? Convert.ToInt32(reader["Win"]) : 0;
-                        user.Loss = reader["Loss"] != DBNull.Value ? Convert.ToInt32(reader["Loss"]) : 0;
-                        user.Draw = reader["Draw"] != DBNull.Value ? Convert.ToInt32(reader["Draw"]) : 0;
+                        user.MatchesPlayed = (int)reader["MatchesPlayed"];
+                        user.Win = (int)reader["Win"];
+                        user.Loss = (int)reader["Loss"];
+                        user.Draw = (int)reader["Draw"];
 
                         Users.Add(user);
                     }
