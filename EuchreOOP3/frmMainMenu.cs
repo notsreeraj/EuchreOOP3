@@ -20,8 +20,10 @@ namespace EuchreOOP3
 
         private void frmMainMenu_Load(object sender, EventArgs e)
         {
+
             try
             {
+                Console.WriteLine("Populating Users");
                 User.PopulateUsers();
                 User.PrintAllUsers();
             }
