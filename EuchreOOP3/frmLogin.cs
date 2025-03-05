@@ -22,7 +22,7 @@ namespace EuchreOOP3
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            frmRegister formRegister = new frmRegister(); 
+            frmRegister formRegister = new frmRegister(this); 
             formRegister.ShowDialog(); 
             this.Hide(); 
         }
@@ -42,9 +42,6 @@ namespace EuchreOOP3
 
             }
 
-
-
-
             // load the main form back
             MainMenu.Show();
             this.Close();
@@ -53,6 +50,9 @@ namespace EuchreOOP3
         private void btnGuest_Click(object sender, EventArgs e)
         {
             // create a default user and set them as the current user
+            User.CurrentUser = User.GetGuestUser();
+            MainMenu.Show();
+            this.Close();
         }
     }
 }

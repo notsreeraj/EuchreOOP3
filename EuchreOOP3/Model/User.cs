@@ -64,6 +64,7 @@ namespace DBAL
             {
                 try
                 {
+                    Console.WriteLine($"Email Value : {value}");
                     // call the method to verify the email id from the database
                     if (IsEmailUnique(value) && IsEmailValid(value))
                     {
@@ -329,14 +330,25 @@ namespace DBAL
         public static bool IsEmailValid(string email)
         {
 
-            if (string.IsNullOrWhiteSpace(email)) throw new Exception("White spaces are not allowed");
-            // regex pattern for a valid email address
+
+            if (string.IsNullOrWhiteSpace(email))
+            {
+
+                return false;
+            }
+
+            // Regex pattern for a valid email address
             var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if (!Regex.IsMatch(email, emailPattern)) throw new Exception("Invalid EmailID Format ");
+            if (!Regex.IsMatch(email, emailPattern))
+            {
+
+                return false;
+            }
+
             return true;
-
-
         }
+
+
 
 
         /// </summary>
@@ -366,6 +378,19 @@ namespace DBAL
             {
                 Console.WriteLine(user.ToString());
             }
+        }
+
+
+        public static User GetGuestUser()
+        {
+            foreach(User user in Users)
+            {
+                if(user.Username == "guest")
+                {
+                    return user;
+                }
+            }
+            return null;
         }
         #endregion
 

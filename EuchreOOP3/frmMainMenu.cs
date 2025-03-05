@@ -37,8 +37,19 @@ namespace EuchreOOP3
             frmLogin formLogin = new frmLogin(this);
             this.Hide();
             formLogin.ShowDialog();
-            Console.WriteLine($"Current User : {User.CurrentUser}");
-            lblUserName.Text = User.CurrentUser.Username;
+            
+            
+            //if(User.CurrentUser != null)
+            //{ 
+            //    lblUserName.Text = User.CurrentUser.Username; 
+            // }
+        }
+
+        private void btnOption_Click(object sender, EventArgs e)
+        {
+            frmOptions frmOption = new frmOptions();
+            frmOption.ShowDialog();
+            this.Hide();
         }
     }
 }

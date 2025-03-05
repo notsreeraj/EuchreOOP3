@@ -62,6 +62,7 @@
             this.btnOption.TabIndex = 1;
             this.btnOption.Text = "OPTION";
             this.btnOption.UseVisualStyleBackColor = true;
+            this.btnOption.Click += new System.EventHandler(this.btnOption_Click);
             // 
             // btnExit
             // 
