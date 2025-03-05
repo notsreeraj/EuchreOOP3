@@ -28,100 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnQuickPlay = new System.Windows.Forms.Button();
-            this.btnCoUp = new System.Windows.Forms.Button();
-            this.btnOptions = new System.Windows.Forms.Button();
-            this.btnExit3 = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnQuickPlay
+            // button1
             // 
-            this.btnQuickPlay.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch_2;
-            this.btnQuickPlay.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuickPlay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnQuickPlay.Location = new System.Drawing.Point(136, 217);
-            this.btnQuickPlay.Name = "btnQuickPlay";
-            this.btnQuickPlay.Size = new System.Drawing.Size(308, 61);
-            this.btnQuickPlay.TabIndex = 0;
-            this.btnQuickPlay.Text = "QUICK PLAY";
-            this.btnQuickPlay.UseVisualStyleBackColor = true;
-            // 
-            // btnCoUp
-            // 
-            this.btnCoUp.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch_2;
-            this.btnCoUp.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCoUp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCoUp.Location = new System.Drawing.Point(136, 293);
-            this.btnCoUp.Name = "btnCoUp";
-            this.btnCoUp.Size = new System.Drawing.Size(308, 61);
-            this.btnCoUp.TabIndex = 0;
-            this.btnCoUp.Text = "CO-UP";
-            this.btnCoUp.UseVisualStyleBackColor = true;
-            // 
-            // btnOptions
-            // 
-            this.btnOptions.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch_2;
-            this.btnOptions.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOptions.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnOptions.Location = new System.Drawing.Point(136, 372);
-            this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(308, 61);
-            this.btnOptions.TabIndex = 0;
-            this.btnOptions.Text = "OPTIONS";
-            this.btnOptions.UseVisualStyleBackColor = true;
-            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
-            // 
-            // btnExit3
-            // 
-            this.btnExit3.BackgroundImage = global::EuchreOOP3.Properties.Resources.Switch_2;
-            this.btnExit3.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnExit3.Location = new System.Drawing.Point(136, 454);
-            this.btnExit3.Name = "btnExit3";
-            this.btnExit3.Size = new System.Drawing.Size(308, 61);
-            this.btnExit3.TabIndex = 0;
-            this.btnExit3.Text = "EXIT";
-            this.btnExit3.UseVisualStyleBackColor = true;
-            this.btnExit3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Font = new System.Drawing.Font("Comic Sans MS", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.Black;
-            this.lblTitle.Location = new System.Drawing.Point(136, 98);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(295, 90);
-            this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "EUCHRE";
+            this.button1.Location = new System.Drawing.Point(113, 301);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1120, 718);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.btnExit3);
-            this.Controls.Add(this.btnOptions);
-            this.Controls.Add(this.btnCoUp);
-            this.Controls.Add(this.btnQuickPlay);
+            this.ClientSize = new System.Drawing.Size(1549, 808);
+            this.Controls.Add(this.button1);
             this.Name = "frmMainMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMainMenu";
             this.Load += new System.EventHandler(this.frmMainMenu_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnQuickPlay;
-        private System.Windows.Forms.Button btnCoUp;
-        private System.Windows.Forms.Button btnOptions;
-        private System.Windows.Forms.Button btnExit3;
-        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button button1;
     }
 }
