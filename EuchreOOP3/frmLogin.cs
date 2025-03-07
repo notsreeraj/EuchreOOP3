@@ -24,7 +24,7 @@ namespace EuchreOOP3
         {
             frmRegister formRegister = new frmRegister(this); 
             formRegister.ShowDialog(); 
-            this.Hide(); 
+           // this.Hide(); 
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -53,6 +53,11 @@ namespace EuchreOOP3
             User.CurrentUser = User.GetGuestUser();
             MainMenu.Show();
             this.Close();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            MainMenu.Close();
         }
     }
 }

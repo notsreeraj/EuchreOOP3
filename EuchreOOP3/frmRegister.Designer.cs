@@ -148,6 +148,7 @@
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(369, 37);
             this.txbPassword.TabIndex = 2;
+            this.txbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPassword_KeyPress);
             // 
             // txbConfirmPassword
             // 

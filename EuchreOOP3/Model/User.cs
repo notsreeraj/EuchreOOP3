@@ -27,6 +27,7 @@ namespace DBAL
     public class User
     {
         #region 
+        public static bool LoadingDB = false;
         public static List<User> Users = new List<User>();
         private static int AutoUserId = 1000;
         public static User CurrentUser;
@@ -83,7 +84,11 @@ namespace DBAL
             get { return _passWord; }
             set
             {
-                _passWord = Tools.HashPassword(value);
+                if (!LoadingDB)
+                {
+                    _passWord = Tools.HashPassword(value);
+                }
+                else _passWord = value;               
             }
         }
         public int MatchesPlayed { get; set; }
@@ -193,7 +198,7 @@ namespace DBAL
                     {
                         Genders gender;
                         Enum.TryParse(reader["Gender"].ToString(), out gender);
-
+                        LoadingDB = true;
                         User user = new User(
                             reader["FirstName"].ToString(),
                             reader["LastName"].ToString(),
@@ -207,8 +212,8 @@ namespace DBAL
                         user.Win = (int)reader["Win"];
                         user.Loss = (int)reader["Loss"];
                         user.Draw = (int)reader["Draw"];
-
-                        Users.Add(user);
+                        LoadingDB = false;
+                        //Users.Add(user);
                     }
                     reader.Close();
                 }
@@ -308,10 +313,17 @@ namespace DBAL
         /// <returns></returns>
         public static User IsUserValid(string emailid,string password)
         {
-            foreach(User user in Users)
+            Console.WriteLine($"emailid Input {emailid}");
+            Console.WriteLine($"Password Input {Tools.HashPassword(password)}");
+            foreach (User user in Users)
             {
-                Console.WriteLine($"emailid Input {emailid}");
-                Console.WriteLine($"Password Input {Tools.HashPassword(password)}");
+                Console.WriteLine($"Email Comparison: {user.Email == emailid}");
+                Console.WriteLine($"Password Comparison: {user.Password == Tools.HashPassword(password)}");
+                if(!(user.Password == Tools.HashPassword(password)))
+                {
+                    Console.WriteLine($@"Password from the user lisr : {user.Password}
+                                        Password from the input : {Tools.HashPassword(password)}");
+                }
                 if(user.Email == emailid && user.Password == Tools.HashPassword(password))
                 {
                     return user;
@@ -351,6 +363,7 @@ namespace DBAL
 
 
 
+
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
@@ -380,7 +393,10 @@ namespace DBAL
             }
         }
 
-
+        /// <summary>
+        /// method to get the geust user from the list for gues acces
+        /// </summary>
+        /// <returns></returns>
         public static User GetGuestUser()
         {
             foreach(User user in Users)
@@ -392,6 +408,25 @@ namespace DBAL
             }
             return null;
         }
+
+        public static void IsPasswordValid(string password)
+        {
+            if (password.Length >8)
+            {
+                throw new Exception("Password must be less than 9 characters long.");
+            }
+
+            // Check if the password contains only allowed characters
+            char[] allowedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$".ToCharArray();
+            if (!password.All(ch => allowedChars.Contains(ch)))
+            {
+                throw new Exception("Password can only contain letters, numbers, and the special characters @, #, $.");
+            }
+        }
+
+
+
+
         #endregion
 
 

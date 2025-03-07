@@ -124,8 +124,9 @@ namespace EuchreOOP3
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            this.Close();
             frmLogin.Show();
-            this.Close(); 
+             
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -156,6 +157,27 @@ namespace EuchreOOP3
         private void label7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txbPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                // List of allowed characters (letters, digits, and specific special characters)
+                char[] allowedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$".ToCharArray();
+
+                // Check if the pressed key is not in the list of allowed characters
+                if (Array.IndexOf(allowedChars, e.KeyChar) == -1 && !char.IsControl(e.KeyChar))
+                {
+                    // If not allowed, prevent the character from being entered into the text box
+                    e.Handled = true;
+                    MessageBox.Show("Password can only contain letters, numbers, and the special characters @, #, $.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("KeyPress Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
