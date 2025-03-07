@@ -20,8 +20,10 @@ namespace EuchreOOP3
 
         private void frmMainMenu_Load(object sender, EventArgs e)
         {
+
             try
             {
+                Console.WriteLine("Populating Users");
                 User.PopulateUsers();
                 User.PrintAllUsers();
             }
@@ -30,6 +32,24 @@ namespace EuchreOOP3
                 Console.WriteLine(ex.ToString());
                 MessageBox.Show(ex.ToString());
             }
+
+            // load the the login page
+            frmLogin formLogin = new frmLogin(this);
+            this.Hide();
+            formLogin.ShowDialog();
+            
+            
+            //if(User.CurrentUser != null)
+            //{ 
+            //    lblUserName.Text = User.CurrentUser.Username; 
+            // }
+        }
+
+        private void btnOption_Click(object sender, EventArgs e)
+        {
+            frmOptions frmOption = new frmOptions();
+            frmOption.ShowDialog();
+            this.Hide();
         }
     }
 }

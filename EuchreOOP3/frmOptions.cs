@@ -26,7 +26,7 @@ namespace EuchreOOP3
 
         private void bthExit2_Click(object sender, EventArgs e)
         {
-            this.Close();
+             
         }
 
 

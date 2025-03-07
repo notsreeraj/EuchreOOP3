@@ -33,6 +33,10 @@
             this.btnGuest = new System.Windows.Forms.Button();
             this.btnSignIn = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.lblEmailDis = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txbEmail = new System.Windows.Forms.TextBox();
+            this.txbPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnExit
@@ -45,12 +49,12 @@
             this.btnExit.TabIndex = 0;
             this.btnExit.Text = "EXIT GAME ";
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnLogin
             // 
-
-            this.btnLogin.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLogin.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.Black;
             this.btnLogin.Location = new System.Drawing.Point(261, 387);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(162, 61);
@@ -61,9 +65,8 @@
             // 
             // btnGuest
             // 
-
-            this.btnGuest.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuest.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGuest.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuest.ForeColor = System.Drawing.Color.Black;
             this.btnGuest.Location = new System.Drawing.Point(729, 387);
             this.btnGuest.Name = "btnGuest";
             this.btnGuest.Size = new System.Drawing.Size(162, 61);
@@ -74,9 +77,8 @@
             // 
             // btnSignIn
             // 
-
-            this.btnSignIn.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignIn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSignIn.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignIn.ForeColor = System.Drawing.Color.Black;
             this.btnSignIn.Location = new System.Drawing.Point(504, 387);
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Size = new System.Drawing.Size(162, 61);
@@ -95,18 +97,64 @@
             this.lblTitle.TabIndex = 3;
             this.lblTitle.Text = "Euchre";
             // 
+            // lblEmailDis
+            // 
+            this.lblEmailDis.AutoSize = true;
+            this.lblEmailDis.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmailDis.Location = new System.Drawing.Point(347, 230);
+            this.lblEmailDis.Name = "lblEmailDis";
+            this.lblEmailDis.Size = new System.Drawing.Size(91, 23);
+            this.lblEmailDis.TabIndex = 4;
+            this.lblEmailDis.Text = "Email ID :";
+            this.lblEmailDis.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(347, 283);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(101, 23);
+            this.lblPassword.TabIndex = 5;
+            this.lblPassword.Text = "Password : ";
+            this.lblPassword.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txbEmail
+            // 
+            this.txbEmail.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbEmail.Location = new System.Drawing.Point(504, 227);
+            this.txbEmail.Name = "txbEmail";
+            this.txbEmail.Size = new System.Drawing.Size(314, 30);
+            this.txbEmail.TabIndex = 6;
+            this.txbEmail.Text = "guest@domain.com";
+            // 
+            // txbPassword
+            // 
+            this.txbPassword.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbPassword.Location = new System.Drawing.Point(506, 283);
+            this.txbPassword.Name = "txbPassword";
+            this.txbPassword.Size = new System.Drawing.Size(314, 30);
+            this.txbPassword.TabIndex = 7;
+            this.txbPassword.Text = "guestpassword";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1180, 726);
+            this.Controls.Add(this.txbPassword);
+            this.Controls.Add(this.txbEmail);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.lblEmailDis);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnSignIn);
             this.Controls.Add(this.btnGuest);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnExit);
+            this.DoubleBuffered = true;
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -119,5 +167,9 @@
         private System.Windows.Forms.Button btnGuest;
         private System.Windows.Forms.Button btnSignIn;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblEmailDis;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.TextBox txbEmail;
+        private System.Windows.Forms.TextBox txbPassword;
     }
 }
