@@ -161,12 +161,12 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1444, 819);
+            this.ControlBox = false;
             this.Controls.Add(this.panelThemes);
             this.Controls.Add(this.pnlOptionMenu);
             this.Controls.Add(this.bthExit2);
             this.Controls.Add(this.panelSound);
             this.Name = "frmOptions";
-            this.Text = "frmOptions";
             this.pnlOptionMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
