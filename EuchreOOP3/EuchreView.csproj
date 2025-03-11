@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="Interface\Iplayer.cs" />
     <Compile Include="Model\Card.cs" />
+    <Compile Include="Model\Deck.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />
