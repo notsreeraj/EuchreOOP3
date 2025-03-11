@@ -19,11 +19,8 @@ namespace EuchreOOP3
 
         private void frmOptions_Load(object sender, EventArgs e)
         {
-
-            panelPolicy.Visible = false;
-
+            HideAllPanels();
         }
-
 
         public frmOptions()
         {
@@ -31,27 +28,73 @@ namespace EuchreOOP3
             Console.WriteLine("frmOption is called");
         }
 
+        private void btnSoundClickEvent(object sender, EventArgs e)
+        {
+            HideAllPanels();
+            panelSound.Visible = true;
+        }
+
+        private void btnThemes_Click(object sender, EventArgs e)
+        {
+            HideAllPanels();
+            flowLayoutPanelThemes.Visible = true;
+        }
+
+        private void btnPolicy_Click(object sender, EventArgs e)
+        {
+            HideAllPanels();
+            panelPolicy.Visible = true;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            HideAllPanels();
+            panelThemes.Visible = true;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            HideAllPanels();
+            panelthemesCard.Visible = true;
+        }
+
+        private void button2ExitFrm_Click(object sender, EventArgs e)
+        {
+            this.Close(); // close the form
+        }
 
         private void bthExit2_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-
-
-        private void OptionsSwitchEvent(object sender, EventArgs e)
-        {
-            panelPolicy.Visible = true;
-            //btnOptions.Visible = false;
+            HideAllPanels();
+            panelExitInstructions.Visible = true;
         }
 
         private void panelThemes_Paint(object sender, PaintEventArgs e)
         {
+            // Handle paint event if needed
+        }
+
+        // Method to hide all panels
+        private void HideAllPanels()
+        {
+            panelExitInstructions.Visible = false;
+            panelthemesCard.Visible = false;
+            panelThemes.Visible = false;
+            panelPolicy.Visible = false;
+            panelSound.Visible = false;
+            flowLayoutPanelThemes.Visible = false;
+        }
+
+        private void panelthemesCard_Paint(object sender, PaintEventArgs e)
+        {
 
         }
 
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
 
+        }
 
-        // method to add buttons and panels to their respective arrays
+        // Method to add buttons and panels to their respective arrays
     }
 }

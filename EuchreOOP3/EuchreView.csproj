@@ -168,5 +168,23 @@
   <ItemGroup>
     <None Include="Resources\king.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backgorund cards.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background image 3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background image 2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shirosu505-copy_51149683292_o.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shirosu505-copy-3_51150357301_o.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shirosu505-copy-6_51150591768_o.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
