@@ -17,6 +17,14 @@ namespace EuchreOOP3
         private static Button[] btnOptions = new Button[4];
         #endregion
 
+        private void frmOptions_Load(object sender, EventArgs e)
+        {
+
+            panelPolicy.Visible = false;
+
+        }
+
+
         public frmOptions()
         {
             InitializeComponent();
@@ -26,16 +34,23 @@ namespace EuchreOOP3
 
         private void bthExit2_Click(object sender, EventArgs e)
         {
-             
+            this.Close();
         }
 
 
 
         private void OptionsSwitchEvent(object sender, EventArgs e)
         {
-            // use this event handler for all buttons
-            // take in the buttontxt and switch the panel according to it
+            panelPolicy.Visible = true;
+            //btnOptions.Visible = false;
         }
+
+        private void panelThemes_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
 
         // method to add buttons and panels to their respective arrays
     }
