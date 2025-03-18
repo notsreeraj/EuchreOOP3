@@ -44,6 +44,7 @@
             this.btnQuckPlay.TabIndex = 1;
             this.btnQuckPlay.Text = "QUICK PLAY";
             this.btnQuckPlay.UseVisualStyleBackColor = true;
+            this.btnQuckPlay.Click += new System.EventHandler(this.btnQuckPlay_Click);
             // 
             // btnCoUp
             // 
@@ -53,6 +54,7 @@
             this.btnCoUp.TabIndex = 1;
             this.btnCoUp.Text = "CO - UP ";
             this.btnCoUp.UseVisualStyleBackColor = true;
+            this.btnCoUp.Click += new System.EventHandler(this.btnCoUp_Click);
             // 
             // btnOption
             // 

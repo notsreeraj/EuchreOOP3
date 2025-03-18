@@ -1,5 +1,5 @@
 ﻿using System;
-using DBAL;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,13 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Controller;
+using DBAL;
+using Model;
 
 namespace EuchreOOP3
 {
-    public partial class frmMainMenu: Form
+    public partial class frmMainMenu : Form
     {
+
         public frmMainMenu()
         {
+
             InitializeComponent();
         }
 
@@ -25,11 +30,10 @@ namespace EuchreOOP3
             {
                 Console.WriteLine("Populating Users");
                 User.PopulateUsers();
-                User.PrintAllUsers();
+                //User.PrintAllUsers();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
                 MessageBox.Show(ex.ToString());
             }
 
@@ -37,12 +41,12 @@ namespace EuchreOOP3
             frmLogin formLogin = new frmLogin(this);
             this.Hide();
             formLogin.ShowDialog();
-            
-            
-            //if(User.CurrentUser != null)
-            //{ 
-            //    lblUserName.Text = User.CurrentUser.Username; 
-            // }
+
+
+            if (User.CurrentUser != null)
+            {
+                lblUserName.Text = User.CurrentUser.Username;
+            }
         }
 
         private void btnOption_Click(object sender, EventArgs e)
@@ -50,6 +54,40 @@ namespace EuchreOOP3
             frmOptions frmOption = new frmOptions();
             frmOption.ShowDialog();
             this.Hide();
+        }
+
+        private void btnQuckPlay_Click(object sender, EventArgs e)
+        {
+            try
+            {// create a gamestate object with 2 players
+                GameController.StartQuickplay();
+                frmGame frmGame = new frmGame();
+                frmGame.ShowDialog();
+
+                // launch the fmrGame
+                // create frmGame and show it
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"[ERROR] {ex}");
+            }
+        }
+
+        private void btnCoUp_Click(object sender, EventArgs e)
+        {
+            try
+            {// create a gamestate object with 2 players
+                GameController.StartCOOP();
+                frmGame frmGame = new frmGame();
+                frmGame.ShowDialog();
+
+                // launch the fmrGame
+                // create frmGame and show it 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"[ERROR] {ex}");
+            }
         }
     }
 }

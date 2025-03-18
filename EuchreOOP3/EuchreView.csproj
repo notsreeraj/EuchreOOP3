@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmGame.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmGame.Designer.cs">
-      <DependentUpon>frmGame.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,11 +89,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Resources\frmGame.cs" />
+    <Compile Include="Resources\frmGame.Designer.cs">
+      <DependentUpon>frmGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\Tools.cs" />
-    <EmbeddedResource Include="frmGame.resx">
-      <DependentUpon>frmGame.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +114,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\frmGame.resx">
+      <DependentUpon>frmGame.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -190,6 +188,102 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\shirosu505-copy-6_51150591768_o.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_ST.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_SQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_SK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_SJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_SA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_S9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_HT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_HQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_HK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_HJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_HA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_H9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_DT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_DQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_DK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_DJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_DA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_D9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_CT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_CQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_CK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_CJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_CA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_C9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_BACK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_HT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_HQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_HK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_HJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_HA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_H9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_C7.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
