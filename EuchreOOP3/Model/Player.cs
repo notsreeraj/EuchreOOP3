@@ -1,68 +1,63 @@
-﻿using Interface;
+﻿using DBAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBAL.Model
+
+namespace Model
 {
-    public class Player : IPlayer
+    public abstract class Player
     {
+
+
 
         #region Properties
         public int PlayerID { get; set; }
         public List<Card> Hand { get; set; }
         public int Points { get; set; }
-        public bool IsHuman { get; set; }
+        public string UserName { get; set; }
 
         #endregion
-
-        #region Constructors
-        public Player (int playerID, bool isHuman)
+        #region Constructor
+        public Player(int playerID)
         {
             PlayerID = playerID;
+
             Hand = new List<Card>();
             Points = 0;
-            IsHuman = isHuman; 
         }
         #endregion
 
         #region Instance Methods
         /// <summary>
-        /// 
+        /// method called to play a card from the hand of the player
         /// </summary>
-        /// <returns></returns>
-        public Card PlayCard()
-        {
-            // choose the cards from the hand
-            // TODO
-            return null;
-        }
-
-        public Card PickCard(Deck deck)
-        {
-            return deck.GetTopCard();
-            // Choose card from the given stack
-
-            // TODO
-
-        }
+        public abstract Card PlayCard();
 
         /// <summary>
-        /// Method to cjeck whether a hand is full
+        /// method to pick a card from the deck of cards in in the game
+        /// </summary>
+        /// <param name="deck"></param>
+        /// <returns></returns>
+        public abstract Card PickCard(Deck deck);
+
+
+        /// <summary>
+        /// method to check whether a hand is full
         /// </summary>
         /// <returns></returns>
         public bool IsHandFull()
         {
-            // check if the player hand is full
+            // check if the players hand is full
             return (Hand.Count == 5);
         }
 
+
         /// <summary>
-        /// Method to add card to hand
+        /// method to Add card to Hand
         /// </summary>
-        /// <param name="card"></param>
         /// <returns></returns>
         public bool KeepCard(Card card)
         {
@@ -74,15 +69,10 @@ namespace DBAL.Model
             return false;
         }
 
-        public Card AIPickCard(Deck deck)
-        {
-            return deck.GetTopCard();
-        }
 
-        public Card AIPlayCard()
-        {
-            return null;
-        }
+
         #endregion
+
     }
+
 }
