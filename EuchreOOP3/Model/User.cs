@@ -1,5 +1,5 @@
-﻿
-using EuchreOOP3.Properties;
+﻿using EuchreOOP3.Properties;
+using EuchreView.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,6 +13,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Utilities;
 
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -31,8 +32,9 @@ namespace DBAL
         public static List<User> Users = new List<User>();
         private static int AutoUserId = 1000;
         public static User CurrentUser;
-        public  enum Genders 
-        { 
+
+        public enum Genders
+        {
             Male,
             Female,
             Other
@@ -43,18 +45,19 @@ namespace DBAL
         #region Propoerties
         private int _userId;
         private string _emailID;
-        private string _passWord;   
-        public int UserId {
-            get { return _userId; } 
-            set 
-                {
-                    _userId = AutoUserId;
-                    AutoUserId++;
-                } 
+        private string _passWord;
+        public int UserId
+        {
+            get { return _userId; }
+            set
+            {
+                _userId = AutoUserId;
+                AutoUserId++;
+            }
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Genders Gender{ get; set; }
+        public Genders Gender { get; set; }
         public string Email
         {
             get
@@ -88,7 +91,7 @@ namespace DBAL
                 {
                     _passWord = Tools.HashPassword(value);
                 }
-                else _passWord = value;               
+                else _passWord = value;
             }
         }
         public int MatchesPlayed { get; set; }
@@ -108,8 +111,8 @@ namespace DBAL
             SetDefault();
             Users.Add(this);
         }
-        
-        public User(string firstName,string lastName,Genders gender,string email,string userName,string password)
+
+        public User(string firstName, string lastName, Genders gender, string email, string userName, string password)
         {
             UserId = 0;
             FirstName = firstName;
@@ -122,7 +125,7 @@ namespace DBAL
             Win = 0;
             Loss = 0;
             Draw = 0;
-            
+
             // adding this user to the users list
             Users.Add(this);
 
@@ -217,10 +220,11 @@ namespace DBAL
                     }
                     reader.Close();
                 }
+
             }
             catch (Exception ex)
             {
-                throw new Exception($"[ERROR] Failed to Populate Users => {ex} ");
+                throw new Exception($"[ERROR] Failed to Populate Users  ");
             }
         }
 
@@ -258,7 +262,7 @@ namespace DBAL
             }
             catch (Exception ex)
             {
-                throw new Exception($"[ERROR] Failed to Update User Stats => {ex} ");
+                throw new Exception($"[ERROR] Failed to Update User Stats");
             }
         }
 
@@ -295,6 +299,8 @@ namespace DBAL
                     int rowsAffected = cmd.ExecuteNonQuery();
                     return rowsAffected > 0;
                 }
+
+
             }
             catch (Exception ex)
             {
@@ -302,16 +308,31 @@ namespace DBAL
             }
         }
 
+
         #endregion
 
         #region Static Method
+
+        public static string GetUseName(int UserID)
+        {
+            foreach (User user in Users)
+            {
+                if (user.UserId == UserID)
+                {
+                    return user.Username;
+                }
+
+            }
+            throw new Exception("Failed to Retrieve User Info. User Not Found .");
+        }
+
         /// <summary>
         /// Return a User if the credentials is valid
         /// </summary>
         /// <param name="emailid"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public static User IsUserValid(string emailid,string password)
+        public static User IsUserValid(string emailid, string password)
         {
             Console.WriteLine($"emailid Input {emailid}");
             Console.WriteLine($"Password Input {Tools.HashPassword(password)}");
@@ -319,12 +340,12 @@ namespace DBAL
             {
                 Console.WriteLine($"Email Comparison: {user.Email == emailid}");
                 Console.WriteLine($"Password Comparison: {user.Password == Tools.HashPassword(password)}");
-                if(!(user.Password == Tools.HashPassword(password)))
+                if (!(user.Password == Tools.HashPassword(password)))
                 {
                     Console.WriteLine($@"Password from the user lisr : {user.Password}
                                         Password from the input : {Tools.HashPassword(password)}");
                 }
-                if(user.Email == emailid && user.Password == Tools.HashPassword(password))
+                if (user.Email == emailid && user.Password == Tools.HashPassword(password))
                 {
                     return user;
                 }
@@ -387,7 +408,7 @@ namespace DBAL
         /// </summary>
         public static void PrintAllUsers()
         {
-            foreach(User user in Users)
+            foreach (User user in Users)
             {
                 Console.WriteLine(user.ToString());
             }
@@ -399,9 +420,9 @@ namespace DBAL
         /// <returns></returns>
         public static User GetGuestUser()
         {
-            foreach(User user in Users)
+            foreach (User user in Users)
             {
-                if(user.Username == "guest")
+                if (user.Username == "guest")
                 {
                     return user;
                 }
@@ -411,7 +432,7 @@ namespace DBAL
 
         public static void IsPasswordValid(string password)
         {
-            if (password.Length >8)
+            if (password.Length > 8)
             {
                 throw new Exception("Password must be less than 9 characters long.");
             }
