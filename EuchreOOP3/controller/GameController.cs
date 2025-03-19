@@ -1,5 +1,5 @@
 ﻿using Model;
-using Utilities;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using EuchreOOP3;
 using System.Windows.Forms;
-using EuchreView.Properties;
+
 using DBAL;
 
 namespace Controller
