@@ -177,7 +177,7 @@
             // pbDealerDeck
             // 
             this.pbDealerDeck.BackColor = System.Drawing.Color.Silver;
-            this.pbDealerDeck.BackgroundImage = global::EuchreView.Properties.Resources.WG_BACK;
+            this.pbDealerDeck.BackgroundImage = global::EuchreOOP3.Properties.Resources.WG_BACK;
             this.pbDealerDeck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbDealerDeck.Location = new System.Drawing.Point(211, 150);
             this.pbDealerDeck.Name = "pbDealerDeck";
