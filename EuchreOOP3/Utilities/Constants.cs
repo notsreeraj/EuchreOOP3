@@ -23,19 +23,21 @@ namespace DBAL
         public const string DEFAULT_FIRST_NAME = " DEFAULT";
         public const string DEFAULT_LAST_NAME = "DEFAULT";
 
+        public const string DEF_AI1_NAME = "AI 1";
+        public const string DEF_AI2_NAME = "AI 2";
         #endregion
 
-        #region Game
-        public const string DEF_GAME_TITLE = "Title";
-        public const string DEF_GAME_GENRE = "Genre";
-        public static DateTime DEFAULT_RELEASEDATE = new DateTime(2000, 1, 1);
 
-
+        #region GameState
+        public enum GameModes
+        {
+            DealerSetting,
+            TrumpSetting,
+            Tricks
+        }
         #endregion
 
-        #region Review
-        public const string DEF_REVIEW_TEXT = "MEH";
 
-        #endregion
+
     }
 }

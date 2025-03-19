@@ -42,6 +42,7 @@
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Tomato;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(988, 621);
             this.btnExit.Name = "btnExit";
@@ -67,7 +68,7 @@
             // 
             this.btnGuest.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuest.ForeColor = System.Drawing.Color.Black;
-            this.btnGuest.Location = new System.Drawing.Point(729, 387);
+            this.btnGuest.Location = new System.Drawing.Point(723, 387);
             this.btnGuest.Name = "btnGuest";
             this.btnGuest.Size = new System.Drawing.Size(162, 61);
             this.btnGuest.TabIndex = 1;
@@ -139,10 +140,13 @@
             // 
             // frmLogin
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(1180, 726);
+            this.ControlBox = false;
             this.Controls.Add(this.txbPassword);
             this.Controls.Add(this.txbEmail);
             this.Controls.Add(this.lblPassword);
@@ -155,7 +159,6 @@
             this.DoubleBuffered = true;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmLogin";
             this.ResumeLayout(false);
             this.PerformLayout();
 

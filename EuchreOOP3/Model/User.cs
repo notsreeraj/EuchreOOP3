@@ -1,5 +1,5 @@
 ﻿using EuchreOOP3.Properties;
-using EuchreView.Properties;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +13,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Utilities;
+using DBAL;
 
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -216,11 +216,11 @@ namespace DBAL
                         user.Loss = (int)reader["Loss"];
                         user.Draw = (int)reader["Draw"];
                         LoadingDB = false;
-                        //Users.Add(user);
+                        
                     }
                     reader.Close();
                 }
-
+                PrintAllUsers();
             }
             catch (Exception ex)
             {
