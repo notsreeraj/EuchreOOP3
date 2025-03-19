@@ -216,11 +216,11 @@ namespace DBAL
                         user.Loss = (int)reader["Loss"];
                         user.Draw = (int)reader["Draw"];
                         LoadingDB = false;
-                        //Users.Add(user);
+                        
                     }
                     reader.Close();
                 }
-
+                PrintAllUsers();
             }
             catch (Exception ex)
             {

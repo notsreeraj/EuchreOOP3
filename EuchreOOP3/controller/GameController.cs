@@ -102,14 +102,19 @@ namespace Controller
             switch (gameMode)
             {
                 case Constants.GameModes.DealerSetting:
-                    Card pickedCard = Game.Turn.PickCard(Game.Deck);
-                    if (FoundDealer(pickedCard))
+
+                    if (!dealerSet)
                     {
-                        // change the
-                        Console.WriteLine(pickedCard.ToString());
-                        Game.Deck.RemoveCard(pickedCard);
+                        Card pickedCard = Game.Turn.PickCard(Game.Deck);
+                        if (FoundDealer(pickedCard))
+                        {
+                            // change the
+                            Console.WriteLine(pickedCard.ToString());
+                            Game.Deck.RemoveCard(pickedCard);
                         
+                        }
                     }
+                    
                     ;
 
                     
