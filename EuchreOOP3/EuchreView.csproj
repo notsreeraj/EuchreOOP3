@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\GameController.cs" />
     <Compile Include="frmGame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +86,7 @@
     <Compile Include="Model\AIPlayer.cs" />
     <Compile Include="Model\Card.cs" />
     <Compile Include="Model\Deck.cs" />
+    <Compile Include="Model\GameState.cs" />
     <Compile Include="Model\HPlayer.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\User.cs" />
@@ -190,6 +192,102 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\shirosu505-copy-6_51150591768_o.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_ST.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_SQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_SK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_SJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_SA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_S9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_HT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_HQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_HK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_HJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_HA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_H9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_DT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_DQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_DK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_DJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_DA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_D9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_CT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_CQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_CK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_CJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_CA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_C9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WG_BACK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_HT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_HQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_HK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_HJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_HA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_H9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MT_C7.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

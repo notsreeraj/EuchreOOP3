@@ -8,7 +8,7 @@
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///   
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -28,68 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitle = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
             this.panTop = new System.Windows.Forms.Panel();
             this.panBottom = new System.Windows.Forms.Panel();
             this.pbDeck = new System.Windows.Forms.PictureBox();
             this.pbPlayedCards = new System.Windows.Forms.PictureBox();
             this.btnSettings = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pbTrick1 = new System.Windows.Forms.PictureBox();
-            this.pbTrick2 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panTrick = new System.Windows.Forms.Panel();
+            this.panLeft = new System.Windows.Forms.Panel();
+            this.panRight = new System.Windows.Forms.Panel();
+            this.panDealer = new System.Windows.Forms.Panel();
+            this.lblCurrentPlayer = new System.Windows.Forms.Label();
+            this.pbPickedCard = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pbDealerDeck = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbDeck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayedCards)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTrick1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTrick2)).BeginInit();
+            this.panDealer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPickedCard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDealerDeck)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(853, 9);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(93, 35);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Euchre";
             // 
             // panTop
             // 
             this.panTop.BackColor = System.Drawing.Color.Gray;
             this.panTop.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panTop.Location = new System.Drawing.Point(534, 58);
+            this.panTop.Location = new System.Drawing.Point(650, 141);
             this.panTop.Name = "panTop";
-            this.panTop.Size = new System.Drawing.Size(816, 255);
+            this.panTop.Size = new System.Drawing.Size(539, 228);
             this.panTop.TabIndex = 1;
+            this.panTop.Visible = false;
             // 
             // panBottom
             // 
             this.panBottom.BackColor = System.Drawing.Color.Gray;
             this.panBottom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panBottom.Location = new System.Drawing.Point(519, 781);
+            this.panBottom.Location = new System.Drawing.Point(650, 711);
             this.panBottom.Name = "panBottom";
-            this.panBottom.Size = new System.Drawing.Size(831, 248);
+            this.panBottom.Size = new System.Drawing.Size(539, 228);
             this.panBottom.TabIndex = 2;
+            this.panBottom.Visible = false;
             this.panBottom.Paint += new System.Windows.Forms.PaintEventHandler(this.panBottom_Paint);
             // 
             // pbDeck
             // 
-            this.pbDeck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pbDeck.BackColor = System.Drawing.Color.Silver;
             this.pbDeck.Location = new System.Drawing.Point(12, 12);
             this.pbDeck.Name = "pbDeck";
-            this.pbDeck.Size = new System.Drawing.Size(221, 248);
+            this.pbDeck.Size = new System.Drawing.Size(221, 321);
             this.pbDeck.TabIndex = 3;
             this.pbDeck.TabStop = false;
+            this.pbDeck.Click += new System.EventHandler(this.pbDeck_Click);
             // 
             // pbPlayedCards
             // 
             this.pbPlayedCards.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pbPlayedCards.Location = new System.Drawing.Point(1671, 781);
+            this.pbPlayedCards.Location = new System.Drawing.Point(1671, 711);
             this.pbPlayedCards.Name = "pbPlayedCards";
-            this.pbPlayedCards.Size = new System.Drawing.Size(221, 248);
+            this.pbPlayedCards.Size = new System.Drawing.Size(221, 321);
             this.pbPlayedCards.TabIndex = 4;
             this.pbPlayedCards.TabStop = false;
             // 
@@ -97,74 +94,114 @@
             // 
             this.btnSettings.BackColor = System.Drawing.Color.Silver;
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSettings.Location = new System.Drawing.Point(1761, 9);
+            this.btnSettings.Location = new System.Drawing.Point(1817, 32);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(75, 54);
             this.btnSettings.TabIndex = 5;
             this.btnSettings.Text = "Settings";
             this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // panel1
+            // panTrick
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.panel1.Controls.Add(this.pbTrick2);
-            this.panel1.Controls.Add(this.pbTrick1);
-            this.panel1.Location = new System.Drawing.Point(722, 390);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(444, 250);
-            this.panel1.TabIndex = 6;
+            this.panTrick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panTrick.Location = new System.Drawing.Point(650, 387);
+            this.panTrick.Name = "panTrick";
+            this.panTrick.Size = new System.Drawing.Size(539, 297);
+            this.panTrick.TabIndex = 6;
             // 
-            // pbTrick1
+            // panLeft
             // 
-            this.pbTrick1.BackColor = System.Drawing.Color.Red;
-            this.pbTrick1.Location = new System.Drawing.Point(12, 3);
-            this.pbTrick1.Name = "pbTrick1";
-            this.pbTrick1.Size = new System.Drawing.Size(175, 244);
-            this.pbTrick1.TabIndex = 0;
-            this.pbTrick1.TabStop = false;
+            this.panLeft.BackColor = System.Drawing.Color.Gray;
+            this.panLeft.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panLeft.Location = new System.Drawing.Point(302, 315);
+            this.panLeft.Name = "panLeft";
+            this.panLeft.Size = new System.Drawing.Size(258, 462);
+            this.panLeft.TabIndex = 2;
+            this.panLeft.Visible = false;
             // 
-            // pbTrick2
+            // panRight
             // 
-            this.pbTrick2.BackColor = System.Drawing.Color.Red;
-            this.pbTrick2.Location = new System.Drawing.Point(237, 3);
-            this.pbTrick2.Name = "pbTrick2";
-            this.pbTrick2.Size = new System.Drawing.Size(175, 244);
-            this.pbTrick2.TabIndex = 1;
-            this.pbTrick2.TabStop = false;
+            this.panRight.BackColor = System.Drawing.Color.Gray;
+            this.panRight.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panRight.Location = new System.Drawing.Point(1283, 315);
+            this.panRight.Name = "panRight";
+            this.panRight.Size = new System.Drawing.Size(255, 458);
+            this.panRight.TabIndex = 3;
+            this.panRight.Visible = false;
             // 
-            // panel2
+            // panDealer
             // 
-            this.panel2.BackColor = System.Drawing.Color.Gray;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Location = new System.Drawing.Point(239, 218);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(255, 665);
-            this.panel2.TabIndex = 2;
+            this.panDealer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
+            this.panDealer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panDealer.Controls.Add(this.lblCurrentPlayer);
+            this.panDealer.Controls.Add(this.pbPickedCard);
+            this.panDealer.Controls.Add(this.label1);
+            this.panDealer.Controls.Add(this.pbDealerDeck);
+            this.panDealer.Location = new System.Drawing.Point(465, 189);
+            this.panDealer.Name = "panDealer";
+            this.panDealer.Size = new System.Drawing.Size(870, 693);
+            this.panDealer.TabIndex = 7;
             // 
-            // panel3
+            // lblCurrentPlayer
             // 
-            this.panel3.BackColor = System.Drawing.Color.Gray;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Location = new System.Drawing.Point(1395, 218);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(255, 665);
-            this.panel3.TabIndex = 3;
+            this.lblCurrentPlayer.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentPlayer.Location = new System.Drawing.Point(374, 550);
+            this.lblCurrentPlayer.Name = "lblCurrentPlayer";
+            this.lblCurrentPlayer.Size = new System.Drawing.Size(100, 23);
+            this.lblCurrentPlayer.TabIndex = 12;
+            this.lblCurrentPlayer.Text = "PlayerName";
+            this.lblCurrentPlayer.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblCurrentPlayer.TextChanged += new System.EventHandler(this.lblCurrentPlayer_TextChanged);
+            // 
+            // pbPickedCard
+            // 
+            this.pbPickedCard.BackColor = System.Drawing.Color.Silver;
+            this.pbPickedCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbPickedCard.Location = new System.Drawing.Point(470, 150);
+            this.pbPickedCard.Name = "pbPickedCard";
+            this.pbPickedCard.Size = new System.Drawing.Size(191, 244);
+            this.pbPickedCard.TabIndex = 11;
+            this.pbPickedCard.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(168, 438);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(544, 23);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "The first one to get a Black Jack From the Deck will be the dealer";
+            // 
+            // pbDealerDeck
+            // 
+            this.pbDealerDeck.BackColor = System.Drawing.Color.Silver;
+            this.pbDealerDeck.BackgroundImage = global::EuchreOOP3.Properties.Resources.WG_BACK;
+            this.pbDealerDeck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbDealerDeck.Location = new System.Drawing.Point(211, 150);
+            this.pbDealerDeck.Name = "pbDealerDeck";
+            this.pbDealerDeck.Size = new System.Drawing.Size(191, 244);
+            this.pbDealerDeck.TabIndex = 8;
+            this.pbDealerDeck.TabStop = false;
+            this.pbDealerDeck.Click += new System.EventHandler(this.pbDealerDeck_Click);
             // 
             // frmGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Green;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.ControlBox = false;
+            this.Controls.Add(this.panDealer);
+            this.Controls.Add(this.panRight);
+            this.Controls.Add(this.panLeft);
+            this.Controls.Add(this.panTrick);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.pbPlayedCards);
             this.Controls.Add(this.pbDeck);
             this.Controls.Add(this.panBottom);
             this.Controls.Add(this.panTop);
-            this.Controls.Add(this.lblTitle);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmGame";
@@ -173,26 +210,28 @@
             this.Load += new System.EventHandler(this.frmGame_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbDeck)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayedCards)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbTrick1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTrick2)).EndInit();
+            this.panDealer.ResumeLayout(false);
+            this.panDealer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPickedCard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDealerDeck)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panTop;
         private System.Windows.Forms.Panel panBottom;
         private System.Windows.Forms.PictureBox pbDeck;
         private System.Windows.Forms.PictureBox pbPlayedCards;
         private System.Windows.Forms.Button btnSettings;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pbTrick1;
-        private System.Windows.Forms.PictureBox pbTrick2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panTrick;
+        private System.Windows.Forms.Panel panLeft;
+        private System.Windows.Forms.Panel panRight;
+        private System.Windows.Forms.Panel panDealer;
+        private System.Windows.Forms.PictureBox pbDealerDeck;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.PictureBox pbPickedCard;
+        private System.Windows.Forms.Label lblCurrentPlayer;
     }
 }
