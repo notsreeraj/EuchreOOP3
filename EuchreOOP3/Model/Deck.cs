@@ -1,51 +1,91 @@
-﻿using System;
+﻿using EuchreOOP3.Properties;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Model.Card;
 
 namespace Model
 {
     public class Deck
     {
         #region Variables
-
+        
         #endregion
 
         #region Properties
-        public List<Card> DeckOfCards { get; set; }
-
+        public List<Card> DeckOfCards  { get; set; }
+        public event EventHandler DeckChanged;
+        
         #endregion
 
-        #region Constructors
+        #region Contructors
         /// <summary>
         /// Default Constructor
         /// </summary>
         public Deck()
         {
             SetDeck();
+            this.Shuffle();
+            this.ViewCards();
+            OnDeckChanged();
         }
+
+
         #endregion
 
-        #region Instance
+        #region Instance 
+
+        protected virtual void OnDeckChanged()
+        {
+            DeckChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+
         /// <summary>
-        /// Method to set the deck of cards
+        /// method to set the deck of cards 
         /// </summary>
         private void SetDeck()
         {
             DeckOfCards = new List<Card>();
-            // Testing
-            foreach (Card.Suits suit in Enum.GetValues(typeof(Card.Suits)))
-            {
-                foreach (Card.Ranks rank in Enum.GetValues(typeof(Card.Ranks)))
-                {
-                    DeckOfCards.Add(new Card(suit, rank));
-                }
-            }
+
+            // Add Hearts
+            DeckOfCards.Add(new Card(Suits.Heart, Ranks.Ace, Resources.WG_HA));
+            DeckOfCards.Add(new Card(Suits.Heart, Ranks.King, Resources.WG_HK));
+            DeckOfCards.Add(new Card(Suits.Heart, Ranks.Queen, Resources.WG_HQ));
+            DeckOfCards.Add(new Card(Suits.Heart, Ranks.Jack, Resources.WG_HJ));
+            DeckOfCards.Add(new Card(Suits.Heart, Ranks.Ten, Resources.WG_HT));
+            DeckOfCards.Add(new Card(Suits.Heart, Ranks.Nine, Resources.WG_H9));
+
+            // Add Diamonds
+            DeckOfCards.Add(new Card(Suits.Diamond, Ranks.Ace, Resources.WG_DA));
+            DeckOfCards.Add(new Card(Suits.Diamond, Ranks.King, Resources.WG_DK));
+            DeckOfCards.Add(new Card(Suits.Diamond, Ranks.Queen, Resources.WG_DQ));
+            DeckOfCards.Add(new Card(Suits.Diamond, Ranks.Jack, Resources.WG_DJ));
+            DeckOfCards.Add(new Card(Suits.Diamond, Ranks.Ten, Resources.WG_DT));
+            DeckOfCards.Add(new Card(Suits.Diamond, Ranks.Nine, Resources.WG_D9));
+
+            // Add Spades
+            DeckOfCards.Add(new Card(Suits.Spades, Ranks.Ace, Resources.WG_SA));
+            DeckOfCards.Add(new Card(Suits.Spades, Ranks.King, Resources.WG_SK));
+            DeckOfCards.Add(new Card(Suits.Spades, Ranks.Queen, Resources.WG_SQ));
+            DeckOfCards.Add(new Card(Suits.Spades, Ranks.Jack, Resources.WG_SJ));
+            DeckOfCards.Add(new Card(Suits.Spades, Ranks.Ten, Resources.WG_ST));
+            DeckOfCards.Add(new Card(Suits.Spades, Ranks.Nine, Resources.WG_S9));
+
+            // Add Clubs
+            DeckOfCards.Add(new Card(Suits.Clubs, Ranks.Ace, Resources.WG_CA));
+            DeckOfCards.Add(new Card(Suits.Clubs, Ranks.King, Resources.WG_CK));
+            DeckOfCards.Add(new Card(Suits.Clubs, Ranks.Queen, Resources.WG_CQ));
+            DeckOfCards.Add(new Card(Suits.Clubs, Ranks.Jack, Resources.WG_CJ));
+            DeckOfCards.Add(new Card(Suits.Clubs, Ranks.Ten, Resources.WG_CT));
+            DeckOfCards.Add(new Card(Suits.Clubs, Ranks.Nine, Resources.WG_C9));
+
+
         }
-        /// <summary>
-        /// To view the cards in the deck testing
-        /// </summary>
+        /// to view the cards in the deck 
         public void ViewCards()
         {
             Console.WriteLine("***************************************");
@@ -56,37 +96,42 @@ namespace Model
             Console.WriteLine("***************************************");
 
         }
-         /// <summary>
-         /// Return the card at the top of the deck
-         /// </summary>
-         /// <returns></returns>
-        public Card GetTopCard()
+
+
+        /// <summary>
+        /// Returns the card at the top of the deck
+        /// </summary>
+        /// <returns></returns>
+        public  Card GetTopCard()
         {
             return DeckOfCards[DeckOfCards.Count - 1];
         }
 
+
         /// <summary>
-        /// Shuffle the deck of cards
+        /// Shuffles the deck of cards
         /// </summary>
-        public void shuffle()
+        public void Shuffle()
         {
             Random rng = new Random();
-            for (int i = DeckOfCards.Count -1; i > 0; i--)
+            for (int i = DeckOfCards.Count - 1; i > 0; i--)
             {
                 int j = rng.Next(i + 1);
                 (DeckOfCards[i], DeckOfCards[j]) = (DeckOfCards[j], DeckOfCards[i]);
             }
         }
 
-        public void RemoveCardAtTop(Card card)
+        public void RemoveCard(Card card)
         {
-            DeckOfCards.Remove(card);
+            DeckOfCards.Remove(card); 
         }
         #endregion
 
         #region Static Methods
 
+
+
+
         #endregion
     }
-
 }
