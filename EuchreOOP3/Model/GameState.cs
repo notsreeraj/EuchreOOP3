@@ -78,6 +78,12 @@ namespace Model
             int dealer = GetDealerPosition();
             // Start with the player after dealers position dealers position
             int currentPlayer = (dealer + 1) % numPlayers;
+            Console.WriteLine($@"
+            ********************************************
+            {Players[currentPlayer].UserName} is the current Player
+            ********************************************
+
+            ");
             bool Dealt = false;
 
             while (!Dealt)
@@ -87,7 +93,7 @@ namespace Model
                 Players[currentPlayer].Hand.Add(topCard);
                 Deck.RemoveCard(topCard);
 
-                Console.WriteLine($"Player {Players[currentPlayer].PlayerID} has ");
+                Console.WriteLine($"Player {Players[currentPlayer].UserName} has ");
                 Card.PrintCards(Players[currentPlayer].Hand);
 
                 if (IsDealer(Players[currentPlayer]))
@@ -126,7 +132,7 @@ namespace Model
             }
             catch (Exception ex)
             {
-                throw new Exception("Failed to Load User into Players");
+                throw new Exception($"Failed to Load User into Players {ex}");
             }
 
             // one will be the user and other will be an AI player
@@ -145,10 +151,10 @@ namespace Model
             Console.WriteLine("Loading Quicplay");
             // load 4 player to the player list (2 contructors are called here)
             Players.Add(new HPlayer(User.CurrentUser.UserId));
-            Players.Add(new AIPlayer(1 ,Constants.DEF_AI1_NAME));
-            
-            Players.Add(new HPlayer(100));
-            Players.Add(new AIPlayer(2,Constants.DEF_AI2_NAME));
+
+            Players.Add(new AIPlayer(1 ,Constants.DEF_AI1_NAME));    
+            Players.Add(new AIPlayer(2, Constants.DEF_AI2_NAME));
+            Players.Add(new AIPlayer(3,Constants.DEF_AI2_NAME));
 
             PrintPlayerCounts();
 
@@ -280,79 +286,24 @@ namespace Model
             // Return -1 if the current player is not found in the list
             return -1;
         }
-
-
-        //        #region Console Display
-
-        //        public static string MainMenuDis =
-        //@"
-        //            Main Menu
-        //            1. Quick Play
-        //            2. Co-op
-        //            3.Options
-        //            4. Quit
-        //            5. QuicPlay Test Dealer
-        //        ";
-
-        //        public static void MainMenu()
-        //        {
-        //            Console.WriteLine(MainMenuDis);
-
-        //            bool validInput = false;
-        //            while (!validInput)
-        //            {
-        //                Console.Write("Enter Choic e: ");
-        //                string input = Console.ReadLine();
-        //                try
-        //                {
-        //                    if (Tools.IsValidInput(input))
-        //                    {
-        //                        validInput = true;
-        //                        HandleMMSelection((int.Parse(input)));
-        //                    }
-        //                    else
-        //                    {
-        //                        Console.WriteLine("[ERROR] : Please choose from 1-4");
-        //                    }
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    Console.WriteLine($"[ERROR] : {ex.Message}");
-        //                }
-        //            }
-        //        }
-
-        //        private static void HandleMMSelection(int mmSelection)
-        //        {
-        //            Console.WriteLine("Calling HandlerMainMenuSelection:");
-
-        //            if(mmSelection == 3)
-        //            {
-
-        //            }
-        //            else if (mmSelection == 4)
-        //            {
-        //                Environment.Exit(0);
-        //            }
-        //            else if(mmSelection == 5)
-        //            {
-        //                Console.WriteLine("Test delear Determination");
-        //                GameState game = new GameState(2);
-        //            }
-        //            else
-        //            {
-        //                GameState newGame = new GameState(mmSelection);
-        //            }
-
-        //        }
-
-
-
-
-
-        //        #endregion
-
+        /// <summary>
+        /// Method to get the referenc of the human player
+        /// </summary>
+        /// <returns></returns>
+        public Player GetHumanPlayer()
+        {
+            foreach (Player player in Players)
+            {
+                if (player is HPlayer)
+                {
+                    return player;
+                }
+            }
+            return null; // Return null if no human player is found
+        }
     }
+
+
 
 
 

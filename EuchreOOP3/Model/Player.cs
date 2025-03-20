@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace Model
@@ -18,6 +19,7 @@ namespace Model
         public List<Card> Hand { get; set; }
         public int Points { get; set; }
         public string UserName { get; set; }
+        public List<PictureBox> HandView { get; set; }
 
         #endregion
         #region Constructor
@@ -27,6 +29,7 @@ namespace Model
 
             Hand = new List<Card>();
             Points = 0;
+            HandView = new List<PictureBox>();
         }
         #endregion
 
@@ -69,6 +72,30 @@ namespace Model
             return false;
         }
 
+        /// <summary>
+        /// Methodd to add the reference of each picture box in a panel to the HandViewList
+        /// </summary>
+        /// <param name="panHand"></param>
+        public void SetUpHand(Panel panHand)
+        {
+            foreach(Control control in panHand.Controls)
+            {
+                if(control is PictureBox pictureBox)
+                {
+                    HandView.Add(pictureBox);
+                }
+            }
+
+        }
+
+        public void LoadPlayerHand()
+        {
+            for (int i = 0; i < Hand.Count && i < HandView.Count; i++)
+            {
+                HandView[i].BackgroundImage = Hand[i].View;
+                HandView[i].BackgroundImageLayout = ImageLayout.Stretch; // Optional: to ensure the image fits the PictureBox
+            }
+        }
 
 
         #endregion

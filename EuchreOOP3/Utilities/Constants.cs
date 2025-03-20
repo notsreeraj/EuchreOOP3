@@ -25,6 +25,7 @@ namespace DBAL
 
         public const string DEF_AI1_NAME = "AI 1";
         public const string DEF_AI2_NAME = "AI 2";
+        public const string DEF_AI3_NAME = "AI 3";
         #endregion
 
 

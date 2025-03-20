@@ -19,12 +19,20 @@ namespace EuchreOOP3
         public static List<Panel> HandPanels = new List<Panel>();
         public static List<PictureBox> Tricks = new List<PictureBox>();
         public  string CurrentPlayer = GameController.Game.Turn.UserName;
+
+
+        // Add this public property to access label5
+        public Label LblDealerName
+        {
+            get { return lblDealerName; }
+        }
         public frmGame()
         {
             InitializeComponent();
             MapHandPanels();
             
-            
+
+
         }
 
         private void frmGame_Load(object sender, EventArgs e)
@@ -32,13 +40,13 @@ namespace EuchreOOP3
             // load the deck to the picture box , 
             // Display the last card in the deck to the user using the picture box using a method in gameController
             
-            SetDeck();
+            ShowDeck();
 
             SetPlayers();
             panDealer.Visible = true;
             lblCurrentPlayer.Text = GameController.Game.Turn.UserName;
 
-
+            LoadHandToPanBottom();
 
 
         }
@@ -48,7 +56,7 @@ namespace EuchreOOP3
 
         }
 
-        private void SetDeck()
+        private  void ShowDeck()
         {
             pbDeck.BackgroundImage = GameController.ViewTopCard(GameController.Game.Deck);
             pbDeck.BackgroundImageLayout = ImageLayout.Stretch; 
@@ -64,15 +72,17 @@ namespace EuchreOOP3
 
 
              */
-            LoadPlayerHandDis();
+            LoadPlayerHandPanel();
             GenerateTrickPictureBoxes(GameController.GetNumPlayers());
+            // method to map the Player handVIew list to the pb in each panel
+            // we must do this for every player in the list of players in the deck
         }
 
         /// method which just maps the handPanels to an array of panel to access them
         private void MapHandPanels()
         {
-            HandPanels.Add(panTop);
             HandPanels.Add(panBottom);
+            HandPanels.Add(panTop);
             HandPanels.Add(panRight);
             HandPanels.Add(panLeft);
         }
@@ -88,7 +98,7 @@ namespace EuchreOOP3
         /// <summary>
         /// method to show the panel of player hands according to the number of players in the players list in gamestate
         /// </summary>
-        private void LoadPlayerHandDis()
+        private void LoadPlayerHandPanel()
         {
             // load the panels according to the number of players
             // this should be dynamic
@@ -96,6 +106,7 @@ namespace EuchreOOP3
             if(numberOfPlayers !=2)
             {
                 HandPanels[0].Visible = true;
+
                 HandPanels[1].Visible = true;
                 HandPanels[2].Visible = true;
                 HandPanels[3].Visible = true;
@@ -105,8 +116,35 @@ namespace EuchreOOP3
                 HandPanels[0].Visible = true;
                 HandPanels[1].Visible = true;
             }
+        }
 
+        private void LoadCardsToEachPictureBox()
+        {
+            int numberOfPlayers = GameController.GetNumPlayers();
+            List<Player> players = GameController.Game.Players;
+            if(numberOfPlayers != 2)
+            {
+                players[0].SetUpHand(panBottom);
+                players[0].LoadPlayerHand();
 
+                players[1].SetUpHand(panLeft);
+                players[1].LoadPlayerHand();
+                
+                players[2].SetUpHand(panRight);   
+                players[2].LoadPlayerHand();
+                
+                players[3].SetUpHand(panTop);   
+                players[3].LoadPlayerHand();   
+            }
+            else
+            {
+                players[0].SetUpHand(panBottom);
+                players[0].LoadPlayerHand();
+
+                players[1].SetUpHand(panTop);
+                players[1].LoadPlayerHand();
+
+            }
         }
 
         /// <summary>
@@ -168,35 +206,38 @@ namespace EuchreOOP3
         private void pbDealerDeck_Click(object sender, EventArgs e)
         {
 
-            // let the player pick the card (pickCard)
-            // change the bgImage of the PB to the view of the card returned by the method
-            // check if it is a black jack
-            // if it is black jack assign the dealer position to the current player (ideally refer the property of the gamestate class)
-            // if it is not remove the card from the deck and give the next player the chance to pick the card
-            // update the current player
-            // if the current player is AI call the method from AIPlayer to pick the card
-
             Card PickedCard = GameController.Game.Turn.PickCard(GameController.Game.Deck);
             
-            pbPickedCard.BackgroundImage = PickedCard .View;
-
-            if (PickedCard.IsBlackJack())
-            {
-                GameController.Game.Dealer = GameController.Game.Turn;
-                GameController.dealerSet = true;
-            }
+            pbHPickedCard.BackgroundImage = PickedCard .View;
             GameController.Game.Deck.RemoveCard(PickedCard);
-
-            GameController.UpdateCurrentPlayer(lblCurrentPlayer);
-            
             
 
+            if (!PickedCard.IsBlackJack())
+            {
+                GameController.UpdateCurrentPlayer(lblCurrentPlayer);
+            }
+            else 
+            {
+                GameController.dealerSet = true;
+                GameController.Game.Dealer = GameController.Game.Turn;
+                
+                //AnimatePanelDown(panDealer, 50);
+                lblDealerName.Text += GameController.Game.Dealer.UserName;
+                MessageBox.Show($"{GameController.Game.Turn.UserName} got the First Black Jack!! He is the dealer"); 
+                AnimatePanelDown(panDealer, 50);
 
+                
+                
+                // run the method to set up the new deck and deal the hands
+            }
 
         }
 
 
         #region Animation
+        /// <summary>
+        /// ALl these methods are generated by Copilot with prompt
+        /// </summary>
         private Timer panelDownTimer;
         private int targetY;
         private const int VerticalAnimationSpeed = 20;
@@ -208,6 +249,7 @@ namespace EuchreOOP3
         /// <param name="distance">Distance to move down in pixels</param>
         private void AnimatePanelDown(Panel panel, int distance)
         {
+            
             // Store target Y position
             targetY = panel.Location.Y + distance;
 
@@ -221,7 +263,7 @@ namespace EuchreOOP3
 
             // Start the animation
             panelDownTimer.Start();
-        }
+                    }
 
         /// <summary>
         /// Timer tick event handler that handles the downward animation
@@ -253,25 +295,86 @@ namespace EuchreOOP3
 
         private void lblCurrentPlayer_TextChanged(object sender, EventArgs e)
         {
-            // check if the dealer has been set
-            if (GameController.dealerSet)
-            {
-                MessageBox.Show($"Dealer has been set as {GameController.Game.Dealer}");
-            }
-
 
             // this can work fro all three gamemodes , Dealer setting , Trump selection , Tricks
             Constants.GameModes gameMode = GameController.Game.GameMode;
             // call the MakeMove in GameController
             if (GameController.Game.IsAIPlayer())
             {
-                GameController.MakeMoveAI(gameMode);
-                MessageBox.Show($"{GameController.Game.Turn.UserName} made his Move");
-                
+                if (!GameController.dealerSet)
+                {
+                    pbAIPickCard.BackgroundImage = GameController.Game.Turn.PickCard(GameController.Game.Deck).View;
+                }
+                GameController.MakeAIMove(gameMode, this);
+
+
+                if (GameController.dealerSet)
+                {
+                    MessageBox.Show($"{GameController.Game.Turn.UserName} got the First Black Jack!! He is the dealer");
+                    
+                    AnimatePanelDown(panDealer, 50);
+                }
 
                 GameController.UpdateCurrentPlayer(lblCurrentPlayer);
+                // check if the dealer has been set
+
             }
+
+
+
+
+        }
+
+
+       
+        private void LoadHandToPanBottom()
+        {
             
+
+            // Define the size and overlap of each card
+            int cardWidth = 150;
+            int cardHeight = 200;
+            int overlap = 80; // Amount of overlap between cards
+
+            // Calculate the starting position to center the hand
+            int startX = (panBottom.Width - (cardWidth + (5 - 1) * overlap)) / 2;
+            int startY = (panBottom.Height - cardHeight) / 2;
+
+            // Add each card to the panel
+            for (int i = 0; i < 5; i++)
+            {
+                PictureBox pb = new PictureBox
+                {
+                    Size = new Size(cardWidth, cardHeight),
+                    Location = new Point(startX + i * overlap, startY),
+                    BackColor = Color.Red,
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    BorderStyle = BorderStyle.FixedSingle
+                };
+
+                panBottom.Controls.Add(pb);
+            }
+        }
+        /// <summary>
+        /// event handler to set up the next mode of the gamestate
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lblDealerName_TextChanged(object sender, EventArgs e)
+        {
+            GameController.Game.Deck = new Deck();
+            
+            GameController.Game.GameMode = Constants.GameModes.TrumpSetting;
+            GameController.Game.Deal();
+            ShowDeck();
+            pbDeck.Visible = true;
+
+            // assign the intitial potential trump
+            GameController.Game.Trump = GameController.Game.Deck.GetTopCard().Suit;
+
+            lblTrmpSuit.Text += GameController.Game.Trump.ToString();
+            /// call the method to load the cards to the panel 
+            LoadCardsToEachPictureBox();
         }
     }
 }

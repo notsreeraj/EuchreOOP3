@@ -40,12 +40,13 @@ namespace EuchreOOP3
             else
             {
                 MessageBox.Show($"{User.CurrentUser.Username} Has logged in");
+                // load the main form back
+                MainMenu.Show();
+                this.Close();
 
             }
 
-            // load the main form back
-            MainMenu.Show();
-            this.Close();
+            
         }
 
         private void btnGuest_Click(object sender, EventArgs e)
