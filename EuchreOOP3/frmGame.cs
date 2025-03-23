@@ -18,6 +18,7 @@ namespace EuchreOOP3
     {
         public static List<Panel> HandPanels = new List<Panel>();
         public static List<PictureBox> Tricks = new List<PictureBox>();
+        //public static List<PictureBox> PickedCards = new List<PictureBox>();
         public  string CurrentPlayer = GameController.Game.Turn.UserName;
 
 
@@ -30,7 +31,9 @@ namespace EuchreOOP3
         {
             InitializeComponent();
             MapHandPanels();
-            
+            MapPickedCardsPB();
+
+
 
 
         }
@@ -45,8 +48,7 @@ namespace EuchreOOP3
             SetPlayers();
             panDealer.Visible = true;
             lblCurrentPlayer.Text = GameController.Game.Turn.UserName;
-
-            LoadHandToPanBottom();
+            //AnimatePanelToLocation(panDealer, 276,148, 50);
 
 
         }
@@ -72,7 +74,7 @@ namespace EuchreOOP3
 
 
              */
-            LoadPlayerHandPanel();
+            LoadPlayerControlObjects();
             GenerateTrickPictureBoxes(GameController.GetNumPlayers());
             // method to map the Player handVIew list to the pb in each panel
             // we must do this for every player in the list of players in the deck
@@ -86,6 +88,18 @@ namespace EuchreOOP3
             HandPanels.Add(panRight);
             HandPanels.Add(panLeft);
         }
+       
+        /// <summary>
+        /// method to map the picture boxes which show which card was picked by the player
+        /// while setting dealer to list of pb called PickedCards
+        /// </summary>
+        private void MapPickedCardsPB()
+        {
+            GameController.PickedCards.Add(pbHPickedCard);
+            GameController.PickedCards.Add(pbAI1Pick);
+            GameController.PickedCards.Add(pbAI2Pick);
+            GameController.PickedCards.Add(pbAI3Pick);
+        }
 
         /// <summary>
         /// method to map generated picture boxes to a list of pbs
@@ -98,23 +112,31 @@ namespace EuchreOOP3
         /// <summary>
         /// method to show the panel of player hands according to the number of players in the players list in gamestate
         /// </summary>
-        private void LoadPlayerHandPanel()
+        private void LoadPlayerControlObjects()
         {
             // load the panels according to the number of players
             // this should be dynamic
             int numberOfPlayers = GameController.GetNumPlayers();
             if(numberOfPlayers !=2)
             {
-                HandPanels[0].Visible = true;
 
+                HandPanels[0].Visible = true;
                 HandPanels[1].Visible = true;
                 HandPanels[2].Visible = true;
                 HandPanels[3].Visible = true;
+
+                
+                GameController.PickedCards[2].Visible = true;
+                GameController.PickedCards[3].Visible = true;
+
             }
             else
             {
                 HandPanels[0].Visible = true;
                 HandPanels[1].Visible = true;
+
+                GameController.PickedCards[0].Visible = true;
+                GameController.PickedCards[1].Visible = true;
             }
         }
 
@@ -124,25 +146,17 @@ namespace EuchreOOP3
             List<Player> players = GameController.Game.Players;
             if(numberOfPlayers != 2)
             {
-                players[0].SetUpHand(panBottom);
-                players[0].LoadPlayerHand();
-
-                players[1].SetUpHand(panLeft);
-                players[1].LoadPlayerHand();
-                
-                players[2].SetUpHand(panRight);   
-                players[2].LoadPlayerHand();
-                
-                players[3].SetUpHand(panTop);   
-                players[3].LoadPlayerHand();   
+                GameController.LoadHandToView(panBottom, players[0]);
+                GameController.LoadHandToView(panLeft, players[1]);
+                GameController.LoadHandToView(panRight, players[2]);
+                GameController.LoadHandToView(panTop, players[3]);
+                 
             }
             else
             {
-                players[0].SetUpHand(panBottom);
-                players[0].LoadPlayerHand();
+                GameController.LoadHandToView(panBottom, players[0]);
+                GameController.LoadHandToView(panTop, players[1]);
 
-                players[1].SetUpHand(panTop);
-                players[1].LoadPlayerHand();
 
             }
         }
@@ -207,12 +221,13 @@ namespace EuchreOOP3
         {
 
             Card PickedCard = GameController.Game.Turn.PickCard(GameController.Game.Deck);
-            
-            pbHPickedCard.BackgroundImage = PickedCard .View;
+
+            // pbHPickedCard.BackgroundImage = PickedCard .View;
+            GameController.ShowPickedCards(PickedCard);
             GameController.Game.Deck.RemoveCard(PickedCard);
             
 
-            if (!PickedCard.IsBlackJack())
+            if (!PickedCard.IsBlackJack() && GameController.HasEnoughCardsForPlayers())
             {
                 GameController.UpdateCurrentPlayer(lblCurrentPlayer);
             }
@@ -220,14 +235,15 @@ namespace EuchreOOP3
             {
                 GameController.dealerSet = true;
                 GameController.Game.Dealer = GameController.Game.Turn;
+       
                 
                 //AnimatePanelDown(panDealer, 50);
                 lblDealerName.Text += GameController.Game.Dealer.UserName;
                 MessageBox.Show($"{GameController.Game.Turn.UserName} got the First Black Jack!! He is the dealer"); 
                 AnimatePanelDown(panDealer, 50);
+                //AnimatePanelToLocation(panTrumpChoices, 650, 648, 50);
 
-                
-                
+
                 // run the method to set up the new deck and deal the hands
             }
 
@@ -249,7 +265,7 @@ namespace EuchreOOP3
         /// <param name="distance">Distance to move down in pixels</param>
         private void AnimatePanelDown(Panel panel, int distance)
         {
-            
+
             // Store target Y position
             targetY = panel.Location.Y + distance;
 
@@ -293,68 +309,37 @@ namespace EuchreOOP3
         }
         #endregion
 
+   
+        /// <summary>
+        /// this triggers when the lable showing whos turn it is updated when the UpdateCurrentPlayer is called 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblCurrentPlayer_TextChanged(object sender, EventArgs e)
         {
 
             // this can work fro all three gamemodes , Dealer setting , Trump selection , Tricks
             Constants.GameModes gameMode = GameController.Game.GameMode;
             // call the MakeMove in GameController
-            if (GameController.Game.IsAIPlayer())
+            if (GameController.Game.IsAIPlayer() && GameController.HasEnoughCardsForPlayers())
             {
-                if (!GameController.dealerSet)
-                {
-                    pbAIPickCard.BackgroundImage = GameController.Game.Turn.PickCard(GameController.Game.Deck).View;
-                }
                 GameController.MakeAIMove(gameMode, this);
 
-
-                if (GameController.dealerSet)
+                if (GameController.dealerSet && (GameController.Game.Dealer == GameController.Game.Turn))
                 {
                     MessageBox.Show($"{GameController.Game.Turn.UserName} got the First Black Jack!! He is the dealer");
                     
                     AnimatePanelDown(panDealer, 50);
+                    
                 }
-
                 GameController.UpdateCurrentPlayer(lblCurrentPlayer);
                 // check if the dealer has been set
-
             }
-
-
-
 
         }
 
 
        
-        private void LoadHandToPanBottom()
-        {
-            
-
-            // Define the size and overlap of each card
-            int cardWidth = 150;
-            int cardHeight = 200;
-            int overlap = 80; // Amount of overlap between cards
-
-            // Calculate the starting position to center the hand
-            int startX = (panBottom.Width - (cardWidth + (5 - 1) * overlap)) / 2;
-            int startY = (panBottom.Height - cardHeight) / 2;
-
-            // Add each card to the panel
-            for (int i = 0; i < 5; i++)
-            {
-                PictureBox pb = new PictureBox
-                {
-                    Size = new Size(cardWidth, cardHeight),
-                    Location = new Point(startX + i * overlap, startY),
-                    BackColor = Color.Red,
-                    SizeMode = PictureBoxSizeMode.StretchImage,
-                    BorderStyle = BorderStyle.FixedSingle
-                };
-
-                panBottom.Controls.Add(pb);
-            }
-        }
         /// <summary>
         /// event handler to set up the next mode of the gamestate
         /// </summary>
@@ -375,7 +360,20 @@ namespace EuchreOOP3
             lblTrmpSuit.Text += GameController.Game.Trump.ToString();
             /// call the method to load the cards to the panel 
             LoadCardsToEachPictureBox();
+            
         }
+
+        private void btnOrderUp_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnPass_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
     

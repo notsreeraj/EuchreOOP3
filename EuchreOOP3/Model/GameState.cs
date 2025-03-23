@@ -154,7 +154,7 @@ namespace Model
 
             Players.Add(new AIPlayer(1 ,Constants.DEF_AI1_NAME));    
             Players.Add(new AIPlayer(2, Constants.DEF_AI2_NAME));
-            Players.Add(new AIPlayer(3,Constants.DEF_AI2_NAME));
+            Players.Add(new AIPlayer(3,Constants.DEF_AI3_NAME));
 
             PrintPlayerCounts();
 

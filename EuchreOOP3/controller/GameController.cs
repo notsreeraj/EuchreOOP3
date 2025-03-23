@@ -19,6 +19,8 @@ namespace Controller
         public const int CP = 4;
         public static GameState Game  ;
         public static bool dealerSet = false;
+        public static bool trumpSet = false;
+        public static List<PictureBox> PickedCards = new List<PictureBox>();
 
         #region Static Method
         /// <summary>
@@ -91,7 +93,11 @@ namespace Controller
             switch (gameMode)
             {
                 case Constants.GameModes.DealerSetting:
-                    MakeAIPickCard(gameForm.LblDealerName); // Pass the specific label
+                    if (!dealerSet)
+                    {
+                        MakeAIPickCard(gameForm.LblDealerName);
+                    }
+
                     break;
 
                 case Constants.GameModes.TrumpSetting:
@@ -103,16 +109,15 @@ namespace Controller
                     break;
             }
         }
-
-        public static void MakeAIPickCard(Label LblDealerName)
+        public static void MakeAIPickCard(Label LblDealerName )
         {
-            if (!dealerSet)
+            if (!dealerSet )
             {
                 Card pickedCard = Game.Turn.PickCard(Game.Deck);
+
+                ShowPickedCards(pickedCard);
                 Console.WriteLine($"AI has Picked : {pickedCard.ToString()}");
                 Game.Deck.RemoveCard(pickedCard);
-
-               
 
                 if (pickedCard.IsBlackJack())
                 {
@@ -121,14 +126,38 @@ namespace Controller
                     LblDealerName.Text += Game.Dealer.UserName;
                 }
             }
+            else
+            {
+                // reset the deck and let the gues pick a card again
+                
+            }
+        }
+
+        public static void ShowPickedCards( Card pickedCard)
+        {
+            for (int i = 0; i < Game.Players.Count; i++)
+            {
+                if (Game.Players[i] == Game.Turn) PickedCards[i].BackgroundImage = pickedCard.View;
+            }
         }
 
         ///
-        public static void LoadHandToView(Panel HandPanel)
+        public static void LoadHandToView(Panel HandPanel,Player player)
         {
-            
+            player.SetUpHand(HandPanel);
+            player.LoadPlayerHand();
+
         }
 
+
+        /// <summary>
+        /// method to check whether there is enough cards to pick from
+        /// </summary>
+        /// <returns></returns>
+        public static bool HasEnoughCardsForPlayers()
+        {
+            return Game.Deck.DeckOfCards.Count >= Game.Players.Count;
+        }
         #endregion
 
     }
