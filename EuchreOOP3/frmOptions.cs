@@ -69,6 +69,7 @@ namespace EuchreOOP3
         {
             //HideAllPanels();
             //panelExitInstructions.Visible = true;
+            this.Close();
         }
 
         private void panelThemes_Paint(object sender, PaintEventArgs e)
