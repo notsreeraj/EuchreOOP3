@@ -47,42 +47,46 @@
             // 
             // btnQuckPlay
             // 
-            this.btnQuckPlay.Location = new System.Drawing.Point(42, 259);
+            this.btnQuckPlay.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnQuckPlay.Location = new System.Drawing.Point(42, 379);
             this.btnQuckPlay.Name = "btnQuckPlay";
             this.btnQuckPlay.Size = new System.Drawing.Size(292, 55);
             this.btnQuckPlay.TabIndex = 1;
             this.btnQuckPlay.Text = "QUICK PLAY";
-            this.btnQuckPlay.UseVisualStyleBackColor = true;
+            this.btnQuckPlay.UseVisualStyleBackColor = false;
             this.btnQuckPlay.Click += new System.EventHandler(this.btnQuckPlay_Click);
             // 
             // btnCoUp
             // 
-            this.btnCoUp.Location = new System.Drawing.Point(42, 334);
+            this.btnCoUp.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnCoUp.Location = new System.Drawing.Point(42, 497);
             this.btnCoUp.Name = "btnCoUp";
             this.btnCoUp.Size = new System.Drawing.Size(292, 55);
             this.btnCoUp.TabIndex = 1;
             this.btnCoUp.Text = "CO - UP ";
-            this.btnCoUp.UseVisualStyleBackColor = true;
+            this.btnCoUp.UseVisualStyleBackColor = false;
             this.btnCoUp.Click += new System.EventHandler(this.btnCoUp_Click);
             // 
             // btnOption
             // 
-            this.btnOption.Location = new System.Drawing.Point(42, 406);
+            this.btnOption.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnOption.Location = new System.Drawing.Point(42, 629);
             this.btnOption.Name = "btnOption";
             this.btnOption.Size = new System.Drawing.Size(292, 55);
             this.btnOption.TabIndex = 1;
             this.btnOption.Text = "OPTION";
-            this.btnOption.UseVisualStyleBackColor = true;
+            this.btnOption.UseVisualStyleBackColor = false;
             this.btnOption.Click += new System.EventHandler(this.btnOption_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(42, 486);
+            this.btnExit.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnExit.Location = new System.Drawing.Point(42, 742);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(292, 55);
             this.btnExit.TabIndex = 1;
             this.btnExit.Text = "EXIT";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             // 
             // lblUserName
             // 
@@ -109,6 +113,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.BackgroundImage = global::EuchreOOP3.Properties.Resources.dark_Blue;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.btnQuckPlay);
             this.panel1.Controls.Add(this.btnCoUp);
@@ -116,7 +121,7 @@
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Location = new System.Drawing.Point(82, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(376, 818);
+            this.panel1.Size = new System.Drawing.Size(376, 1079);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -147,9 +152,9 @@
             // 
             this.panel2.BackgroundImage = global::EuchreOOP3.Properties.Resources.best_card_games_pc_1;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Location = new System.Drawing.Point(-1, 88);
+            this.panel2.Location = new System.Drawing.Point(-1, 123);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1301, 631);
+            this.panel2.Size = new System.Drawing.Size(1931, 836);
             this.panel2.TabIndex = 6;
             // 
             // panel3
@@ -157,7 +162,7 @@
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.lblUserName);
             this.panel3.Controls.Add(this.btnLogOut);
-            this.panel3.Location = new System.Drawing.Point(1047, 1);
+            this.panel3.Location = new System.Drawing.Point(1667, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(250, 93);
             this.panel3.TabIndex = 0;
@@ -168,10 +173,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::EuchreOOP3.Properties.Resources.dark_Blue;
-            this.ClientSize = new System.Drawing.Size(1300, 810);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";

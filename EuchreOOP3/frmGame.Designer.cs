@@ -612,6 +612,7 @@
             this.Controls.Add(this.panTop);
             this.Controls.Add(this.panRight);
             this.Controls.Add(this.panTrumpChoices);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmGame";
