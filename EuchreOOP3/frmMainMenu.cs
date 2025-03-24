@@ -89,5 +89,10 @@ namespace EuchreOOP3
                 MessageBox.Show($"[ERROR] {ex}");
             }
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
