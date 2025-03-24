@@ -93,6 +93,16 @@ namespace EuchreOOP3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap best_card_games_pc_1 {
+            get {
+                object obj = ResourceManager.GetObject("best_card_games_pc_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap card_1 {
             get {
                 object obj = ResourceManager.GetObject("card 1", resourceCulture);
@@ -116,6 +126,26 @@ namespace EuchreOOP3.Properties {
         internal static System.Drawing.Bitmap card_3 {
             get {
                 object obj = ResourceManager.GetObject("card 3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dark_Blue {
+            get {
+                object obj = ResourceManager.GetObject("dark_Blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap euchrelogo {
+            get {
+                object obj = ResourceManager.GetObject("euchrelogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -311,6 +341,16 @@ namespace EuchreOOP3.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sign_up {
+            get {
+                object obj = ResourceManager.GetObject("sign_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Anirudh100925140.
         /// </summary>
         internal static string String {
@@ -325,6 +365,16 @@ namespace EuchreOOP3.Properties {
         internal static System.Drawing.Bitmap Switch {
             get {
                 object obj = ResourceManager.GetObject("Switch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user {
+            get {
+                object obj = ResourceManager.GetObject("user", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

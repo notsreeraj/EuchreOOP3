@@ -289,5 +289,20 @@
   <ItemGroup>
     <None Include="Resources\MT_C7.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\best-card-games-pc-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\euchrelogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dark_Blue.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sign-up.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
