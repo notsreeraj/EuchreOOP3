@@ -19,6 +19,8 @@ namespace Controller
         public const int CP = 4;
         public static GameState Game  ;
         public static bool dealerSet = false;
+        public static bool trumpSet = false;
+        public static List<PictureBox> PickedCards = new List<PictureBox>();
 
         #region Static Method
         /// <summary>
@@ -66,24 +68,15 @@ namespace Controller
         }
 
 
-        /// method to set up deck  dealer selection event        private  Deck 
-
-        public static bool FoundDealer( Card pickedCard)
-        {
-            
-            if (pickedCard.IsBlackJack())
-            {
-                dealerSet = true;
-                Game.Dealer = Game.Turn;
-            }
-            
+         
 
 
-            return false;
-        }
 
         
-
+        /// <summary>
+        /// method to update the turn property of the gamestate object
+        /// </summary>
+        /// <param name="lblCurrenPlayer"></param>
         public static void UpdateCurrentPlayer(Label lblCurrenPlayer)
         {
             int currentPlayerIndex = Game.GetCurrentPlayerIndex();
@@ -91,45 +84,79 @@ namespace Controller
             Game.Turn = Game.Players[currentPlayerIndex];
             Console.WriteLine($" GameController: Current Player is {Game.Players[currentPlayerIndex]}");
             lblCurrenPlayer.Text = Game.Turn.UserName;
-
-            // maybe raise an event here to let it know that the player has changed if it is ai then call the method according to the type of event
  
         }
 
-        public  static void MakeMoveAI(Constants.GameModes gameMode)
+        public static void MakeAIMove(Constants.GameModes gameMode, frmGame gameForm)
         {
             Console.WriteLine(" GameController: AI is Making a Move according to the Game Mode");
             switch (gameMode)
             {
                 case Constants.GameModes.DealerSetting:
-
                     if (!dealerSet)
                     {
-                        Card pickedCard = Game.Turn.PickCard(Game.Deck);
-                        if (FoundDealer(pickedCard))
-                        {
-                            // change the
-                            Console.WriteLine(pickedCard.ToString());
-                            Game.Deck.RemoveCard(pickedCard);
-                        
-                        }
+                        MakeAIPickCard(gameForm.LblDealerName);
                     }
-                    
-                    ;
-
-                    
 
                     break;
 
                 case Constants.GameModes.TrumpSetting:
-                    // 
-                   
-
+                    // Pass label5 to trump setting logic
                     break;
+
                 case Constants.GameModes.Tricks:
+                    // Pass label5 to tricks logic
                     break;
             }
+        }
+        public static void MakeAIPickCard(Label LblDealerName )
+        {
+            if (!dealerSet )
+            {
+                Card pickedCard = Game.Turn.PickCard(Game.Deck);
 
+                ShowPickedCards(pickedCard);
+                Console.WriteLine($"AI has Picked : {pickedCard.ToString()}");
+                Game.Deck.RemoveCard(pickedCard);
+
+                if (pickedCard.IsBlackJack())
+                {
+                    Game.Dealer = Game.Turn;
+                    dealerSet = true;
+                    LblDealerName.Text += Game.Dealer.UserName;
+                }
+            }
+            else
+            {
+                // reset the deck and let the gues pick a card again
+                
+            }
+        }
+
+        public static void ShowPickedCards( Card pickedCard)
+        {
+            for (int i = 0; i < Game.Players.Count; i++)
+            {
+                if (Game.Players[i] == Game.Turn) PickedCards[i].BackgroundImage = pickedCard.View;
+            }
+        }
+
+        ///
+        public static void LoadHandToView(Panel HandPanel,Player player)
+        {
+            player.SetUpHand(HandPanel);
+            player.LoadPlayerHand();
+
+        }
+
+
+        /// <summary>
+        /// method to check whether there is enough cards to pick from
+        /// </summary>
+        /// <returns></returns>
+        public static bool HasEnoughCardsForPlayers()
+        {
+            return Game.Deck.DeckOfCards.Count >= Game.Players.Count;
         }
         #endregion
 
