@@ -151,7 +151,7 @@
             // panel2
             // 
             this.panel2.BackgroundImage = global::EuchreOOP3.Properties.Resources.best_card_games_pc_1;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panel2.Location = new System.Drawing.Point(-1, 123);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1931, 836);

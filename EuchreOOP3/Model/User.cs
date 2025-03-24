@@ -27,7 +27,7 @@ namespace DBAL
     /// </summary>
     public class User
     {
-        #region 
+        #region Variables
         public static bool LoadingDB = false;
         public static List<User> Users = new List<User>();
         private static int AutoUserId = 1000;

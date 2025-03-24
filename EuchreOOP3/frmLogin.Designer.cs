@@ -161,7 +161,7 @@
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.btnSignIn);
             this.panel1.Controls.Add(this.lblPassword);
-            this.panel1.Location = new System.Drawing.Point(503, 46);
+            this.panel1.Location = new System.Drawing.Point(224, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(855, 1000);
             this.panel1.TabIndex = 10;
@@ -208,7 +208,7 @@
             this.BackgroundImage = global::EuchreOOP3.Properties.Resources.dark_Blue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1314, 1089);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
