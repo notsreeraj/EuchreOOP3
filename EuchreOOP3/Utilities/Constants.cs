@@ -1,7 +1,5 @@
 ﻿/* *****************************
  * Title:    Class representing the Constants
- * Author:  Sreeraj CS
- * Date:    12-08-2024
  * Purpose: to store constants
  * ***************************** */
 using System;
@@ -36,8 +34,24 @@ namespace DBAL
             TrumpSetting,
             Tricks
         }
+
+        public enum TrumpDecision
+        {
+            OrderUp,
+            Pass
+        }
+
         #endregion
 
+        #region Card
+
+        public const int RB_BOOST = 15;
+        public const int LB_BOOST = 10;
+        public const int TR_BOOST = 5;
+
+        public const int HIGHES_RANK_POSSIBLE = 17;
+
+        #endregion
 
 
     }
