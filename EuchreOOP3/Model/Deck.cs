@@ -12,13 +12,13 @@ namespace Model
     public class Deck
     {
         #region Variables
-        
+
         #endregion
 
         #region Properties
-        public List<Card> DeckOfCards  { get; set; }
+        public List<Card> DeckOfCards { get; set; }
         public event EventHandler DeckChanged;
-        
+
         #endregion
 
         #region Contructors
@@ -29,8 +29,9 @@ namespace Model
         {
             SetDeck();
             this.Shuffle();
-              
-            OnDeckChanged();
+
+            // OnDeckChanged();
+
         }
 
 
@@ -38,10 +39,16 @@ namespace Model
 
         #region Instance 
 
+        /// <summary>
+        /// Method to raise the event and invoke any method subscibed to this event
+        /// </summary>
         protected virtual void OnDeckChanged()
         {
+            Console.WriteLine("DeckChanged Event is raised");
             DeckChanged?.Invoke(this, EventArgs.Empty);
         }
+
+
 
 
         /// <summary>
@@ -88,12 +95,12 @@ namespace Model
         /// to view the cards in the deck 
         public void ViewCards()
         {
-            Console.WriteLine("***************************************");
+            Console.WriteLine("*");
             foreach (Card card in DeckOfCards)
             {
                 Console.WriteLine($"Card: {card.ToString()}");
             }
-            Console.WriteLine("***************************************");
+            Console.WriteLine("*");
 
         }
 
@@ -102,14 +109,14 @@ namespace Model
         /// Returns the card at the top of the deck
         /// </summary>
         /// <returns></returns>
-        public  Card GetTopCard()
+        public Card GetTopCard()
         {
-            if(DeckOfCards.Count > 1)
+            if (DeckOfCards.Count > 1)
             {
                 return DeckOfCards[DeckOfCards.Count - 1];
             }
             throw new Exception("Not Enough Cards in the deck");
-            
+
         }
 
 
@@ -126,9 +133,20 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Method to remove the card in the argument and also is subscribed to the deckChange event
+        /// </summary>
+        /// <param name="card"></param>
         public void RemoveCard(Card card)
         {
-            DeckOfCards.Remove(card); 
+            DeckOfCards.Remove(card);
+            //OnDeckChanged();
+        }
+
+        public void AddCard(Card card)
+        {
+            DeckOfCards.Add(card);
+            OnDeckChanged();
         }
         #endregion
 
