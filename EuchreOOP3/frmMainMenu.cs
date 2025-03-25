@@ -79,7 +79,7 @@ namespace EuchreOOP3
             {// create a gamestate object with 2 players
                 GameController.StartCOOP();
                 frmGame frmGame = new frmGame();
-                frmGame.ShowDialog();
+                 frmGame.ShowDialog();
 
                 // launch the fmrGame
                 // create frmGame and show it 
@@ -88,6 +88,11 @@ namespace EuchreOOP3
             {
                 MessageBox.Show($"[ERROR] {ex}");
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

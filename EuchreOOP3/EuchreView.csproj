@@ -289,5 +289,38 @@
   <ItemGroup>
     <None Include="Resources\MT_C7.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\best-card-games-pc-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\euchrelogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dark_Blue.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sign-up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\openimage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginscreen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shadows.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\register.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shadow border.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,10 +15,12 @@ namespace EuchreOOP3
     public partial class frmLogin : Form
     {
         frmMainMenu MainMenu;
+        private int titleDirection = 1;
         public frmLogin( frmMainMenu mm)
         {
             MainMenu = mm;
             InitializeComponent();
+            InitializeTitleAnimation();
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
@@ -40,12 +42,20 @@ namespace EuchreOOP3
             else
             {
                 MessageBox.Show($"{User.CurrentUser.Username} Has logged in");
+                // load the main form back
+                MainMenu.Show();
+                this.Close();
 
             }
 
-            // load the main form back
-            MainMenu.Show();
-            this.Close();
+            
+        }
+        private void InitializeTitleAnimation()
+        {
+        //    timerEuchre = new Timer();
+            //timerEuchre.Interval = 50; // Set the interval to 50 milliseconds
+            //timerEuchre.Tick += timerEuchre_Tick;
+            //timerEuchre.Start();
         }
 
         private void btnGuest_Click(object sender, EventArgs e)
@@ -59,6 +69,30 @@ namespace EuchreOOP3
         private void btnExit_Click(object sender, EventArgs e)
         {
             MainMenu.Close();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timerEuchre_Tick(object sender, EventArgs e)
+        {
+           
+            //lblTitle.Left += 5 * titleDirection;
+
+            
+            //if (lblTitle.Left <= 0 || lblTitle.Right >= this.ClientSize.Width)
+            //{
+                
+            //    titleDirection *= -1;
+            //}
+
         }
     }
 }

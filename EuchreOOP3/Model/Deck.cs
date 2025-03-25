@@ -29,7 +29,7 @@ namespace Model
         {
             SetDeck();
             this.Shuffle();
-            this.ViewCards();
+              
             OnDeckChanged();
         }
 
@@ -104,7 +104,12 @@ namespace Model
         /// <returns></returns>
         public  Card GetTopCard()
         {
-            return DeckOfCards[DeckOfCards.Count - 1];
+            if(DeckOfCards.Count > 1)
+            {
+                return DeckOfCards[DeckOfCards.Count - 1];
+            }
+            throw new Exception("Not Enough Cards in the deck");
+            
         }
 
 

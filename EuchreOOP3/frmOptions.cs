@@ -19,7 +19,8 @@ namespace EuchreOOP3
 
         private void frmOptions_Load(object sender, EventArgs e)
         {
-            HideAllPanels();
+            //HideAllPanels();
+            panelThemes.Visible = false;
         }
 
         public frmOptions()
@@ -30,32 +31,33 @@ namespace EuchreOOP3
 
         private void btnSoundClickEvent(object sender, EventArgs e)
         {
-            HideAllPanels();
-            panelSound.Visible = true;
+            //HideAllPanels();
+            //panelSound.Visible = true;
         }
 
         private void btnThemes_Click(object sender, EventArgs e)
         {
-            HideAllPanels();
-            flowLayoutPanelThemes.Visible = true;
+            //HideAllPanels();
+            panelThemes.Visible = true;
+
         }
 
         private void btnPolicy_Click(object sender, EventArgs e)
         {
-            HideAllPanels();
-            panelPolicy.Visible = true;
+            //HideAllPanels();
+            //panelPolicy.Visible = true;
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-            HideAllPanels();
+            //HideAllPanels();
             panelThemes.Visible = true;
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
-            HideAllPanels();
-            panelthemesCard.Visible = true;
+            //HideAllPanels();
+            
         }
 
         private void button2ExitFrm_Click(object sender, EventArgs e)
@@ -65,8 +67,9 @@ namespace EuchreOOP3
 
         private void bthExit2_Click(object sender, EventArgs e)
         {
-            HideAllPanels();
-            panelExitInstructions.Visible = true;
+            //HideAllPanels();
+            //panelExitInstructions.Visible = true;
+            this.Close();
         }
 
         private void panelThemes_Paint(object sender, PaintEventArgs e)
@@ -75,15 +78,15 @@ namespace EuchreOOP3
         }
 
         // Method to hide all panels
-        private void HideAllPanels()
-        {
-            panelExitInstructions.Visible = false;
-            panelthemesCard.Visible = false;
-            panelThemes.Visible = false;
-            panelPolicy.Visible = false;
-            panelSound.Visible = false;
-            flowLayoutPanelThemes.Visible = false;
-        }
+        //private void HideAllPanels()
+        //{
+        //    panelExitInstructions.Visible = false;
+        //    panelthemesCard.Visible = false;
+        //    panelThemes.Visible = false;
+        //    panelPolicy.Visible = false;
+        //    panelSound.Visible = false;
+        //    flowLayoutPanelThemes.Visible = false;
+        //}
 
         private void panelthemesCard_Paint(object sender, PaintEventArgs e)
         {
