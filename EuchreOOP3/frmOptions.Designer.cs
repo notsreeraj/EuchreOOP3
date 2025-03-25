@@ -310,6 +310,7 @@
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmOptions";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmOptions";
             this.Load += new System.EventHandler(this.frmOptions_Load);
             this.panelThemes.ResumeLayout(false);
