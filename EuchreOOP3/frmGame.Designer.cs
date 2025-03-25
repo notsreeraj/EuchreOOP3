@@ -113,6 +113,8 @@
             // panTop
             // 
             this.panTop.BackColor = System.Drawing.Color.Gray;
+            this.panTop.BackgroundImage = global::EuchreOOP3.Properties.Resources.backgorund_cards;
+            this.panTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panTop.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panTop.Controls.Add(this.pictureBox10);
             this.panTop.Controls.Add(this.pictureBox9);
@@ -178,6 +180,8 @@
             // panBottom
             // 
             this.panBottom.BackColor = System.Drawing.Color.Gray;
+            this.panBottom.BackgroundImage = global::EuchreOOP3.Properties.Resources.backgorund_cards;
+            this.panBottom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panBottom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panBottom.Controls.Add(this.pictureBox5);
             this.panBottom.Controls.Add(this.pictureBox4);
@@ -243,7 +247,7 @@
             // 
             // pbDeck
             // 
-            this.pbDeck.BackColor = System.Drawing.Color.Silver;
+            this.pbDeck.BackColor = System.Drawing.Color.Transparent;
             this.pbDeck.Location = new System.Drawing.Point(12, 12);
             this.pbDeck.Name = "pbDeck";
             this.pbDeck.Size = new System.Drawing.Size(221, 321);
@@ -254,7 +258,7 @@
             // 
             // pbPlayedCards
             // 
-            this.pbPlayedCards.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pbPlayedCards.BackColor = System.Drawing.Color.Transparent;
             this.pbPlayedCards.Location = new System.Drawing.Point(1671, 711);
             this.pbPlayedCards.Name = "pbPlayedCards";
             this.pbPlayedCards.Size = new System.Drawing.Size(221, 321);
@@ -284,6 +288,8 @@
             // panDealer
             // 
             this.panDealer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
+            this.panDealer.BackgroundImage = global::EuchreOOP3.Properties.Resources.backgorund_cards;
+            this.panDealer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panDealer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panDealer.Controls.Add(this.label5);
             this.panDealer.Controls.Add(this.label4);
@@ -323,7 +329,7 @@
             // 
             // pbAI3Pick
             // 
-            this.pbAI3Pick.BackColor = System.Drawing.Color.Silver;
+            this.pbAI3Pick.BackColor = System.Drawing.Color.Transparent;
             this.pbAI3Pick.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbAI3Pick.Location = new System.Drawing.Point(694, 338);
             this.pbAI3Pick.Name = "pbAI3Pick";
@@ -334,7 +340,7 @@
             // 
             // pbAI2Pick
             // 
-            this.pbAI2Pick.BackColor = System.Drawing.Color.Silver;
+            this.pbAI2Pick.BackColor = System.Drawing.Color.Transparent;
             this.pbAI2Pick.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbAI2Pick.Location = new System.Drawing.Point(443, 338);
             this.pbAI2Pick.Name = "pbAI2Pick";
@@ -365,7 +371,7 @@
             // 
             // pbAI1Pick
             // 
-            this.pbAI1Pick.BackColor = System.Drawing.Color.Silver;
+            this.pbAI1Pick.BackColor = System.Drawing.Color.Transparent;
             this.pbAI1Pick.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbAI1Pick.Location = new System.Drawing.Point(694, 80);
             this.pbAI1Pick.Name = "pbAI1Pick";
@@ -386,7 +392,7 @@
             // 
             // pbHPickedCard
             // 
-            this.pbHPickedCard.BackColor = System.Drawing.Color.Silver;
+            this.pbHPickedCard.BackColor = System.Drawing.Color.Transparent;
             this.pbHPickedCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbHPickedCard.Location = new System.Drawing.Point(443, 80);
             this.pbHPickedCard.Name = "pbHPickedCard";
@@ -598,6 +604,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.BackgroundImage = global::EuchreOOP3.Properties.Resources.dark_Blue;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.ControlBox = false;
             this.Controls.Add(this.lblTrmpSuit);
