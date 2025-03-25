@@ -36,15 +36,156 @@ namespace EuchreView.model
             return null;
         }
 
-
-
-        public void TestPickCard()
+        /// <summary>
+        /// method called on ai to give a decision about the current trump
+        /// </summary>
+        /// <returns></returns>
+        public Constants.TrumpDecision GetTrumpDecision(Card.Suits potTrump)
         {
-            Console.WriteLine("AI picked a card");
+
+            // if it is ai let the ai choose whether it should make it trump or not 
+            // here the ai should analyze the trump suit and compare it with the cards in its hand
+            if (IsIdealTrump(potTrump))
+            {
+                return Constants.TrumpDecision.OrderUp;
+            }
+            else
+            {
+                return Constants.TrumpDecision.Pass;
+            }
         }
 
+        /// <summary>
+        /// this method return bool based on whether the trump suit in the argument is ideal for its hand.
+        /// </summary>
+        /// <param name="potTrump"></param>
+        /// <returns></returns>
+        public bool IsIdealTrump(Card.Suits potTrump)
+        {
+            // find the number of cards with this suit in the hand
+            int trumpCard = 0;
+            foreach (Card card in Hand)
+            {
+                if (card.Suit == potTrump)
+                {
+                    trumpCard++;
+                }
+            }
+            if (trumpCard > 0) return true;
+            // fill the logic here to identify whether the current trump is an ideal trump for ai
+            return false;
+        }
 
+        /// <summary>
+        /// Exchanges the top card of the deck with a card from its hand
+        /// Only called when ai is the dealer and the orderedup bool is true in gameController
+        /// </summary>
+        /// <param name="deck"></param>
+        public void ExchangeCard(Deck deck, Card.Suits trumpSuit)
+        {
 
+            deck.ViewCards();
 
-    }
-}
+            Card topCardFromDeck = deck.GetTopCard();
+            deck.RemoveCard(topCardFromDeck);
+            Console.WriteLine($"{topCardFromDeck.ToString()} has been removed from the Deck by the dealer");
+
+            Card cardFromHand = RemoveWeakCard(trumpSuit);
+
+            if (cardFromHand != null)
+            {
+                Hand.Remove(cardFromHand);
+                deck.AddCard(cardFromHand);
+                Hand.Add(topCardFromDeck);
+                Console.WriteLine($"{cardFromHand.ToString()} has been exchanged with {topCardFromDeck.ToString()}");
+            }
+
+            // remove any card from the hand
+
+        }
+
+        /// <summary>
+        /// Returns the weakest card in the hand based on rank 
+        /// </summary>
+        /// <returns></returns>
+        public Card RemoveWeakCard(Card.Suits trumpSuit)
+        {
+
+            if (Hand == null || Hand.Count == 0)
+            {
+                return null;
+            }
+            Card weakestCard = Hand[0];
+
+            int lowestValue = Hand[0].GetCardValue(trumpSuit);
+            foreach (Card card in Hand)
+            {
+                if (card.GetCardValue(trumpSuit) < lowestValue)
+                {
+                    weakestCard = card;
+                    lowestValue = card.GetCardValue(trumpSuit);
+                }
+            }
+            return weakestCard;
+        }
+
+        /// <summary>
+        /// Decides on an optimal trump suit that is different from the provided suit
+        /// by analyzing the cards in the player's hand
+        /// </summary>
+        /// <param name="excludedSuit">The suit that cannot be selected as trump</param>
+        /// <returns>The optimal suit for this player's hand</returns>
+        public Card.Suits DecideTrumpSuit(Card.Suits excludedSuit)
+        {
+            // Dictionary to track count of each suit in hand
+            Dictionary<Card.Suits, int> suitCounts = new Dictionary<Card.Suits, int>();
+
+            // Initialize counts for each suit (except the excluded one)
+            foreach (Card.Suits suit in Enum.GetValues(typeof(Card.Suits)))
+            {
+                if (suit != excludedSuit)
+                {
+                    suitCounts[suit] = 0;
+                }
+            }
+
+            // Count cards of each suit in hand
+            foreach (Card card in Hand)
+            {
+                if (card.Suit != excludedSuit && suitCounts.ContainsKey(card.Suit))
+                {
+                    suitCounts[card.Suit]++;
+                }
+            }
+
+            // Find suit with highest count
+            Card.Suits bestSuit = Card.Suits.Heart; // Default
+            int maxCount = 0;
+
+            foreach (var pair in suitCounts)
+            {
+                if (pair.Value > maxCount)
+                {
+                    maxCount = pair.Value;
+                    bestSuit = pair.Key;
+                }
+            }
+
+            // If we didn't find any cards of other suits, just pick any different suit
+            if (maxCount == 0)
+            {
+                foreach (Card.Suits suit in Enum.GetValues(typeof(Card.Suits)))
+                {
+                    if (suit != excludedSuit)
+                    {
+                        bestSuit = suit;
+                        break;
+                    }
+                }
+            }
+
+            Console.WriteLine($"AI decided on {bestSuit} as trump (had {maxCount} cards of this suit)");
+            return bestSuit;
+        }
+    }// class ends here
+} // namespace ends here
