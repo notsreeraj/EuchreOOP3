@@ -75,6 +75,7 @@
             this.btnOrderUp = new System.Windows.Forms.Button();
             this.btnPass = new System.Windows.Forms.Button();
             this.panTrumpChoices = new System.Windows.Forms.Panel();
+            this.lblPlayerDecideTrump = new System.Windows.Forms.Label();
             this.panTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -113,7 +114,6 @@
             // panTop
             // 
             this.panTop.BackColor = System.Drawing.Color.Gray;
-            this.panTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panTop.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panTop.Controls.Add(this.pictureBox10);
             this.panTop.Controls.Add(this.pictureBox9);
@@ -179,7 +179,6 @@
             // panBottom
             // 
             this.panBottom.BackColor = System.Drawing.Color.Gray;
-            this.panBottom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panBottom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panBottom.Controls.Add(this.pictureBox5);
             this.panBottom.Controls.Add(this.pictureBox4);
@@ -245,7 +244,7 @@
             // 
             // pbDeck
             // 
-            this.pbDeck.BackColor = System.Drawing.Color.Transparent;
+            this.pbDeck.BackColor = System.Drawing.Color.Silver;
             this.pbDeck.Location = new System.Drawing.Point(12, 12);
             this.pbDeck.Name = "pbDeck";
             this.pbDeck.Size = new System.Drawing.Size(221, 321);
@@ -256,7 +255,7 @@
             // 
             // pbPlayedCards
             // 
-            this.pbPlayedCards.BackColor = System.Drawing.Color.Transparent;
+            this.pbPlayedCards.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.pbPlayedCards.Location = new System.Drawing.Point(1671, 711);
             this.pbPlayedCards.Name = "pbPlayedCards";
             this.pbPlayedCards.Size = new System.Drawing.Size(221, 321);
@@ -286,7 +285,6 @@
             // panDealer
             // 
             this.panDealer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
-            this.panDealer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panDealer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panDealer.Controls.Add(this.label5);
             this.panDealer.Controls.Add(this.label4);
@@ -299,7 +297,7 @@
             this.panDealer.Controls.Add(this.pbHPickedCard);
             this.panDealer.Controls.Add(this.label1);
             this.panDealer.Controls.Add(this.pbDealerDeck);
-            this.panDealer.Location = new System.Drawing.Point(296, 168);
+            this.panDealer.Location = new System.Drawing.Point(296, 945);
             this.panDealer.Name = "panDealer";
             this.panDealer.Size = new System.Drawing.Size(1270, 687);
             this.panDealer.TabIndex = 7;
@@ -326,7 +324,7 @@
             // 
             // pbAI3Pick
             // 
-            this.pbAI3Pick.BackColor = System.Drawing.Color.Transparent;
+            this.pbAI3Pick.BackColor = System.Drawing.Color.Silver;
             this.pbAI3Pick.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbAI3Pick.Location = new System.Drawing.Point(694, 338);
             this.pbAI3Pick.Name = "pbAI3Pick";
@@ -337,7 +335,7 @@
             // 
             // pbAI2Pick
             // 
-            this.pbAI2Pick.BackColor = System.Drawing.Color.Transparent;
+            this.pbAI2Pick.BackColor = System.Drawing.Color.Silver;
             this.pbAI2Pick.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbAI2Pick.Location = new System.Drawing.Point(443, 338);
             this.pbAI2Pick.Name = "pbAI2Pick";
@@ -368,7 +366,7 @@
             // 
             // pbAI1Pick
             // 
-            this.pbAI1Pick.BackColor = System.Drawing.Color.Transparent;
+            this.pbAI1Pick.BackColor = System.Drawing.Color.Silver;
             this.pbAI1Pick.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbAI1Pick.Location = new System.Drawing.Point(694, 80);
             this.pbAI1Pick.Name = "pbAI1Pick";
@@ -389,7 +387,7 @@
             // 
             // pbHPickedCard
             // 
-            this.pbHPickedCard.BackColor = System.Drawing.Color.Transparent;
+            this.pbHPickedCard.BackColor = System.Drawing.Color.Silver;
             this.pbHPickedCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbHPickedCard.Location = new System.Drawing.Point(443, 80);
             this.pbHPickedCard.Name = "pbHPickedCard";
@@ -595,14 +593,25 @@
             this.panTrumpChoices.Size = new System.Drawing.Size(539, 57);
             this.panTrumpChoices.TabIndex = 13;
             // 
+            // lblPlayerDecideTrump
+            // 
+            this.lblPlayerDecideTrump.AutoSize = true;
+            this.lblPlayerDecideTrump.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayerDecideTrump.Location = new System.Drawing.Point(7, 650);
+            this.lblPlayerDecideTrump.Name = "lblPlayerDecideTrump";
+            this.lblPlayerDecideTrump.Size = new System.Drawing.Size(213, 90);
+            this.lblPlayerDecideTrump.TabIndex = 14;
+            this.lblPlayerDecideTrump.Text = "Current Player To \r\nDecide Trump Suit \r\n:";
+            this.lblPlayerDecideTrump.TextChanged += new System.EventHandler(this.lblPlayerDecideTrump_TextChanged);
+            // 
             // frmGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.ControlBox = false;
+            this.Controls.Add(this.lblPlayerDecideTrump);
             this.Controls.Add(this.lblTrmpSuit);
             this.Controls.Add(this.lblDealerName);
             this.Controls.Add(this.panDealer);
@@ -615,7 +624,6 @@
             this.Controls.Add(this.panTop);
             this.Controls.Add(this.panRight);
             this.Controls.Add(this.panTrumpChoices);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmGame";
@@ -708,5 +716,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pbAI3Pick;
         private System.Windows.Forms.PictureBox pbAI2Pick;
+        private System.Windows.Forms.Label lblPlayerDecideTrump;
     }
 }

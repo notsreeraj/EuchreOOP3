@@ -1,5 +1,6 @@
 ﻿using Controller;
 using DBAL;
+using EuchreView.model;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +22,7 @@ namespace EuchreOOP3
         public static List<PictureBox> Tricks = new List<PictureBox>();
         //public static List<PictureBox> PickedCards = new List<PictureBox>();
         public  string CurrentPlayer = GameController.Game.Turn.UserName;
+        public static bool IsLoading = false;
 
 
         // Add this public property to access label5
@@ -27,19 +30,26 @@ namespace EuchreOOP3
         {
             get { return lblDealerName; }
         }
+        public Label LblPlayerDecideTrump 
+        {
+            get { return lblPlayerDecideTrump; } 
+        }
+
+        public Label LbltrumpSuit 
+        {
+            get {return lblTrmpSuit; }                 
+        }
         public frmGame()
         {
             InitializeComponent();
             MapHandPanels();
             MapPickedCardsPB();
-
-
-
-
+            SubscribeToDeckChangeEvent();
         }
 
         private void frmGame_Load(object sender, EventArgs e)
         {
+            IsLoading = true;
             // load the deck to the picture box , 
             // Display the last card in the deck to the user using the picture box using a method in gameController
             
@@ -48,18 +58,46 @@ namespace EuchreOOP3
             SetPlayers();
             panDealer.Visible = true;
             lblCurrentPlayer.Text = GameController.Game.Turn.UserName;
-            //AnimatePanelToLocation(panDealer, 276,148, 50);
+            panDealer.Location = new System.Drawing.Point(296,186);
+            
+
+            IsLoading = false;
 
 
         }
 
+        public  void SubscribeToDeckChangeEvent()
+        {
+            GameController.Game.Deck.DeckChanged += UpdateDeckVIew;
+
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void panBottom_Paint(object sender, PaintEventArgs e)
         {
 
         }
+        /// <summary>
+        /// Event handler which is subscribed to the DeckChanged event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UpdateDeckVIew(object sender , EventArgs e)
+        {
+    
+                ShowDeck();
+
+            
+        }
 
         private  void ShowDeck()
         {
+            pbDeck.BackgroundImage = null;
             pbDeck.BackgroundImage = GameController.ViewTopCard(GameController.Game.Deck);
             pbDeck.BackgroundImageLayout = ImageLayout.Stretch; 
         }
@@ -161,6 +199,7 @@ namespace EuchreOOP3
             }
         }
 
+
         /// <summary>
         ///
         /// </summary>
@@ -170,6 +209,11 @@ namespace EuchreOOP3
         {
             // clicking on this object must imitate the player picking up a card from the deck
             // prepare another panel just with a deck and icons to represent the players
+
+            if(GameController.Passed || GameController.OrderedUp && !GameController.Game.IsAIPlayer())
+            {
+                // call the exchange card method
+            }
         }
 
         /// <summary>
@@ -219,32 +263,48 @@ namespace EuchreOOP3
 
         private void pbDealerDeck_Click(object sender, EventArgs e)
         {
-
-            Card PickedCard = GameController.Game.Turn.PickCard(GameController.Game.Deck);
-
-            // pbHPickedCard.BackgroundImage = PickedCard .View;
-            GameController.ShowPickedCards(PickedCard);
-            GameController.Game.Deck.RemoveCard(PickedCard);
             
 
-            if (!PickedCard.IsBlackJack() && GameController.HasEnoughCardsForPlayers())
+            if( GameController.HasEnoughCardsForPlayers())
             {
-                GameController.UpdateCurrentPlayer(lblCurrentPlayer);
+                // to reset the picture boxes
+                GameController.ResetPickedCardPB();
+
+                Card PickedCard = GameController.Game.Turn.PickCard(GameController.Game.Deck);
+
+                // pbHPickedCard.BackgroundImage = PickedCard .View;
+                GameController.ShowPickedCards(PickedCard);
+                GameController.Game.Deck.RemoveCard(PickedCard);
+
+
+                    if (!PickedCard.IsBlackJack() && GameController.Game.GameMode == Constants.GameModes.DealerSetting)
+                    {
+                        GameController.UpdateCurrentPlayer(lblCurrentPlayer);
+                    }
+                    else
+                    {
+                        GameController.dealerSet = true;
+                        GameController.Game.Dealer = GameController.Game.Turn;
+
+
+                        //AnimatePanelDown(panDealer, 50);
+
+                        MessageBox.Show($"{GameController.Game.Turn.UserName} got the First Black Jack!! He is the dealer");
+                        MessageBox.Show("The Dealer has been Set. Click Ok to initiate the Trump deciding Mode");
+
+                        lblDealerName.Text += GameController.Game.Dealer.UserName;
+                        AnimatePanelDown(panDealer, 50);
+                        //AnimatePanelToLocation(panTrumpChoices, 650, 648, 50);
+
+
+                        // run the method to set up the new deck and deal the hands
+                    }
             }
-            else 
+            else
             {
-                GameController.dealerSet = true;
-                GameController.Game.Dealer = GameController.Game.Turn;
-       
-                
-                //AnimatePanelDown(panDealer, 50);
-                lblDealerName.Text += GameController.Game.Dealer.UserName;
-                MessageBox.Show($"{GameController.Game.Turn.UserName} got the First Black Jack!! He is the dealer"); 
-                AnimatePanelDown(panDealer, 50);
-                //AnimatePanelToLocation(panTrumpChoices, 650, 648, 50);
+                MessageBox.Show("We are out of cards. Click Ok to set a new deck of cards");
+                GameController.Game.Deck = new Deck();
 
-
-                // run the method to set up the new deck and deal the hands
             }
 
         }
@@ -317,25 +377,40 @@ namespace EuchreOOP3
         /// <param name="e"></param>
         private void lblCurrentPlayer_TextChanged(object sender, EventArgs e)
         {
-
-            // this can work fro all three gamemodes , Dealer setting , Trump selection , Tricks
-            Constants.GameModes gameMode = GameController.Game.GameMode;
-            // call the MakeMove in GameController
-            if (GameController.Game.IsAIPlayer() && GameController.HasEnoughCardsForPlayers())
+            if (!IsLoading && GameController.Game.IsAIPlayer())
             {
-                GameController.MakeAIMove(gameMode, this);
-
-                if (GameController.dealerSet && (GameController.Game.Dealer == GameController.Game.Turn))
+                // this can work fro all three gamemodes , Dealer setting , Trump selection , Tricks
+                Constants.GameModes gameMode = GameController.Game.GameMode;
+                // call the MakeMove in GameController
+                if (GameController.HasEnoughCardsForPlayers())
                 {
-                    MessageBox.Show($"{GameController.Game.Turn.UserName} got the First Black Jack!! He is the dealer");
-                    
-                    AnimatePanelDown(panDealer, 50);
-                    
-                }
-                GameController.UpdateCurrentPlayer(lblCurrentPlayer);
-                // check if the dealer has been set
-            }
+                    if ( gameMode == Constants.GameModes.DealerSetting)
+                    {
+                        GameController.MakeAIMove(gameMode, this);
 
+                        if (GameController.dealerSet && (GameController.Game.Dealer == GameController.Game.Turn))
+                        {
+                            MessageBox.Show($"{GameController.Game.Turn.UserName} got the First Black Jack!! He is the dealer");
+                            LblDealerName.Text += GameController.Game.Dealer.UserName;
+                            AnimatePanelDown(panDealer, 50);
+                            //LblDealerName.Text += GameController.Game.Dealer.UserName;
+
+                        }
+                        else
+                        {
+                            GameController.UpdateCurrentPlayer(lblCurrentPlayer);
+                        }
+
+                        // check if the dealer has been set
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("We are out of cards. Click Ok to set a new deck of cards");
+                    GameController.Game.Deck = new Deck();
+                }
+            }
         }
 
 
@@ -347,33 +422,83 @@ namespace EuchreOOP3
         /// <param name="e"></param>
         private void lblDealerName_TextChanged(object sender, EventArgs e)
         {
-            GameController.Game.Deck = new Deck();
-            
-            GameController.Game.GameMode = Constants.GameModes.TrumpSetting;
-            GameController.Game.Deal();
-            ShowDeck();
-            pbDeck.Visible = true;
+            if(!IsLoading)
+            {
+                Console.WriteLine($"Current Player in Turn is : {GameController.Game.Turn.UserName}");
 
-            // assign the intitial potential trump
-            GameController.Game.Trump = GameController.Game.Deck.GetTopCard().Suit;
+                // setting up new deck
+                GameController.Game.Deck = new Deck();
+                SubscribeToDeckChangeEvent();
 
-            lblTrmpSuit.Text += GameController.Game.Trump.ToString();
-            /// call the method to load the cards to the panel 
-            LoadCardsToEachPictureBox();
+
+                GameController.Game.GameMode = Constants.GameModes.TrumpSetting;// changing the game mode
+
+                GameController.Game.Deal(); // dealing the cards among players
+                ShowDeck(); // setting the deck to view
+                pbDeck.Visible = true;
+
+                // assign the intitial potential trump
+                GameController.Game.Trump = GameController.Game.Deck.GetTopCard().Suit;
+
+                lblTrmpSuit.Text += GameController.Game.Trump.ToString();
+                /// call the method to load the cards to the panel 
+                LoadCardsToEachPictureBox();
+
+                // initiate the next mode of the game by setting up the first non-dealer after the dealer to the label
+                GameController.UpdateCurrentPlayer(lblPlayerDecideTrump); }
             
         }
 
         private void btnOrderUp_Click(object sender, EventArgs e)
         {
-           
+            GameController.OrderedUp = true;
+            GameController.AssignTurnToDealer(lblPlayerDecideTrump);
+            // if this is called the the turn must be given to the dealer to set the trump
+            // which means that the ai should exchange a card the trump suit card from his own hand
         }
 
         private void btnPass_Click(object sender, EventArgs e)
         {
-
+            GameController.Passed = true;
+            // when clikc the next player is given a chance
+            GameController.UpdateCurrentPlayer(lblPlayerDecideTrump);
+            Console.WriteLine($"From frmGame pass click : {GameController.Game.Turn.UserName} is the player in turn");
+            
         }
 
+        private void lblPlayerDecideTrump_TextChanged(object sender, EventArgs e)
+        {
+            
+            if (!IsLoading && GameController.Game.IsAIPlayer())
+            {
+                Constants.GameModes gameMode = GameController.Game.GameMode;
+                GameController.MakeAIMove(gameMode, this);
 
-    }
-}
+                if(GameController.trumpSet = true && GameController.Game.GameMode == Constants.GameModes.Tricks)
+                {
+                    MessageBox.Show($"The game has been set up");
+                    btnOrderUp.Enabled = false;
+                    btnPass.Enabled = false;
+                }
+            }
+            else if(!IsLoading && !GameController.Game.IsAIPlayer() && GameController.DealerPassed)
+            {
+                MessageBox.Show("Dealer has Passed , It is you chance to Choose a trump as any suit you want except the potential trump");
+
+            }
+            else if (!IsLoading && !GameController.Game.IsAIPlayer() && GameController.OrderedUp)
+            {
+                MessageBox.Show("Prevois Player has Orderup , It is you chance exchange the trump");
+            }
+            else if (!IsLoading && !GameController.Game.IsAIPlayer() && GameController.OrderedUp)
+            {
+                MessageBox.Show("Its the Dealer chance to Order up or Pass");
+            }
+            else
+            {
+                Console.WriteLine("ai IS NOT THE PLAYER");
+            }           
+        }   
+    } // class ends here
+} // namespace ends here
     

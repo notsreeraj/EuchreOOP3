@@ -32,6 +32,17 @@ namespace EuchreView.model
             // TODO
             throw new NotImplementedException();
         }
+
+
+        /// <summary>
+        /// Method which exchanges the top card at the deck with the selected card by the user 
+        /// </summary>
+        /// <param name="deck"></param>
+        /// <param name="selectedCard"></param>
+        public void ExchangeCard(Deck deck, Card selectedCard)
+        {
+
+        }
         #endregion
     }
 }
