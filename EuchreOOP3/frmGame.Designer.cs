@@ -113,7 +113,6 @@
             // panTop
             // 
             this.panTop.BackColor = System.Drawing.Color.Gray;
-            this.panTop.BackgroundImage = global::EuchreOOP3.Properties.Resources.backgorund_cards;
             this.panTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panTop.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panTop.Controls.Add(this.pictureBox10);
@@ -180,7 +179,6 @@
             // panBottom
             // 
             this.panBottom.BackColor = System.Drawing.Color.Gray;
-            this.panBottom.BackgroundImage = global::EuchreOOP3.Properties.Resources.backgorund_cards;
             this.panBottom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panBottom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panBottom.Controls.Add(this.pictureBox5);
@@ -288,7 +286,6 @@
             // panDealer
             // 
             this.panDealer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
-            this.panDealer.BackgroundImage = global::EuchreOOP3.Properties.Resources.backgorund_cards;
             this.panDealer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panDealer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panDealer.Controls.Add(this.label5);
@@ -603,7 +600,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.BackgroundImage = global::EuchreOOP3.Properties.Resources.dark_Blue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.ControlBox = false;
