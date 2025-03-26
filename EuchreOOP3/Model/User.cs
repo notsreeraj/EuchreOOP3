@@ -70,7 +70,7 @@ namespace DBAL
                 {
                     Console.WriteLine($"Email Value : {value}");
                     // call the method to verify the email id from the database
-                    if (IsEmailUnique(value) && IsEmailValid(value))
+                    if (IsEmailUnique(value) )
                     {
                         _emailID = value;
                     }
@@ -367,15 +367,15 @@ namespace DBAL
             if (string.IsNullOrWhiteSpace(email))
             {
 
-                return false;
+                throw new Exception("Email is not valid. Make sure that  Email follows format");
             }
-
+            Console.WriteLine($"");
             // Regex pattern for a valid email address
-            var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            var emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             if (!Regex.IsMatch(email, emailPattern))
             {
 
-                return false;
+                throw new Exception("Email is not valid. Make sure that  Email follows format");
             }
 
             return true;

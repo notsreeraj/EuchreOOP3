@@ -13,7 +13,7 @@ namespace EuchreOOP3
 {
     public partial class frmRegister : Form
     {
-        frmLogin frmLogin;
+        private static frmLogin frmLogin;
         public frmRegister( frmLogin formLogin)
         {
             frmLogin = formLogin;
@@ -25,20 +25,26 @@ namespace EuchreOOP3
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             try{
-                User newUser = new User();
-                newUser.FirstName = txbFirstName.Text;
-                newUser.LastName = txbLastName.Text;
-                newUser.Username = txbUsername.Text;
-                Console.WriteLine( "Email Input in the form: "+txbEmail.Text);
+                
 
                 if(User.IsEmailValid(txbEmail.Text) && IsPasswordConfirm())
                 {
+                    User newUser = new User();
+                    newUser.FirstName = txbFirstName.Text;
+                    newUser.LastName = txbLastName.Text;
+                    newUser.Username = txbUsername.Text;
+                    Console.WriteLine("Email Input in the form: " + txbEmail.Text); 
                     newUser.Email = txbEmail.Text;
                     newUser.Password = txbPassword.Text;
+                    User.InsertUser(newUser);
+                    User.PopulateUsers();
+                    User.PrintAllUsers();
+
+                    frmLogin.TxbEmail.Text = newUser.Email;
                 }
-                User.InsertUser(newUser);
-                User.PopulateUsers();
-                User.PrintAllUsers();
+                
+                this.Close();
+                frmLogin.Show();
             }
             catch(Exception ex)
             {

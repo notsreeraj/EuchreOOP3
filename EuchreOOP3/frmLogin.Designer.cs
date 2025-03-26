@@ -92,7 +92,7 @@
             this.lblEmailDis.AutoSize = true;
             this.lblEmailDis.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmailDis.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblEmailDis.Location = new System.Drawing.Point(173, 733);
+            this.lblEmailDis.Location = new System.Drawing.Point(183, 675);
             this.lblEmailDis.Name = "lblEmailDis";
             this.lblEmailDis.Size = new System.Drawing.Size(91, 23);
             this.lblEmailDis.TabIndex = 4;
@@ -104,7 +104,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblPassword.Location = new System.Drawing.Point(173, 671);
+            this.lblPassword.Location = new System.Drawing.Point(173, 735);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(101, 23);
             this.lblPassword.TabIndex = 5;
@@ -114,7 +114,7 @@
             // txbEmail
             // 
             this.txbEmail.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbEmail.Location = new System.Drawing.Point(301, 733);
+            this.txbEmail.Location = new System.Drawing.Point(301, 675);
             this.txbEmail.Name = "txbEmail";
             this.txbEmail.Size = new System.Drawing.Size(393, 30);
             this.txbEmail.TabIndex = 6;
@@ -123,7 +123,7 @@
             // txbPassword
             // 
             this.txbPassword.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbPassword.Location = new System.Drawing.Point(301, 671);
+            this.txbPassword.Location = new System.Drawing.Point(301, 735);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(393, 30);
             this.txbPassword.TabIndex = 7;
