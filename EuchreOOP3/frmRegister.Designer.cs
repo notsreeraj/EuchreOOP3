@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,6 +49,15 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip7 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip8 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip9 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -124,7 +134,8 @@
             this.txbFirstName.Location = new System.Drawing.Point(327, 540);
             this.txbFirstName.Name = "txbFirstName";
             this.txbFirstName.Size = new System.Drawing.Size(369, 37);
-            this.txbFirstName.TabIndex = 2;
+            this.txbFirstName.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.txbFirstName, "Enter your first name");
             this.txbFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // txbLastName
@@ -133,7 +144,8 @@
             this.txbLastName.Location = new System.Drawing.Point(327, 596);
             this.txbLastName.Name = "txbLastName";
             this.txbLastName.Size = new System.Drawing.Size(369, 37);
-            this.txbLastName.TabIndex = 2;
+            this.txbLastName.TabIndex = 1;
+            this.toolTip2.SetToolTip(this.txbLastName, "Enter your last name");
             this.txbLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // txbPassword
@@ -142,7 +154,8 @@
             this.txbPassword.Location = new System.Drawing.Point(327, 756);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(369, 37);
-            this.txbPassword.TabIndex = 2;
+            this.txbPassword.TabIndex = 4;
+            this.toolTip5.SetToolTip(this.txbPassword, "Enter your password");
             this.txbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPassword_KeyPress);
             // 
             // txbConfirmPassword
@@ -151,7 +164,8 @@
             this.txbConfirmPassword.Location = new System.Drawing.Point(327, 817);
             this.txbConfirmPassword.Name = "txbConfirmPassword";
             this.txbConfirmPassword.Size = new System.Drawing.Size(369, 37);
-            this.txbConfirmPassword.TabIndex = 2;
+            this.txbConfirmPassword.TabIndex = 5;
+            this.toolTip6.SetToolTip(this.txbConfirmPassword, "Confirm your password");
             // 
             // btnCancel
             // 
@@ -160,8 +174,9 @@
             this.btnCancel.Location = new System.Drawing.Point(702, 904);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(114, 36);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "CANCEL";
+            this.toolTip9.SetToolTip(this.btnCancel, "Click to Cancel");
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -172,8 +187,9 @@
             this.btnSignUp.Location = new System.Drawing.Point(582, 899);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(114, 41);
-            this.btnSignUp.TabIndex = 3;
+            this.btnSignUp.TabIndex = 7;
             this.btnSignUp.Text = "Sign Up";
+            this.toolTip8.SetToolTip(this.btnSignUp, "Click to SignUp");
             this.btnSignUp.UseVisualStyleBackColor = false;
             this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
@@ -183,7 +199,8 @@
             this.txbUsername.Location = new System.Drawing.Point(327, 645);
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(369, 37);
-            this.txbUsername.TabIndex = 5;
+            this.txbUsername.TabIndex = 2;
+            this.toolTip3.SetToolTip(this.txbUsername, "Enter preferred username");
             this.txbUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserName_KeyPress);
             // 
             // label6
@@ -220,7 +237,8 @@
             this.cboGenders.Location = new System.Drawing.Point(327, 883);
             this.cboGenders.Name = "cboGenders";
             this.cboGenders.Size = new System.Drawing.Size(121, 31);
-            this.cboGenders.TabIndex = 7;
+            this.cboGenders.TabIndex = 6;
+            this.toolTip7.SetToolTip(this.cboGenders, "Choose your gender");
             // 
             // txbEmail
             // 
@@ -228,7 +246,8 @@
             this.txbEmail.Location = new System.Drawing.Point(327, 695);
             this.txbEmail.Name = "txbEmail";
             this.txbEmail.Size = new System.Drawing.Size(369, 37);
-            this.txbEmail.TabIndex = 8;
+            this.txbEmail.TabIndex = 3;
+            this.toolTip4.SetToolTip(this.txbEmail, "Enter your Email ID");
             // 
             // panel1
             // 
@@ -334,5 +353,14 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTip3;
+        private System.Windows.Forms.ToolTip toolTip4;
+        private System.Windows.Forms.ToolTip toolTip5;
+        private System.Windows.Forms.ToolTip toolTip6;
+        private System.Windows.Forms.ToolTip toolTip7;
+        private System.Windows.Forms.ToolTip toolTip8;
+        private System.Windows.Forms.ToolTip toolTip9;
     }
 }
