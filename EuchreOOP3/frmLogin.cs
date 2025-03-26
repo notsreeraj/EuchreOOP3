@@ -39,9 +39,11 @@ namespace EuchreOOP3
             // validate the current user typed in user credentials 
             // set the current user reference to the same user in the users list
              User.CurrentUser = User.IsUserValid(txbEmail.Text, txbPassword.Text);
+            Console.WriteLine( "Current user called from Login button click"+ User.CurrentUser.Username);
             if (User.CurrentUser == null)
             {
                 MessageBox.Show("[Error] Invalid User Credenrials");
+                
             }
             else
             {
