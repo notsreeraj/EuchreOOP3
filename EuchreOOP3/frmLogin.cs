@@ -16,6 +16,10 @@ namespace EuchreOOP3
     {
         frmMainMenu MainMenu;
         private int titleDirection = 1;
+
+
+        public TextBox TxbEmail { get { return txbEmail; } }
+
         public frmLogin( frmMainMenu mm)
         {
             MainMenu = mm;
