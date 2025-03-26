@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnQuckPlay = new System.Windows.Forms.Button();
             this.btnCoUp = new System.Windows.Forms.Button();
             this.btnOption = new System.Windows.Forms.Button();
@@ -39,6 +40,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -51,8 +56,9 @@
             this.btnQuckPlay.Location = new System.Drawing.Point(42, 379);
             this.btnQuckPlay.Name = "btnQuckPlay";
             this.btnQuckPlay.Size = new System.Drawing.Size(292, 55);
-            this.btnQuckPlay.TabIndex = 1;
+            this.btnQuckPlay.TabIndex = 0;
             this.btnQuckPlay.Text = "QUICK PLAY";
+            this.toolTip1.SetToolTip(this.btnQuckPlay, "Click to start Quickplay");
             this.btnQuckPlay.UseVisualStyleBackColor = false;
             this.btnQuckPlay.Click += new System.EventHandler(this.btnQuckPlay_Click);
             // 
@@ -63,7 +69,8 @@
             this.btnCoUp.Name = "btnCoUp";
             this.btnCoUp.Size = new System.Drawing.Size(292, 55);
             this.btnCoUp.TabIndex = 1;
-            this.btnCoUp.Text = "CO - UP ";
+            this.btnCoUp.Text = "CO - OP ";
+            this.toolTip2.SetToolTip(this.btnCoUp, "Click to start Co-op play");
             this.btnCoUp.UseVisualStyleBackColor = false;
             this.btnCoUp.Click += new System.EventHandler(this.btnCoUp_Click);
             // 
@@ -73,8 +80,9 @@
             this.btnOption.Location = new System.Drawing.Point(42, 629);
             this.btnOption.Name = "btnOption";
             this.btnOption.Size = new System.Drawing.Size(292, 55);
-            this.btnOption.TabIndex = 1;
+            this.btnOption.TabIndex = 2;
             this.btnOption.Text = "OPTION";
+            this.toolTip3.SetToolTip(this.btnOption, "Click for options");
             this.btnOption.UseVisualStyleBackColor = false;
             this.btnOption.Click += new System.EventHandler(this.btnOption_Click);
             // 
@@ -84,8 +92,9 @@
             this.btnExit.Location = new System.Drawing.Point(42, 742);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(292, 55);
-            this.btnExit.TabIndex = 1;
+            this.btnExit.TabIndex = 3;
             this.btnExit.Text = "EXIT";
+            this.toolTip4.SetToolTip(this.btnExit, "Click to Exit");
             this.btnExit.UseVisualStyleBackColor = false;
             // 
             // lblUserName
@@ -203,5 +212,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTip3;
+        private System.Windows.Forms.ToolTip toolTip4;
     }
 }

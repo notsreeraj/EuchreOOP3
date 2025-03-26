@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOptions));
             this.btnResume = new System.Windows.Forms.Button();
             this.btnThemes = new System.Windows.Forms.Button();
@@ -49,6 +50,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip7 = new System.Windows.Forms.ToolTip(this.components);
             this.panelThemes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -70,8 +78,9 @@
             this.btnResume.Location = new System.Drawing.Point(30, 205);
             this.btnResume.Name = "btnResume";
             this.btnResume.Size = new System.Drawing.Size(277, 69);
-            this.btnResume.TabIndex = 1;
+            this.btnResume.TabIndex = 0;
             this.btnResume.Text = "RESUME";
+            this.toolTip1.SetToolTip(this.btnResume, "Resume Game");
             this.btnResume.UseVisualStyleBackColor = false;
             // 
             // btnThemes
@@ -85,6 +94,7 @@
             this.btnThemes.Size = new System.Drawing.Size(277, 69);
             this.btnThemes.TabIndex = 1;
             this.btnThemes.Text = "THEMES";
+            this.toolTip2.SetToolTip(this.btnThemes, "Click to choose your theme");
             this.btnThemes.UseVisualStyleBackColor = false;
             this.btnThemes.Click += new System.EventHandler(this.btnThemes_Click);
             // 
@@ -97,8 +107,9 @@
             this.btnSound.Location = new System.Drawing.Point(30, 355);
             this.btnSound.Name = "btnSound";
             this.btnSound.Size = new System.Drawing.Size(277, 69);
-            this.btnSound.TabIndex = 1;
+            this.btnSound.TabIndex = 2;
             this.btnSound.Text = "SOUND";
+            this.toolTip3.SetToolTip(this.btnSound, "Adjust your volume");
             this.btnSound.UseVisualStyleBackColor = false;
             // 
             // btnPolicy
@@ -110,8 +121,9 @@
             this.btnPolicy.Location = new System.Drawing.Point(30, 430);
             this.btnPolicy.Name = "btnPolicy";
             this.btnPolicy.Size = new System.Drawing.Size(277, 69);
-            this.btnPolicy.TabIndex = 1;
+            this.btnPolicy.TabIndex = 3;
             this.btnPolicy.Text = "POLICIES ";
+            this.toolTip4.SetToolTip(this.btnPolicy, "Our polices");
             this.btnPolicy.UseVisualStyleBackColor = false;
             this.btnPolicy.Click += new System.EventHandler(this.btnPolicy_Click);
             // 
@@ -124,8 +136,9 @@
             this.button1.Location = new System.Drawing.Point(30, 533);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(277, 68);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Go back to main menu";
+            this.toolTip5.SetToolTip(this.button1, "Click to return to main menu");
             this.button1.UseVisualStyleBackColor = false;
             // 
             // bthExit2
@@ -137,8 +150,9 @@
             this.bthExit2.Location = new System.Drawing.Point(30, 617);
             this.bthExit2.Name = "bthExit2";
             this.bthExit2.Size = new System.Drawing.Size(277, 68);
-            this.bthExit2.TabIndex = 1;
+            this.bthExit2.TabIndex = 5;
             this.bthExit2.Text = "EXIT";
+            this.toolTip6.SetToolTip(this.bthExit2, "Click to exit");
             this.bthExit2.UseVisualStyleBackColor = false;
             this.bthExit2.Click += new System.EventHandler(this.bthExit2_Click);
             // 
@@ -170,8 +184,9 @@
             this.button2.Location = new System.Drawing.Point(517, 512);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(120, 39);
-            this.button2.TabIndex = 3;
+            this.button2.TabIndex = 0;
             this.button2.Text = "Apply";
+            this.toolTip7.SetToolTip(this.button2, "Apply your theme");
             this.button2.UseVisualStyleBackColor = true;
             // 
             // pictureBox6
@@ -349,5 +364,12 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTip3;
+        private System.Windows.Forms.ToolTip toolTip4;
+        private System.Windows.Forms.ToolTip toolTip5;
+        private System.Windows.Forms.ToolTip toolTip6;
+        private System.Windows.Forms.ToolTip toolTip7;
     }
 }
