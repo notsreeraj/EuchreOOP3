@@ -490,7 +490,7 @@ namespace EuchreOOP3
             {
                 MessageBox.Show("Prevois Player has Orderup , It is you chance exchange the trump");
             }
-            else if (!IsLoading && !GameController.Game.IsAIPlayer() && GameController.OrderedUp)
+            else if (!IsLoading && !GameController.Game.IsAIPlayer() && GameController.Passed)
             {
                 MessageBox.Show("Its the Dealer chance to Order up or Pass");
             }

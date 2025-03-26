@@ -427,7 +427,7 @@ namespace DBAL
                     return user;
                 }
             }
-            return null;
+            throw new Exception("[ERROR]  Failed to retrieve guest info => Guest is not there in the Database.");
         }
 
         public static void IsPasswordValid(string password)
