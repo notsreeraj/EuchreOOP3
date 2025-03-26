@@ -304,7 +304,7 @@ namespace DBAL
             }
             catch (Exception ex)
             {
-                throw new Exception($"[ERROR] Failed to Insert User => {ex}");
+                throw new Exception($"[ERROR] Failed to Insert User ");
             }
         }
 
