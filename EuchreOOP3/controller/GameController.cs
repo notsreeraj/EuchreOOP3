@@ -148,7 +148,11 @@ namespace Controller
 
         }
 
-
+        /// <summary>
+        /// Method which make ai decision on trump selection phase of the game
+        /// </summary>
+        /// <param name="lblPlayerDecideTrump"></param>
+        /// <param name="gameForm"></param>
         public static void MakeAIDecideTrump(Label lblPlayerDecideTrump, frmGame gameForm)
         {
             AIPlayer currentPlayer = Game.Turn as AIPlayer;
@@ -196,7 +200,7 @@ namespace Controller
                     // give the dealer a window or panel to let the  dealer choose any suit as trump
                     //AssignTurnToDealer(lblPlayerDecideTrump);
 
-                    if (currentPlayer.GetTrumpDecision(potentialTrump) == Constants.TrumpDecision.Pass)
+                    if (currentPlayer.GetTrumpDecision(potentialTrump) == Constants.TrumpDecision.Pass != DealerPassed == false)
                     {
                         Console.WriteLine("The dealer has Passed");
                         UpdateCurrentPlayer(lblPlayerDecideTrump);
@@ -212,24 +216,36 @@ namespace Controller
                     or he can pass the chance to choose a trump.
                      
                      */
-                    // this is triggered when the dealer decision is not to pass
-                    else
+                    // this is triggered when the dealer decision is not to pass and dealer has passed before this would be the end of trump selection
+                    else if (DealerPassed)
                     {
 
-                        currentPlayer.ExchangeCard(Game.Deck, Game.Trump);
+                        Card.Suits newTrump = currentPlayer.DecideTrumpSuit( Game.Trump);
                         Game.Trump = Game.Deck.GetTopCard().Suit;
                         MessageBox.Show($"{currentPlayer.UserName} has chosen {Game.Trump} as the trump suit!");
                         trumpSet = true;
                         gameForm.LbltrumpSuit.Text = $"The Selected Trump for the Round is {Game.Trump}";
                         Game.GameMode = Constants.GameModes.Tricks;
+                        DealerPassed = false;
 
                     }
 
+                    else
+                    {
+                        currentPlayer.ExchangeCard(Game.Deck, Game.Trump);
+                        Game.Trump = Game.Deck.GetTopCard().Suit;
+                        MessageBox.Show($"Alright the trump has been set as {Game.Trump} by {currentPlayer.UserName}");
+                        trumpSet = true;
+
+                        Card.Suits newTrump = Game.Trump;
+                        gameForm.LbltrumpSuit.Text = $"The Selected Trump for the Round is {newTrump}";
+                        Game.GameMode = Constants.GameModes.Tricks;
+                    }
 
 
-                    // this is to reset the boolian
+                        // this is to reset the boolian
 
-                    Passed = false;
+                        Passed = false;
                 }
                 else if (OrderedUp)
                 {

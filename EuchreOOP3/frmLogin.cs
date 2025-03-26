@@ -67,9 +67,16 @@ namespace EuchreOOP3
         private void btnGuest_Click(object sender, EventArgs e)
         {
             // create a default user and set them as the current user
-            User.CurrentUser = User.GetGuestUser();
-            MainMenu.Show();
-            this.Close();
+            try
+            {
+                User.CurrentUser = User.GetGuestUser();
+                MainMenu.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
