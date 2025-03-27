@@ -73,10 +73,10 @@ namespace Model
         }
 
         /// <summary>
-        /// Methodd to add the reference of each picture box in a panel to the HandViewList
+        /// Methodd to map the reference of each picture box in a panel to the HandViewList
         /// </summary>
         /// <param name="panHand"></param>
-        public void SetUpHand(Panel panHand)
+        public void MapHand(Panel panHand)
         {
             foreach(Control control in panHand.Controls)
             {
@@ -97,6 +97,10 @@ namespace Model
             }
         }
 
+        public void ExchangeSelectedCard(Card selectedCard , Deck deck)
+        {
+
+        }
 
         #endregion
 

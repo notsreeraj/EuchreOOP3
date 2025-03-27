@@ -81,7 +81,7 @@ namespace EuchreView.model
         /// Only called when ai is the dealer and the orderedup bool is true in gameController
         /// </summary>
         /// <param name="deck"></param>
-        public void ExchangeCard(Deck deck, Card.Suits trumpSuit)
+        public  void ExchangeCard(Deck deck, Card.Suits trumpSuit)
         {
 
             deck.ViewCards();

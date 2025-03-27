@@ -39,6 +39,9 @@ namespace EuchreOOP3
         {
             get {return lblTrmpSuit; }                 
         }
+
+        public Button BtnPass { get { return btnPass; } }
+        public Button BtnOrderUp { get { return btnOrderUp; } }
         public frmGame()
         {
             InitializeComponent();
@@ -52,13 +55,14 @@ namespace EuchreOOP3
             IsLoading = true;
             // load the deck to the picture box , 
             // Display the last card in the deck to the user using the picture box using a method in gameController
-            
+            LoadPanelToLocation(panDealer, 296, 186);
+
             ShowDeck();
 
             SetPlayers();
-            panDealer.Visible = true;
+            
             lblCurrentPlayer.Text = GameController.Game.Turn.UserName;
-            panDealer.Location = new System.Drawing.Point(296,186);
+           // panDealer.Location = new System.Drawing.Point(296,186);
             
 
             IsLoading = false;
@@ -88,11 +92,9 @@ namespace EuchreOOP3
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void UpdateDeckVIew(object sender , EventArgs e)
-        {
-    
+        {   
                 ShowDeck();
-
-            
+    
         }
 
         private  void ShowDeck()
@@ -199,6 +201,20 @@ namespace EuchreOOP3
             }
         }
 
+        /// <summary>
+        /// Loads a panel into a specific location.
+        /// </summary>
+        /// <param name="panel">The panel to be moved.</param>
+        /// <param name="x">The x-coordinate of the new location.</param>
+        /// <param name="y">The y-coordinate of the new location.</param>
+        private void LoadPanelToLocation(Panel panel, int x, int y)
+        {
+            if (panel != null)
+            {
+                panel.Visible = true;
+                panel.Location = new Point(x, y);
+            }
+        }
 
         /// <summary>
         ///
@@ -451,8 +467,25 @@ namespace EuchreOOP3
 
         private void btnOrderUp_Click(object sender, EventArgs e)
         {
-            GameController.OrderedUp = true;
-            GameController.AssignTurnToDealer(lblPlayerDecideTrump);
+
+            if (GameController.Game.Turn != GameController.Game.Dealer)
+            {
+                GameController.OrderedUp = true;
+                GameController.AssignTurnToDealer(lblPlayerDecideTrump);
+                
+            }
+            else if(GameController.Game.Turn == GameController.Game.Dealer)
+            {
+                // now the human dealer has to take up the card and exchange the card with any card from his deck
+                // chang the game mode to tricks
+                MessageBox.Show("You Have chosen to Order up the potential trump , Now the game is initiated");
+                GameController.Game.GameMode = Constants.GameModes.Tricks;
+                
+
+            }
+
+            btnOrderUp.Enabled = false;
+            
             // if this is called the the turn must be given to the dealer to set the trump
             // which means that the ai should exchange a card the trump suit card from his own hand
         }
@@ -463,42 +496,174 @@ namespace EuchreOOP3
             // when clikc the next player is given a chance
             GameController.UpdateCurrentPlayer(lblPlayerDecideTrump);
             Console.WriteLine($"From frmGame pass click : {GameController.Game.Turn.UserName} is the player in turn");
-            
+
+            btnPass.Enabled = false;
         }
 
         private void lblPlayerDecideTrump_TextChanged(object sender, EventArgs e)
         {
-            
-            if (!IsLoading && GameController.Game.IsAIPlayer())
+
+            if (!IsLoading)
             {
+
+                if ( GameController.Game.IsAIPlayer())
+                {
                 Constants.GameModes gameMode = GameController.Game.GameMode;
                 GameController.MakeAIMove(gameMode, this);
 
-                if(GameController.trumpSet = true && GameController.Game.GameMode == Constants.GameModes.Tricks)
-                {
-                    MessageBox.Show($"The game has been set up");
-                    btnOrderUp.Enabled = false;
-                    btnPass.Enabled = false;
+                    if(GameController.trumpSet = true && GameController.Game.GameMode == Constants.GameModes.Tricks)
+                    {
+                        MessageBox.Show($"The game has been set up");
+                        btnOrderUp.Enabled = false;
+                        btnPass.Enabled = false;
+                    }
                 }
-            }
-            else if(!IsLoading && !GameController.Game.IsAIPlayer() && GameController.DealerPassed)
-            {
-                MessageBox.Show("Dealer has Passed , It is you chance to Choose a trump as any suit you want except the potential trump");
+                else
+                {
+                    // calling the event to subscribe to exchange event to each of the picture box in the hand 
+                    SubscribeExchangeCardToHand();
+
+
+                    HPlayer currrentPlayer = GameController.Game.Turn as HPlayer;
+                    Player dealer = GameController.Game.Dealer;
+                    Card.Suits potentialTrump = GameController.Game.Trump;
+                    btnOrderUp.Enabled = true;
+                    btnPass.Enabled = true;
+
+                    if (dealer as HPlayer != currrentPlayer)
+                    {
+                        // check two types of passes
+                        if (GameController.DealerPassed)
+                        {
+                            Console.WriteLine($@"[State] User is the current player but not the dealer 
+                                                ;User can choose any suit as trump now 
+                                                : Use can also pass
+                                                enable pass btn and enable the feature to  choose any suit as trump suit");
+                            // user can choose any suit as trump
+                            // use can also pass
+                            SubscribeExchangeCardToHand(); 
+                            btnPass.Enabled = true;
+
+                            // enable pass btn and enable the feature to  choose any suit as trump suit 
+                            GameController.DealerPassed = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine($@"// this would be a pass from a non dealer
+                                                // enable order up and pass buttons
+                                               // here the output can be either orderup true or pass true");
+                            // this would be a pass from a non dealer
+                            // enable order up and pass buttons
+
+                           // btnPass.Enabled = true;
+                            btnOrderUp.Enabled=true;
+                            // here the output can be either orderup true or pass true
+                        }
+
+                    }
+                    else if(dealer as HPlayer == currrentPlayer)
+                    {
+                        if (GameController.Passed)
+                        {
+                            // give the hplayer chance to pass or choose any suit as trump or to pass
+                            if (GameController.DealerPassed)
+                            {
+
+                                Console.WriteLine("enable the feature to select any suit as trump and also the user can also pass");
+
+                                // enable the feature to select any suit as trump 
+                                // enable pass btn
+
+                                //btnPass.Enabled=true;
+                                SubscribeExchangeCardToHand();
+                            }
+                            else
+                            {
+                                Console.WriteLine("enable the featur to orderup button or pass , here the user can pass or order up");
+
+                                //btnPass.Enabled = true;
+                                btnOrderUp.Enabled = true;
+                                // enable the featur to orderup button or pass
+                            }
+
+                            GameController.Passed = false;
+                        }
+                        else if (GameController.OrderedUp)
+                        {
+                            Console.WriteLine("Here the user who is the dealer can orderup the trump suit as the previuos player passed");
+                            // enable the order up button 
+                            btnOrderUp.Enabled = true;
+                            GameController.OrderedUp = false;
+                        }
+                    }
+                     
+                }
+                  
+
 
             }
-            else if (!IsLoading && !GameController.Game.IsAIPlayer() && GameController.OrderedUp)
+                   
+        }  
+        
+       /// <summary>
+       /// exchange event handler for the hand of the human player when he is the dealer and must be trum selection mode
+       /// This will be mapped to each picture box of the hand panel
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
+       private void ExchangeCard(object sender , EventArgs e)
+        {
+
+            // the selected pb index is taken from the handView list of the user
+            PictureBox selectedPictureBox = sender as PictureBox;
+            List<PictureBox> handView = GameController.Game.Players[0].HandView;
+
+  
+            int cardIndex = handView.IndexOf(selectedPictureBox);
+            MessageBox.Show($"The selected card index is {cardIndex} ");
+
+            HPlayer player = GameController.Game.Turn as HPlayer;
+           ;
+            player.ExchangeSelectedCard(player.Hand[cardIndex], GameController.Game.Deck,GameController.Game.Trump);
+
+            // Disable the buttons 
+            btnOrderUp.Enabled = false;
+            btnPass.Enabled = false;
+        }
+
+        /// <summary>
+        /// method to subscribe the hand of the player to the exchange event when the dealer is not ai , this must be only called when the human player is dealer and it is trump selection game mode
+        /// </summary>
+        private void SubscribeExchangeCardToHand()
+        {
+            if (GameController.Game.Dealer is HPlayer && GameController.Game.GameMode == Constants.GameModes.TrumpSetting)
             {
-                MessageBox.Show("Prevois Player has Orderup , It is you chance exchange the trump");
+                List<PictureBox> HandView = GameController.Game.Dealer.HandView;
+                foreach (PictureBox Hand in HandView)
+                {
+                    Hand.Click += ExchangeCard;
+                }
             }
-            else if (!IsLoading && !GameController.Game.IsAIPlayer() && GameController.Passed)
+        }
+        /// <summary>
+        /// method to unsubscribe to the even hanler for the hand , this will only be called when trump decided and the game mode is changed to tricks
+        /// </summary>
+        private void UnsubscribeExchangeCardFromHand()
+        {
+            if (GameController.Game.Dealer is HPlayer)
             {
-                MessageBox.Show("Its the Dealer chance to Order up or Pass");
+                List<PictureBox> HandView = GameController.Game.Dealer.HandView;
+                foreach (PictureBox Hand in HandView)
+                {
+                    Hand.Click -= ExchangeCard;
+                }
             }
-            else
-            {
-                Console.WriteLine("ai IS NOT THE PLAYER");
-            }           
-        }   
+
+        }
+
+
+
+
     } // class ends here
 } // namespace ends here
     
