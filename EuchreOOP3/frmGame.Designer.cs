@@ -561,6 +561,7 @@
             // btnOrderUp
             // 
             this.btnOrderUp.BackColor = System.Drawing.Color.LightGray;
+            this.btnOrderUp.Enabled = false;
             this.btnOrderUp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOrderUp.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrderUp.Location = new System.Drawing.Point(43, 4);
@@ -574,6 +575,7 @@
             // btnPass
             // 
             this.btnPass.BackColor = System.Drawing.Color.LightGray;
+            this.btnPass.Enabled = false;
             this.btnPass.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPass.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPass.Location = new System.Drawing.Point(356, 4);

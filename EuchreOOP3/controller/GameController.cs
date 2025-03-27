@@ -136,7 +136,7 @@ namespace Controller
             Card pickedCard = Game.Turn.PickCard(Game.Deck);
 
             ShowPickedCards(pickedCard);
-            Console.WriteLine($"AI has Picked : {pickedCard.ToString()}");
+            Console.WriteLine($"AI has Picked : {pickedCard}");
             Game.Deck.RemoveCard(pickedCard);
 
             if (pickedCard.IsBlackJack())
@@ -168,20 +168,27 @@ namespace Controller
 
                 if (currentPlayer.GetTrumpDecision(potentialTrump) == Constants.TrumpDecision.OrderUp)
                 {
-                    Console.WriteLine($"{currentPlayer.UserName} has order up");
+                    Console.WriteLine($"[State] ai is current player and user is dealer , ai decided to order up");
 
                     AssignTurnToDealer(lblPlayerDecideTrump);
                     MessageBox.Show($"{currentPlayer.UserName} has decided to order up so  now you gotta exchange a card from you hand with the top card in the deck");
 
                     OrderedUp = true;
+
+                    gameForm.BtnOrderUp.Enabled = true;
+                    gameForm.BtnPass.Enabled = false;
                     // the player in turn now must be the dealer and he must exchange the topcard of the deck with one of his cards
                 }
                 else
                 {
-                    Console.WriteLine($"{currentPlayer.UserName} has passed");
+
+                    Console.WriteLine($"[State] Ai is current player and not dealer , decided to pass");
                     MessageBox.Show($"{currentPlayer.UserName} has decide to Pass, So Its The Dealers chance to Choose any suit as the trump");
                     UpdateCurrentPlayer(lblPlayerDecideTrump);
                     Passed = true;
+
+                    gameForm.BtnOrderUp.Enabled = true;
+                    gameForm.BtnPass.Enabled = true;
                 }
 
                 // ge the player in turn '
@@ -200,17 +207,23 @@ namespace Controller
                     // give the dealer a window or panel to let the  dealer choose any suit as trump
                     //AssignTurnToDealer(lblPlayerDecideTrump);
 
-                    if (currentPlayer.GetTrumpDecision(potentialTrump) == Constants.TrumpDecision.Pass != DealerPassed == false)
+                    if ((currentPlayer.GetTrumpDecision(potentialTrump) == Constants.TrumpDecision.Pass) && !DealerPassed)
                     {
-                        Console.WriteLine("The dealer has Passed");
+                        
+                        Console.WriteLine($"[State] ai is the dealer and current player, ai dealer decided to pass ");
                         UpdateCurrentPlayer(lblPlayerDecideTrump);
                         DealerPassed = true;
+
+                       //gameForm.BtnOrderUp.Enabled = true;
+
+                       // enable the feature to let the user choose any suit as the trump
+                        gameForm.BtnPass.Enabled = false;
                     }
 
 
                     /*
                      Here ai can pass or order up
-                    that is exchange the cards or 
+                     
                     2.	If the non-dealer passes, then the dealer gets to choose whether he wants to keep this as the trump. 
                     Here he can either pick up the card and replace it with another card from his hand and the new card would be the trump, 
                     or he can pass the chance to choose a trump.
@@ -219,6 +232,7 @@ namespace Controller
                     // this is triggered when the dealer decision is not to pass and dealer has passed before this would be the end of trump selection
                     else if (DealerPassed)
                     {
+                        Console.WriteLine($"[State] ai is the dealer and current player, this is the second time dealer ai is getting chance here it will decide a trump no matter what");
 
                         Card.Suits newTrump = currentPlayer.DecideTrumpSuit( Game.Trump);
                         Game.Trump = Game.Deck.GetTopCard().Suit;
@@ -228,10 +242,14 @@ namespace Controller
                         Game.GameMode = Constants.GameModes.Tricks;
                         DealerPassed = false;
 
+
+
                     }
 
                     else
                     {
+                        Console.WriteLine($"[State] ai is the dealer and current player, ai dealer decided to order up and exchange the potential trump ");
+
                         currentPlayer.ExchangeCard(Game.Deck, Game.Trump);
                         Game.Trump = Game.Deck.GetTopCard().Suit;
                         MessageBox.Show($"Alright the trump has been set as {Game.Trump} by {currentPlayer.UserName}");
@@ -249,7 +267,7 @@ namespace Controller
                 }
                 else if (OrderedUp)
                 {
-                    Console.WriteLine($"State of the game : {currentPlayer.UserName} is the dealer and he must exchange the topcard of the deck with one of his own");
+                    Console.WriteLine($"[State] Ai is the dealer and current player , previus player has orderd up and ai has to exchange the pot trump and start the game");
                     currentPlayer.ExchangeCard(Game.Deck, Game.Trump);
                     Game.Trump = Game.Deck.GetTopCard().Suit;
                     MessageBox.Show($"Alright the trump has been set as {Game.Trump} by {currentPlayer.UserName}");
@@ -264,6 +282,8 @@ namespace Controller
 
                     // this line is to reset the boolian
                     OrderedUp = false;
+
+                         
                 }
             }
         }
@@ -299,7 +319,7 @@ namespace Controller
         /// <param name="player"></param>
         public static void LoadHandToView(Panel HandPanel, Player player)
         {
-            player.SetUpHand(HandPanel);
+            player.MapHand(HandPanel);
             player.LoadPlayerHand();
 
         }
