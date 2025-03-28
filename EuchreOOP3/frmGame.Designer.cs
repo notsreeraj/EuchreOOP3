@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label label6;
             this.panTop = new System.Windows.Forms.Panel();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
@@ -76,6 +77,15 @@
             this.btnPass = new System.Windows.Forms.Button();
             this.panTrumpChoices = new System.Windows.Forms.Panel();
             this.lblPlayerDecideTrump = new System.Windows.Forms.Label();
+            this.panTrumpSelection = new System.Windows.Forms.Panel();
+            this.lblPlayerName = new System.Windows.Forms.Label();
+            this.btnSetTrump = new System.Windows.Forms.Button();
+            this.pictureBox23 = new System.Windows.Forms.PictureBox();
+            this.pictureBox22 = new System.Windows.Forms.PictureBox();
+            this.pictureBox21 = new System.Windows.Forms.PictureBox();
+            this.lblSelectedSuit = new System.Windows.Forms.Label();
+            this.lblMessage = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
             this.panTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -109,7 +119,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             this.panTrumpChoices.SuspendLayout();
+            this.panTrumpSelection.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             this.SuspendLayout();
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = System.Drawing.Color.Silver;
+            label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            label6.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label6.Location = new System.Drawing.Point(204, 72);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(392, 29);
+            label6.TabIndex = 0;
+            label6.Text = "Choose any one of the suit as the trump";
             // 
             // panTop
             // 
@@ -599,12 +625,101 @@
             // 
             this.lblPlayerDecideTrump.AutoSize = true;
             this.lblPlayerDecideTrump.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayerDecideTrump.Location = new System.Drawing.Point(7, 650);
+            this.lblPlayerDecideTrump.Location = new System.Drawing.Point(7, 585);
             this.lblPlayerDecideTrump.Name = "lblPlayerDecideTrump";
             this.lblPlayerDecideTrump.Size = new System.Drawing.Size(213, 90);
             this.lblPlayerDecideTrump.TabIndex = 14;
             this.lblPlayerDecideTrump.Text = "Current Player To \r\nDecide Trump Suit \r\n:";
             this.lblPlayerDecideTrump.TextChanged += new System.EventHandler(this.lblPlayerDecideTrump_TextChanged);
+            // 
+            // panTrumpSelection
+            // 
+            this.panTrumpSelection.BackColor = System.Drawing.Color.Gray;
+            this.panTrumpSelection.Controls.Add(this.lblSelectedSuit);
+            this.panTrumpSelection.Controls.Add(this.lblPlayerName);
+            this.panTrumpSelection.Controls.Add(this.btnSetTrump);
+            this.panTrumpSelection.Controls.Add(this.pictureBox23);
+            this.panTrumpSelection.Controls.Add(this.pictureBox22);
+            this.panTrumpSelection.Controls.Add(this.pictureBox21);
+            this.panTrumpSelection.Controls.Add(label6);
+            this.panTrumpSelection.Location = new System.Drawing.Point(250, 12);
+            this.panTrumpSelection.Name = "panTrumpSelection";
+            this.panTrumpSelection.Size = new System.Drawing.Size(618, 380);
+            this.panTrumpSelection.TabIndex = 15;
+            this.panTrumpSelection.Visible = false;
+            // 
+            // lblPlayerName
+            // 
+            this.lblPlayerName.BackColor = System.Drawing.Color.Silver;
+            this.lblPlayerName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblPlayerName.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayerName.Location = new System.Drawing.Point(54, 72);
+            this.lblPlayerName.Name = "lblPlayerName";
+            this.lblPlayerName.Size = new System.Drawing.Size(144, 30);
+            this.lblPlayerName.TabIndex = 5;
+            this.lblPlayerName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnSetTrump
+            // 
+            this.btnSetTrump.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnSetTrump.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSetTrump.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetTrump.Location = new System.Drawing.Point(159, 277);
+            this.btnSetTrump.Name = "btnSetTrump";
+            this.btnSetTrump.Size = new System.Drawing.Size(172, 44);
+            this.btnSetTrump.TabIndex = 4;
+            this.btnSetTrump.Text = "Set Trump Suit";
+            this.btnSetTrump.UseVisualStyleBackColor = false;
+            this.btnSetTrump.Click += new System.EventHandler(this.btnSetTrump_Click);
+            // 
+            // pictureBox23
+            // 
+            this.pictureBox23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox23.Location = new System.Drawing.Point(409, 136);
+            this.pictureBox23.Name = "pictureBox23";
+            this.pictureBox23.Size = new System.Drawing.Size(107, 108);
+            this.pictureBox23.TabIndex = 3;
+            this.pictureBox23.TabStop = false;
+            // 
+            // pictureBox22
+            // 
+            this.pictureBox22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox22.Location = new System.Drawing.Point(254, 136);
+            this.pictureBox22.Name = "pictureBox22";
+            this.pictureBox22.Size = new System.Drawing.Size(107, 108);
+            this.pictureBox22.TabIndex = 2;
+            this.pictureBox22.TabStop = false;
+            // 
+            // pictureBox21
+            // 
+            this.pictureBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox21.Location = new System.Drawing.Point(90, 136);
+            this.pictureBox21.Name = "pictureBox21";
+            this.pictureBox21.Size = new System.Drawing.Size(107, 108);
+            this.pictureBox21.TabIndex = 1;
+            this.pictureBox21.TabStop = false;
+            // 
+            // lblSelectedSuit
+            // 
+            this.lblSelectedSuit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.lblSelectedSuit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblSelectedSuit.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedSuit.Location = new System.Drawing.Point(372, 277);
+            this.lblSelectedSuit.Name = "lblSelectedSuit";
+            this.lblSelectedSuit.Size = new System.Drawing.Size(144, 44);
+            this.lblSelectedSuit.TabIndex = 6;
+            this.lblSelectedSuit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblMessage.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(17, 716);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(2, 37);
+            this.lblMessage.TabIndex = 16;
             // 
             // frmGame
             // 
@@ -613,6 +728,7 @@
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.ControlBox = false;
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.lblPlayerDecideTrump);
             this.Controls.Add(this.lblTrmpSuit);
             this.Controls.Add(this.lblDealerName);
@@ -626,6 +742,7 @@
             this.Controls.Add(this.panTop);
             this.Controls.Add(this.panRight);
             this.Controls.Add(this.panTrumpChoices);
+            this.Controls.Add(this.panTrumpSelection);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmGame";
@@ -666,6 +783,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
             this.panTrumpChoices.ResumeLayout(false);
+            this.panTrumpSelection.ResumeLayout(false);
+            this.panTrumpSelection.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -719,5 +841,13 @@
         private System.Windows.Forms.PictureBox pbAI3Pick;
         private System.Windows.Forms.PictureBox pbAI2Pick;
         private System.Windows.Forms.Label lblPlayerDecideTrump;
+        private System.Windows.Forms.Panel panTrumpSelection;
+        private System.Windows.Forms.PictureBox pictureBox22;
+        private System.Windows.Forms.PictureBox pictureBox21;
+        private System.Windows.Forms.Label lblPlayerName;
+        private System.Windows.Forms.Button btnSetTrump;
+        private System.Windows.Forms.PictureBox pictureBox23;
+        private System.Windows.Forms.Label lblSelectedSuit;
+        private System.Windows.Forms.Label lblMessage;
     }
 }
