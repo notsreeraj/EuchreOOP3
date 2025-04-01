@@ -32,6 +32,8 @@ namespace Model
         public List<Card> Trick { get; set; }
         public Constants.GameModes GameMode { get; set; }
 
+        //public Constants.TrumpDecision TrumpDecision { get; set; }
+
         public static int  currentPlayer;
 
 

@@ -28,10 +28,20 @@ namespace EuchreView.model
             return deck.GetTopCard();
         }
 
-        public override Card PlayCard()
+        public override Card PlayCard( Card card ,List<Card> tricks)
         {
+            // take in the card to play
+            Card playCard = card;
+            int cardIndex = GetCardIndex(card);
+
+            Hand.Remove(card);
+            LoadPlayerHand();
+
+            // the playcard will be the card from the hand , so find the index of the card or just remove them directly
+            // getting the index of the card will be a good idea because we also need to update the handview list cause that contains the referene of the picture boxes inside frmGame
+            return playCard;
             // TODO
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
 

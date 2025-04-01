@@ -48,22 +48,7 @@ namespace EuchreOOP3
             //panelPolicy.Visible = true;
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-            //HideAllPanels();
-            panelThemes.Visible = true;
-        }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-            //HideAllPanels();
-            
-        }
-
-        private void button2ExitFrm_Click(object sender, EventArgs e)
-        {
-            this.Close(); // close the form
-        }
 
         private void bthExit2_Click(object sender, EventArgs e)
         {
