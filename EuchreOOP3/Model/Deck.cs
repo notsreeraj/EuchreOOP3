@@ -56,39 +56,40 @@ namespace Model
         /// </summary>
         private void SetDeck()
         {
-            DeckOfCards = new List<Card>();
+            DeckOfCards = new List<Card>
+            {
+                // Add Hearts
+                new Card(Suits.Heart, Ranks.Ace, Resources.WG_HA),
+                new Card(Suits.Heart, Ranks.King, Resources.WG_HK),
+                new Card(Suits.Heart, Ranks.Queen, Resources.WG_HQ),
+                new Card(Suits.Heart, Ranks.Jack, Resources.WG_HJ),
+                new Card(Suits.Heart, Ranks.Ten, Resources.WG_HT),
+                new Card(Suits.Heart, Ranks.Nine, Resources.WG_H9),
 
-            // Add Hearts
-            DeckOfCards.Add(new Card(Suits.Heart, Ranks.Ace, Resources.WG_HA));
-            DeckOfCards.Add(new Card(Suits.Heart, Ranks.King, Resources.WG_HK));
-            DeckOfCards.Add(new Card(Suits.Heart, Ranks.Queen, Resources.WG_HQ));
-            DeckOfCards.Add(new Card(Suits.Heart, Ranks.Jack, Resources.WG_HJ));
-            DeckOfCards.Add(new Card(Suits.Heart, Ranks.Ten, Resources.WG_HT));
-            DeckOfCards.Add(new Card(Suits.Heart, Ranks.Nine, Resources.WG_H9));
+                // Add Diamonds
+                new Card(Suits.Diamond, Ranks.Ace, Resources.WG_DA),
+                new Card(Suits.Diamond, Ranks.King, Resources.WG_DK),
+                new Card(Suits.Diamond, Ranks.Queen, Resources.WG_DQ),
+                new Card(Suits.Diamond, Ranks.Jack, Resources.WG_DJ),
+                new Card(Suits.Diamond, Ranks.Ten, Resources.WG_DT),
+                new Card(Suits.Diamond, Ranks.Nine, Resources.WG_D9),
 
-            // Add Diamonds
-            DeckOfCards.Add(new Card(Suits.Diamond, Ranks.Ace, Resources.WG_DA));
-            DeckOfCards.Add(new Card(Suits.Diamond, Ranks.King, Resources.WG_DK));
-            DeckOfCards.Add(new Card(Suits.Diamond, Ranks.Queen, Resources.WG_DQ));
-            DeckOfCards.Add(new Card(Suits.Diamond, Ranks.Jack, Resources.WG_DJ));
-            DeckOfCards.Add(new Card(Suits.Diamond, Ranks.Ten, Resources.WG_DT));
-            DeckOfCards.Add(new Card(Suits.Diamond, Ranks.Nine, Resources.WG_D9));
+                // Add Spades
+                new Card(Suits.Spades, Ranks.Ace, Resources.WG_SA),
+                new Card(Suits.Spades, Ranks.King, Resources.WG_SK),
+                new Card(Suits.Spades, Ranks.Queen, Resources.WG_SQ),
+                new Card(Suits.Spades, Ranks.Jack, Resources.WG_SJ),
+                new Card(Suits.Spades, Ranks.Ten, Resources.WG_ST),
+                new Card(Suits.Spades, Ranks.Nine, Resources.WG_S9),
 
-            // Add Spades
-            DeckOfCards.Add(new Card(Suits.Spades, Ranks.Ace, Resources.WG_SA));
-            DeckOfCards.Add(new Card(Suits.Spades, Ranks.King, Resources.WG_SK));
-            DeckOfCards.Add(new Card(Suits.Spades, Ranks.Queen, Resources.WG_SQ));
-            DeckOfCards.Add(new Card(Suits.Spades, Ranks.Jack, Resources.WG_SJ));
-            DeckOfCards.Add(new Card(Suits.Spades, Ranks.Ten, Resources.WG_ST));
-            DeckOfCards.Add(new Card(Suits.Spades, Ranks.Nine, Resources.WG_S9));
-
-            // Add Clubs
-            DeckOfCards.Add(new Card(Suits.Clubs, Ranks.Ace, Resources.WG_CA));
-            DeckOfCards.Add(new Card(Suits.Clubs, Ranks.King, Resources.WG_CK));
-            DeckOfCards.Add(new Card(Suits.Clubs, Ranks.Queen, Resources.WG_CQ));
-            DeckOfCards.Add(new Card(Suits.Clubs, Ranks.Jack, Resources.WG_CJ));
-            DeckOfCards.Add(new Card(Suits.Clubs, Ranks.Ten, Resources.WG_CT));
-            DeckOfCards.Add(new Card(Suits.Clubs, Ranks.Nine, Resources.WG_C9));
+                // Add Clubs
+                new Card(Suits.Clubs, Ranks.Ace, Resources.WG_CA),
+                new Card(Suits.Clubs, Ranks.King, Resources.WG_CK),
+                new Card(Suits.Clubs, Ranks.Queen, Resources.WG_CQ),
+                new Card(Suits.Clubs, Ranks.Jack, Resources.WG_CJ),
+                new Card(Suits.Clubs, Ranks.Ten, Resources.WG_CT),
+                new Card(Suits.Clubs, Ranks.Nine, Resources.WG_C9)
+            };
 
 
         }

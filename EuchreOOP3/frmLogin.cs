@@ -16,6 +16,10 @@ namespace EuchreOOP3
     {
         frmMainMenu MainMenu;
         private int titleDirection = 1;
+
+
+        public TextBox TxbEmail { get { return txbEmail; } }
+
         public frmLogin( frmMainMenu mm)
         {
             MainMenu = mm;
@@ -35,9 +39,11 @@ namespace EuchreOOP3
             // validate the current user typed in user credentials 
             // set the current user reference to the same user in the users list
              User.CurrentUser = User.IsUserValid(txbEmail.Text, txbPassword.Text);
+            Console.WriteLine( "Current user called from Login button click"+ User.CurrentUser.Username);
             if (User.CurrentUser == null)
             {
                 MessageBox.Show("[Error] Invalid User Credenrials");
+                
             }
             else
             {
@@ -61,9 +67,16 @@ namespace EuchreOOP3
         private void btnGuest_Click(object sender, EventArgs e)
         {
             // create a default user and set them as the current user
-            User.CurrentUser = User.GetGuestUser();
-            MainMenu.Show();
-            this.Close();
+            try
+            {
+                User.CurrentUser = User.GetGuestUser();
+                MainMenu.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)

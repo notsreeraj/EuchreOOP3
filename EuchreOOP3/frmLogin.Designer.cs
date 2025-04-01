@@ -42,6 +42,12 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -56,8 +62,9 @@
             this.btnExit.Location = new System.Drawing.Point(378, 922);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(113, 47);
-            this.btnExit.TabIndex = 0;
+            this.btnExit.TabIndex = 5;
             this.btnExit.Text = "EXIT GAME ";
+            this.toolTip6.SetToolTip(this.btnExit, "Click to exit game");
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -69,8 +76,9 @@
             this.btnLogin.Location = new System.Drawing.Point(165, 818);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(162, 61);
-            this.btnLogin.TabIndex = 1;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "LOG IN";
+            this.toolTip3.SetToolTip(this.btnLogin, "Click to Login");
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -82,8 +90,9 @@
             this.btnSignIn.Location = new System.Drawing.Point(345, 818);
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Size = new System.Drawing.Size(162, 61);
-            this.btnSignIn.TabIndex = 1;
+            this.btnSignIn.TabIndex = 3;
             this.btnSignIn.Text = "SIGN IN";
+            this.toolTip4.SetToolTip(this.btnSignIn, "Click to Sign In");
             this.btnSignIn.UseVisualStyleBackColor = false;
             this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
             // 
@@ -92,7 +101,7 @@
             this.lblEmailDis.AutoSize = true;
             this.lblEmailDis.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmailDis.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblEmailDis.Location = new System.Drawing.Point(173, 733);
+            this.lblEmailDis.Location = new System.Drawing.Point(183, 675);
             this.lblEmailDis.Name = "lblEmailDis";
             this.lblEmailDis.Size = new System.Drawing.Size(91, 23);
             this.lblEmailDis.TabIndex = 4;
@@ -104,7 +113,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblPassword.Location = new System.Drawing.Point(173, 671);
+            this.lblPassword.Location = new System.Drawing.Point(173, 735);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(101, 23);
             this.lblPassword.TabIndex = 5;
@@ -114,20 +123,22 @@
             // txbEmail
             // 
             this.txbEmail.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbEmail.Location = new System.Drawing.Point(301, 733);
+            this.txbEmail.Location = new System.Drawing.Point(301, 675);
             this.txbEmail.Name = "txbEmail";
             this.txbEmail.Size = new System.Drawing.Size(393, 30);
-            this.txbEmail.TabIndex = 6;
+            this.txbEmail.TabIndex = 0;
             this.txbEmail.Text = "guest@domain.com";
+            this.toolTip1.SetToolTip(this.txbEmail, "Enter your email ID");
             // 
             // txbPassword
             // 
             this.txbPassword.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbPassword.Location = new System.Drawing.Point(301, 671);
+            this.txbPassword.Location = new System.Drawing.Point(301, 735);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(393, 30);
-            this.txbPassword.TabIndex = 7;
+            this.txbPassword.TabIndex = 1;
             this.txbPassword.Text = "guestpassword";
+            this.toolTip2.SetToolTip(this.txbPassword, "Enter your password");
             // 
             // timerEuchre
             // 
@@ -142,8 +153,9 @@
             this.btnGuest.Location = new System.Drawing.Point(532, 818);
             this.btnGuest.Name = "btnGuest";
             this.btnGuest.Size = new System.Drawing.Size(162, 61);
-            this.btnGuest.TabIndex = 1;
+            this.btnGuest.TabIndex = 4;
             this.btnGuest.Text = "GUEST";
+            this.toolTip5.SetToolTip(this.btnGuest, "Click to access guest");
             this.btnGuest.UseVisualStyleBackColor = false;
             this.btnGuest.Click += new System.EventHandler(this.btnGuest_Click);
             // 
@@ -239,5 +251,11 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTip3;
+        private System.Windows.Forms.ToolTip toolTip4;
+        private System.Windows.Forms.ToolTip toolTip5;
+        private System.Windows.Forms.ToolTip toolTip6;
     }
 }

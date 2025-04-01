@@ -136,7 +136,7 @@ namespace Controller
             Card pickedCard = Game.Turn.PickCard(Game.Deck);
 
             ShowPickedCards(pickedCard);
-            Console.WriteLine($"AI has Picked : {pickedCard.ToString()}");
+            Console.WriteLine($"AI has Picked : {pickedCard}");
             Game.Deck.RemoveCard(pickedCard);
 
             if (pickedCard.IsBlackJack())
@@ -148,110 +148,185 @@ namespace Controller
 
         }
 
-
+        /// <summary>
+        /// Method which make ai decision on trump selection phase of the game
+        /// </summary>
+        /// <param name="lblPlayerDecideTrump"></param>
+        /// <param name="gameForm"></param>
+        /// <summary>
+        /// Method which handles AI decisions during the trump selection phase of the game
+        /// </summary>
+        /// <param name="lblPlayerDecideTrump">Label showing the current player for trump decisions</param>
+        /// <param name="gameForm">Reference to the game form for UI updates</param>
         public static void MakeAIDecideTrump(Label lblPlayerDecideTrump, frmGame gameForm)
         {
+            Console.WriteLine("MakeAIDecideTrump called");
             AIPlayer currentPlayer = Game.Turn as AIPlayer;
             Player dealer = Game.Dealer;
             Card.Suits potentialTrump = Game.Trump;
 
+            // Log the current game state for debugging
+            Console.WriteLine($"Current State - OrderedUp: {OrderedUp}, Passed: {Passed}, DealerPassed: {DealerPassed}");
+            Console.WriteLine($"Current Player: {currentPlayer.UserName}, Is Dealer: {currentPlayer == dealer}");
 
-            if (dealer as AIPlayer != currentPlayer)
+            // Case 1: AI player is not the dealer
+            if (dealer != currentPlayer)
             {
-                // this will happen only when the  previus player passes
-                Console.WriteLine($"Player who passed is {currentPlayer.UserName}");
-                //GameController.UpdateCurrentPlayer(lblPlayerDecideTrump);
+                Console.WriteLine("AI PLAYER IS NOT THE DEALER");
 
-                if (currentPlayer.GetTrumpDecision(potentialTrump) == Constants.TrumpDecision.OrderUp)
+                // First round of trump selection
+                if (!Passed && !DealerPassed)
                 {
-                    Console.WriteLine($"{currentPlayer.UserName} has order up");
-
-                    AssignTurnToDealer(lblPlayerDecideTrump);
-                    MessageBox.Show($"{currentPlayer.UserName} has decided to order up so  now you gotta exchange a card from you hand with the top card in the deck");
-
-                    OrderedUp = true;
-                    // the player in turn now must be the dealer and he must exchange the topcard of the deck with one of his cards
-                }
-                else
-                {
-                    Console.WriteLine($"{currentPlayer.UserName} has passed");
-                    MessageBox.Show($"{currentPlayer.UserName} has decide to Pass, So Its The Dealers chance to Choose any suit as the trump");
-                    UpdateCurrentPlayer(lblPlayerDecideTrump);
-                    Passed = true;
-                }
-
-                // ge the player in turn '
-                // must mus confirm that the player in turn is an ai player
-                // if it is ai let the ai choose whether it should make it trump or not 
-                // here the ai should analyze the trump suit and compare it with the cards in its hand
-                //
-            }
-            else if (dealer as AIPlayer == currentPlayer)
-            {
-                if (Passed)
-                {
-                    Console.WriteLine($"State of the game : {currentPlayer.UserName} is the dealer and he can choose any suit as trump other the potential trump");
-                    MessageBox.Show($"As {currentPlayer.UserName} is the dealer and Rest of the players has passed, You can choose any suit as trump suit except the potential trump");
-
-                    // give the dealer a window or panel to let the  dealer choose any suit as trump
-                    //AssignTurnToDealer(lblPlayerDecideTrump);
-
-                    if (currentPlayer.GetTrumpDecision(potentialTrump) == Constants.TrumpDecision.Pass)
+                    // AI decides whether to order up or pass
+                    if (currentPlayer.GetTrumpDecision(potentialTrump) == Constants.TrumpDecision.OrderUp)
                     {
-                        Console.WriteLine("The dealer has Passed");
-                        UpdateCurrentPlayer(lblPlayerDecideTrump);
-                        DealerPassed = true;
+                        Console.WriteLine($"[STATE] {currentPlayer.UserName} (non-dealer AI) decided to order up");
+                        MessageBox.Show($"{currentPlayer.UserName} has decided to order up. The dealer must exchange a card from their hand with the top card in the deck.");
+
+                        // Set OrderedUp flag and assign turn to dealer
+                        OrderedUp = true;
+                        AssignTurnToDealer(lblPlayerDecideTrump);
                     }
-
-
-                    /*
-                     Here ai can pass or order up
-                    that is exchange the cards or 
-                    2.	If the non-dealer passes, then the dealer gets to choose whether he wants to keep this as the trump. 
-                    Here he can either pick up the card and replace it with another card from his hand and the new card would be the trump, 
-                    or he can pass the chance to choose a trump.
-                     
-                     */
-                    // this is triggered when the dealer decision is not to pass
                     else
                     {
+                        Console.WriteLine($"[STATE] {currentPlayer.UserName} (non-dealer AI) decided to pass");
+                        MessageBox.Show($"{currentPlayer.UserName} has decided to pass. It's now the dealer's turn to decide.");
 
+                        // Set Passed flag and move to next player (dealer)
+                        Passed = true;
+                        UpdateCurrentPlayer(lblPlayerDecideTrump);
+
+                        // Make UI buttons available for human dealer
+                        if (!(Game.Dealer is AIPlayer))
+                        {
+                            gameForm.BtnOrderUp.Enabled = true;
+                            gameForm.BtnPass.Enabled = true;
+                        }
+                    }
+                }
+                // Second round of trump selection (after both passed in first round)
+                else if (Passed && DealerPassed)
+                {
+                    Console.WriteLine($"[STATE] Second round, {currentPlayer.UserName} (non-dealer AI) gets to choose any suit except {potentialTrump}");
+
+                    // AI decides on a new trump suit
+                    Card.Suits newTrump = currentPlayer.DecideTrumpSuit(potentialTrump);
+
+                    // 70% chance AI will select a new trump
+                    if (new Random().Next(10) < 7)
+                    {
+                        Console.WriteLine($"[STATE] {currentPlayer.UserName} selected {newTrump} as trump");
+                        MessageBox.Show($"{currentPlayer.UserName} has chosen {newTrump} as the trump suit!");
+
+                        // Set trump and game state
+                        Game.Trump = newTrump;
+                        trumpSet = true;
+                        gameForm.LbltrumpSuit.Text = $"The Selected Trump for the Round is {newTrump}";
+                        Game.GameMode = Constants.GameModes.Tricks;
+
+                        // Reset flags
+                        Passed = false;
+                        DealerPassed = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"[STATE] {currentPlayer.UserName} passed again in second round");
+                        MessageBox.Show($"{currentPlayer.UserName} has passed again. It's now the dealer's final choice.");
+
+                        // Move to dealer for final decision
+                        UpdateCurrentPlayer(lblPlayerDecideTrump);
+
+                        // Do not reset Passed and DealerPassed flags to maintain game state
+                    }
+                }
+            }
+            // Case 2: AI player is the dealer
+            else
+            {
+                Console.WriteLine("AI PLAYER IS THE DEALER");
+
+                // First round, non-dealer ordered up
+                if (OrderedUp)
+                {
+                    Console.WriteLine($"[STATE] {currentPlayer.UserName} (dealer AI) must exchange a card as non-dealer ordered up");
+
+                    // AI dealer exchanges a card
+                    currentPlayer.ExchangeCard(Game.Deck, Game.Trump);
+
+                    // Set game state
+                    Game.Trump = potentialTrump;
+                    MessageBox.Show($"{currentPlayer.UserName} has exchanged a card. The trump is set as {Game.Trump}.");
+                    trumpSet = true;
+                    gameForm.LbltrumpSuit.Text = $"The Selected Trump for the Round is {Game.Trump}";
+                    Game.GameMode = Constants.GameModes.Tricks;
+
+                    // Reset flag
+                    OrderedUp = false;
+                }
+                // First round, non-dealer passed
+                else if (Passed && !DealerPassed)
+                {
+                    Console.WriteLine($"[STATE] {currentPlayer.UserName} (dealer AI) decides whether to pick up or pass");
+
+                    // AI dealer decides whether to pick up or pass
+                    if (currentPlayer.GetTrumpDecision(potentialTrump) == Constants.TrumpDecision.OrderUp)
+                    {
+                        Console.WriteLine($"[STATE] {currentPlayer.UserName} (dealer AI) decided to pick up");
+
+                        // AI dealer exchanges a card
                         currentPlayer.ExchangeCard(Game.Deck, Game.Trump);
-                        Game.Trump = Game.Deck.GetTopCard().Suit;
-                        MessageBox.Show($"{currentPlayer.UserName} has chosen {Game.Trump} as the trump suit!");
+
+                        // Set game state
+                        Game.Trump = potentialTrump;
+                        MessageBox.Show($"{currentPlayer.UserName} has picked up the card and set {Game.Trump} as trump.");
                         trumpSet = true;
                         gameForm.LbltrumpSuit.Text = $"The Selected Trump for the Round is {Game.Trump}";
                         Game.GameMode = Constants.GameModes.Tricks;
 
+                        // Reset flag
+                        Passed = false;
                     }
+                    else
+                    {
+                        Console.WriteLine($"[STATE] {currentPlayer.UserName} (dealer AI) decided to pass");
+                        MessageBox.Show($"{currentPlayer.UserName} has passed. Moving to second round of trump selection.");
 
+                        // Set flag and move to first non-dealer player
+                        DealerPassed = true;
+                        Passed = false; // Reset for second round
 
-
-                    // this is to reset the boolian
-
-                    Passed = false;
+                        // Find first non-dealer player
+                        int dealerIndex = Game.Players.IndexOf(dealer);
+                        int nextPlayerIndex = (dealerIndex + 1) % Game.Players.Count;
+                        Game.Turn = Game.Players[nextPlayerIndex];
+                        lblPlayerDecideTrump.Text = Game.Turn.UserName;
+                    }
                 }
-                else if (OrderedUp)
+                // Second round, dealer's final choice
+                else if (Passed && DealerPassed)
                 {
-                    Console.WriteLine($"State of the game : {currentPlayer.UserName} is the dealer and he must exchange the topcard of the deck with one of his own");
-                    currentPlayer.ExchangeCard(Game.Deck, Game.Trump);
-                    Game.Trump = Game.Deck.GetTopCard().Suit;
-                    MessageBox.Show($"Alright the trump has been set as {Game.Trump} by {currentPlayer.UserName}");
-                    trumpSet = true;
+                    Console.WriteLine($"[STATE] Final choice for {currentPlayer.UserName} (dealer AI) in second round");
 
-                    Card.Suits newTrump = Game.Trump;
+                    // Dealer must choose a trump in the final round
+                    Card.Suits newTrump = currentPlayer.DecideTrumpSuit(potentialTrump);
+
+                    // Set game state
+                    Game.Trump = newTrump;
+                    MessageBox.Show($"{currentPlayer.UserName} has chosen {newTrump} as the trump suit!");
+                    trumpSet = true;
                     gameForm.LbltrumpSuit.Text = $"The Selected Trump for the Round is {newTrump}";
                     Game.GameMode = Constants.GameModes.Tricks;
-                    // this happens when any player has chose order up
-                    // this will give the dealer to exchange a topcard from the decl with any card in his deck which is not a trump *********************
-                    //TODO
 
-                    // this line is to reset the boolian
-                    OrderedUp = false;
+                    // Reset flags
+                    Passed = false;
+                    DealerPassed = false;
                 }
             }
-        }
 
+            // Log the updated game state
+            Console.WriteLine($"After AI decision - OrderedUp: {OrderedUp}, Passed: {Passed}, DealerPassed: {DealerPassed}");
+            Console.WriteLine($"Trump set: {trumpSet}, GameMode: {Game.GameMode}");
+        }
 
         /// <summary>
         /// method to load the image of the picked card to the pb in the panel which is inside the frmGame
@@ -283,7 +358,7 @@ namespace Controller
         /// <param name="player"></param>
         public static void LoadHandToView(Panel HandPanel, Player player)
         {
-            player.SetUpHand(HandPanel);
+            player.MapHand(HandPanel);
             player.LoadPlayerHand();
 
         }

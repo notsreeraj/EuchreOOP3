@@ -32,6 +32,8 @@ namespace Model
         public List<Card> Trick { get; set; }
         public Constants.GameModes GameMode { get; set; }
 
+        //public Constants.TrumpDecision TrumpDecision { get; set; }
+
         public static int  currentPlayer;
 
 
@@ -301,11 +303,24 @@ namespace Model
             }
             return null; // Return null if no human player is found
         }
-    }
 
+        /// <summary>
+        /// return true if the current player is human
+        /// </summary>
+        /// <returns></returns>
+        public bool IsHumanPlayerTurn()
+        {
+            return Turn is HPlayer;
+        }
 
-
-
-
-}
+        /// <summary>
+        /// returns true if the dealer is human player
+        /// </summary>
+        /// <returns></returns>
+        public bool IsHumanDealer()
+        {
+            return Dealer is HPlayer;
+        }
+    } // class ends here
+}// namespace ends here
 

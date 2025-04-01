@@ -1,5 +1,6 @@
 ﻿using Controller;
 using DBAL;
+using EuchreOOP3.Properties;
 using EuchreView.model;
 using Model;
 using System;
@@ -39,6 +40,10 @@ namespace EuchreOOP3
         {
             get {return lblTrmpSuit; }                 
         }
+
+        public Label LblMessage { get { return lblMessage; } }
+        public Button BtnPass { get { return btnPass; } }
+        public Button BtnOrderUp { get { return btnOrderUp; } }
         public frmGame()
         {
             InitializeComponent();
@@ -52,20 +57,24 @@ namespace EuchreOOP3
             IsLoading = true;
             // load the deck to the picture box , 
             // Display the last card in the deck to the user using the picture box using a method in gameController
-            
+            LoadPanelToLocation(panDealer, 296, 186);
+
             ShowDeck();
 
             SetPlayers();
-            panDealer.Visible = true;
+            
             lblCurrentPlayer.Text = GameController.Game.Turn.UserName;
-            panDealer.Location = new System.Drawing.Point(296,186);
+           // panDealer.Location = new System.Drawing.Point(296,186);
             
 
             IsLoading = false;
+            
 
 
         }
-
+        /// <summary>
+        /// method which just subscirbe the event handler to the deckchange event
+        /// </summary>
         public  void SubscribeToDeckChangeEvent()
         {
             GameController.Game.Deck.DeckChanged += UpdateDeckVIew;
@@ -88,11 +97,9 @@ namespace EuchreOOP3
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void UpdateDeckVIew(object sender , EventArgs e)
-        {
-    
+        {   
                 ShowDeck();
-
-            
+    
         }
 
         private  void ShowDeck()
@@ -104,14 +111,7 @@ namespace EuchreOOP3
         
         private void SetPlayers()
         {
-            // set up everything related to a player in the form
-            /*
-             Player Identification 
-            Player points 
-            Player hand
 
-
-             */
             LoadPlayerControlObjects();
             GenerateTrickPictureBoxes(GameController.GetNumPlayers());
             // method to map the Player handVIew list to the pb in each panel
@@ -199,6 +199,20 @@ namespace EuchreOOP3
             }
         }
 
+        /// <summary>
+        /// Loads a panel into a specific location.
+        /// </summary>
+        /// <param name="panel">The panel to be moved.</param>
+        /// <param name="x">The x-coordinate of the new location.</param>
+        /// <param name="y">The y-coordinate of the new location.</param>
+        private void LoadPanelToLocation(Panel panel, int x, int y)
+        {
+            if (panel != null)
+            {
+                panel.Visible = true;
+                panel.Location = new Point(x, y);
+            }
+        }
 
         /// <summary>
         ///
@@ -445,60 +459,431 @@ namespace EuchreOOP3
                 LoadCardsToEachPictureBox();
 
                 // initiate the next mode of the game by setting up the first non-dealer after the dealer to the label
-                GameController.UpdateCurrentPlayer(lblPlayerDecideTrump); }
+                GameController.UpdateCurrentPlayer(lblPlayerDecideTrump); 
+            }
             
         }
 
         private void btnOrderUp_Click(object sender, EventArgs e)
         {
-            GameController.OrderedUp = true;
-            GameController.AssignTurnToDealer(lblPlayerDecideTrump);
-            // if this is called the the turn must be given to the dealer to set the trump
-            // which means that the ai should exchange a card the trump suit card from his own hand
+
+            if (GameController.Game.Dealer != GameController.Game.Turn)
+            {
+                GameController.OrderedUp = true;
+                GameController.AssignTurnToDealer(lblPlayerDecideTrump);
+                
+            }
+
+
         }
 
         private void btnPass_Click(object sender, EventArgs e)
         {
-            GameController.Passed = true;
+            if(GameController.Game.Dealer == GameController.Game.Turn)
+            {
+                Console.WriteLine("The user is the dealer");
+                GameController.DealerPassed = true;
+            }
+
+                GameController.Passed = true;
+
+                
             // when clikc the next player is given a chance
             GameController.UpdateCurrentPlayer(lblPlayerDecideTrump);
             Console.WriteLine($"From frmGame pass click : {GameController.Game.Turn.UserName} is the player in turn");
-            
-        }
 
+
+        }
         private void lblPlayerDecideTrump_TextChanged(object sender, EventArgs e)
         {
-            
-            if (!IsLoading && GameController.Game.IsAIPlayer())
-            {
-                Constants.GameModes gameMode = GameController.Game.GameMode;
-                GameController.MakeAIMove(gameMode, this);
+            Console.WriteLine("lblPlayerDecideTrump_TextChanged triggered");
 
-                if(GameController.trumpSet = true && GameController.Game.GameMode == Constants.GameModes.Tricks)
+            if (!IsLoading)
+            {
+                Console.WriteLine("Not loading - proceeding with trump decision logic");
+
+                if (GameController.Game.IsAIPlayer())
                 {
-                    MessageBox.Show($"The game has been set up");
-                    btnOrderUp.Enabled = false;
-                    btnPass.Enabled = false;
+                    Console.WriteLine($"AI Player's turn: {GameController.Game.Turn.UserName}");
+                    Constants.GameModes gameMode = GameController.Game.GameMode;
+                    GameController.MakeAIMove(gameMode, this);
                 }
-            }
-            else if(!IsLoading && !GameController.Game.IsAIPlayer() && GameController.DealerPassed)
-            {
-                MessageBox.Show("Dealer has Passed , It is you chance to Choose a trump as any suit you want except the potential trump");
-
-            }
-            else if (!IsLoading && !GameController.Game.IsAIPlayer() && GameController.OrderedUp)
-            {
-                MessageBox.Show("Prevois Player has Orderup , It is you chance exchange the trump");
-            }
-            else if (!IsLoading && !GameController.Game.IsAIPlayer() && GameController.OrderedUp)
-            {
-                MessageBox.Show("Its the Dealer chance to Order up or Pass");
+                else
+                {
+                    Console.WriteLine($"Human Player's turn: {GameController.Game.Turn.UserName}");
+                    MakeHumanMove();
+                }
+                InitiateTricksRound();
             }
             else
             {
-                Console.WriteLine("ai IS NOT THE PLAYER");
-            }           
-        }   
+                Console.WriteLine("Game is still loading - skipping trump decision logic");
+            }
+        }
+
+        private void MakeHumanMove()
+        {
+            Console.WriteLine("MakeHumanMove called");
+
+            if (GameController.Game.Dealer == GameController.Game.Turn)
+            {
+                Console.WriteLine("Human player is the dealer");
+                HumanDealerMove();
+            }
+            else
+            {
+                Console.WriteLine("Human player is NOT the dealer");
+                HumanNonDealerMove();
+            }
+        }
+
+        private void HumanDealerMove()
+        {
+            Console.WriteLine("HumanDealerMove called");
+            Console.WriteLine($"OrderedUp: {GameController.OrderedUp}, Passed: {GameController.Passed}, DealerPassed: {GameController.DealerPassed}");
+
+            if (GameController.OrderedUp)
+            {
+                Console.WriteLine("Condition: Trump has been ordered up by non-dealer");
+                lblMessage.Text = "Trump suit has been order up";
+                // enable exchange event handler
+                SubscribeExchangeCardToHand();
+                btnOrderUp.Enabled = false;
+                btnPass.Enabled = false;
+
+                GameController.OrderedUp = false;
+            }
+            else if (GameController.Passed)// every player passed
+            {
+                Console.WriteLine("Condition: Non-dealer has passed");
+                lblMessage.Text = @"You can Exchange the card by click
+                            on any card from you deck and set trump
+                            or Pass this turn";
+                SubscribeExchangeCardToHand();
+                btnPass.Enabled = true;
+                btnOrderUp.Enabled = false;
+
+                GameController.Passed = false;
+            }
+            else if (GameController.Passed && GameController.DealerPassed)
+            {
+                Console.WriteLine("Condition: Both dealer and non-dealer have passed in first round");
+                LoadTrumpSuitSelection();
+                btnPass.Enabled = false;
+
+                GameController.Passed = false;
+                GameController.DealerPassed = false;
+            }
+            else
+            {
+                Console.WriteLine("HumanDealerMove: No condition matched");
+            }
+        }
+
+        private void HumanNonDealerMove()
+        {
+            Console.WriteLine("HumanNonDealerMove called");
+            Console.WriteLine($"OrderedUp: {GameController.OrderedUp}, Passed: {GameController.Passed}, DealerPassed: {GameController.DealerPassed}");
+
+            if (GameController.DealerPassed && GameController.Passed)
+            {
+                Console.WriteLine("Condition: Both dealer and non-dealer have passed");
+                lblMessage.Text = "Dealer has passed so you can select any suit as trump";
+                // any trump selection 
+                LoadTrumpSuitSelection();
+                btnOrderUp.Enabled = false;
+                btnPass.Enabled = false;
+
+                GameController.Passed = false;
+                GameController.DealerPassed = false;
+            }
+            else if (GameController.Passed)// non dealer passed
+            {
+                Console.WriteLine("Condition: Previous non-dealer player has passed");
+                lblMessage.Text = "Previous player has passed";
+                btnOrderUp.Enabled = true;
+                btnPass.Enabled = true;
+
+                GameController.Passed = false;
+            }
+            else if (!GameController.Passed && !GameController.DealerPassed)
+            {
+                Console.WriteLine("Condition: Initial trump decision state");
+                lblMessage.Text = "It is your chance";
+                btnOrderUp.Enabled = true;
+                btnPass.Enabled = true;
+            }
+            else
+            {
+                Console.WriteLine("HumanNonDealerMove: No condition matched");
+            }
+        }
+
+        /// <summary>
+        /// sets up the tricks gamemode of the game
+        /// </summary>
+        private void InitiateTricksRound()
+        {
+            Console.WriteLine("Calling Initiate Tricks round");
+            if (GameController.trumpSet && GameController.Game.GameMode == Constants.GameModes.Tricks)
+            {
+                MessageBox.Show($"The game has been set up");
+                btnOrderUp.Enabled = false;
+                btnPass.Enabled = false;
+                SubscribePlayCard();
+
+            }
+        }
+
+       /// <summary>
+       /// exchange event handler for the hand of the human player when he is the dealer and must be trum selection mode
+       /// This will be mapped to each picture box of the hand panel
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
+       private void ExchangeCard(object sender , EventArgs e)
+        {
+
+            // the selected pb index is taken from the handView list of the user
+            PictureBox selectedPictureBox = sender as PictureBox;
+            List<PictureBox> handView = GameController.Game.Players[0].HandView;
+
+  
+            int cardIndex = handView.IndexOf(selectedPictureBox);
+            MessageBox.Show($"The selected card index is {cardIndex} ");
+
+            HPlayer player = GameController.Game.Turn as HPlayer;
+           ;
+            player.ExchangeSelectedCard(player.Hand[cardIndex], GameController.Game.Deck,GameController.Game.Trump);
+
+            UnsubscribeExchangeCardFromHand();
+            // Disable the buttons 
+            btnOrderUp.Enabled = false;
+            btnPass.Enabled = false;
+        }
+
+        /// <summary>
+        /// method to subscribe the hand of the player to the exchange event when the dealer is not ai , this must be only called when the human player is dealer and it is trump selection game mode
+        /// </summary>
+        private void SubscribeExchangeCardToHand()
+        {
+            if (GameController.Game.Dealer is HPlayer && GameController.Game.GameMode == Constants.GameModes.TrumpSetting)
+            {
+                List<PictureBox> HandView = GameController.Game.Dealer.HandView;
+                foreach (PictureBox Hand in HandView)
+                {
+                    Hand.Click += ExchangeCard;
+                }
+            }
+        }
+        /// <summary>
+        /// method to unsubscribe to the even hanler for the hand , this will only be called when trump decided and the game mode is changed to tricks
+        /// </summary>
+        private void UnsubscribeExchangeCardFromHand()
+        {
+            if (GameController.Game.Dealer is HPlayer)
+            {
+                List<PictureBox> HandView = GameController.Game.Dealer.HandView;
+                foreach (PictureBox Hand in HandView)
+                {
+                    Hand.Click -= ExchangeCard;
+                }
+            }
+
+        }
+
+        #region Any Trump Selection
+        ///
+        private void LoadTrumpSuitSelection()
+        {
+            // call the method to map the array of image of suits
+
+            if (!IsLoading)
+            {
+                LoadPanelToLocation(panTrumpSelection, 600, 258);
+                panTrick.Visible = false;
+                // get the current player 
+                string currentPlayer = GameController.Game.Turn.UserName;
+                Card.Suits trump = GameController.Game.Trump;
+                LoadSuitsToView(trump, panTrumpSelection);
+            }
+
+
+
+        }
+
+
+        /// <summary>
+        /// Method to load the images of suits to the PictureBox controls in the specified panel, excluding the trump suit.
+        /// Reffered copilot
+        /// </summary>
+        /// <param name="trump">The trump suit to exclude.</param>
+        /// <param name="panel">The panel containing the PictureBox controls.</param>
+        private void LoadSuitsToView(Card.Suits trump, Panel panel)
+        {
+            // Dictionary to map suit enums to their corresponding images
+            Dictionary<Card.Suits, Image> suitImages = new Dictionary<Card.Suits, Image>
+    {
+        { Card.Suits.Heart, Resources.Heart },
+        { Card.Suits.Diamond, Resources.Diamond },
+        { Card.Suits.Spades, Resources.Spades },
+        { Card.Suits.Clubs, Resources.Clubs }
+    };
+
+            // Reset the selected suit label
+            if (panel.Controls["lblSelectedSuit"] is Label lblSelectedSuit)
+            {
+                lblSelectedSuit.Text = "Select a suit";
+                lblSelectedSuit.Tag = null; // Store the suit enum in the Tag property
+            }
+
+            // Get all PictureBox controls in the panel
+            List<PictureBox> pictureBoxes = new List<PictureBox>();
+            foreach (Control cont in panel.Controls)
+            {
+                if (cont is PictureBox pb)
+                {
+                    pictureBoxes.Add(pb);
+                    // Clear previous image and unsubscribe from events
+                    pb.BackgroundImage = null;
+                    pb.Click -= SuitPictureBox_Click;
+                    pb.Tag = null;
+                }
+            }
+
+            // Get valid suits (all suits except the trump suit)
+            List<Card.Suits> validSuits = new List<Card.Suits>();
+            foreach (Card.Suits suit in Enum.GetValues(typeof(Card.Suits)))
+            {
+                if (suit != trump)
+                {
+                    validSuits.Add(suit);
+                }
+            }
+
+            // Load images for valid suits into available PictureBoxes
+            int pictureBoxIndex = 0;
+            foreach (Card.Suits suit in validSuits)
+            {
+                if (pictureBoxIndex < pictureBoxes.Count)
+                {
+                    PictureBox pb = pictureBoxes[pictureBoxIndex];
+                    pb.BackgroundImage = suitImages[suit];
+                    pb.BackgroundImageLayout = ImageLayout.Stretch;
+                    pb.Tag = suit;
+                    pb.Click += SuitPictureBox_Click;
+                    pictureBoxIndex++;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Event handler for the click event of the suit PictureBox controls.
+        /// Reffered copilot
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SuitPictureBox_Click(object sender, EventArgs e)
+        {
+            if (sender is PictureBox pb && pb.Tag is Card.Suits suit)
+            {
+                // Find the label in the same panel as the PictureBox
+                if (pb.Parent.Controls["lblSelectedSuit"] is Label lblSelectedSuit)
+                {
+                    // Update the label text with the selected suit
+                    lblSelectedSuit.Text = $"Selected: {suit}";
+                    lblSelectedSuit.Tag = suit; // Store the suit enum in the Tag property
+                }
+            }
+        }
+
+        /// <summary>
+        /// Event handler for the click event of the Set Trump button.
+        /// Reffered copilot
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSetTrump_Click(object sender, EventArgs e)
+        {
+            // Find the label in the Trump Selection panel
+            if (panTrumpSelection.Controls["lblSelectedSuit"] is Label lblSelectedSuit && lblSelectedSuit.Tag is Card.Suits selectedSuit)
+            {
+                // Assign the selected suit as the new trump
+                GameController.Game.Trump = selectedSuit;
+                GameController.trumpSet = true;
+
+                // Update the trump suit label
+                lblTrmpSuit.Text = $"The Selected Trump for the Round is {selectedSuit}";
+
+                // Change the game mode to Tricks
+                GameController.Game.GameMode = Constants.GameModes.Tricks;
+
+                // Display a message to the user
+                MessageBox.Show($"Trump has been set to {selectedSuit}");
+            }
+            else
+            {
+                MessageBox.Show("Please select a suit first.");
+                return; // Don't hide the panel if no suit is selected
+            }
+
+            // Hide the Trump Selection panel
+            panTrumpSelection.Enabled = false;
+            panTrumpSelection.Visible = false;
+        }
+        #endregion
+
+        #region Play card 
+
+        
+        /// <summary>
+        /// Event to trigger the play card method by the user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PlayCard(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;  
+            List<PictureBox> handView = GameController.Game.Players[0].HandView;
+            List<Card> hand = GameController.Game.Players[0].Hand;
+
+            MessageBox.Show($"The Selected card is {hand[handView.IndexOf(pb)].ToString()}");
+        }
+
+
+        /// <summary>
+        ///  method to subsribe the play card event to the picture boxes of the user hand
+        /// </summary>
+        private void SubscribePlayCard()
+        {
+            Console.WriteLine("Subcribing play card even handler");
+            if(GameController.Game.Turn is HPlayer)
+            {
+                foreach(PictureBox hand in GameController.Game.Players[0].HandView)
+                {
+                    hand.Click += PlayCard;
+                }
+            }
+        }
+
+        /// <summary>
+        /// method to unsubcribe the play card event to the picture boxes of the user hand
+        /// </summary>
+        private void UnsSubscribePlayCard()
+        {
+            Console.WriteLine("UnSubcribing play card even handler");
+
+            if (GameController.Game.Turn is HPlayer)
+            {
+                foreach (PictureBox hand in GameController.Game.Players[0].HandView)
+                {
+                    hand.Click -= PlayCard;
+                }
+            }
+        }
+
+        #endregion
+
     } // class ends here
 } // namespace ends here
     
