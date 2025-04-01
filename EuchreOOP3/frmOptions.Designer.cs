@@ -57,6 +57,8 @@
             this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip7 = new System.Windows.Forms.ToolTip(this.components);
+            this.pnlHowToPlay = new System.Windows.Forms.Panel();
+            this.textBoxHow = new System.Windows.Forms.TextBox();
             this.panelThemes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -67,13 +69,14 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel3.SuspendLayout();
+            this.pnlHowToPlay.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnResume
             // 
             this.btnResume.BackColor = System.Drawing.Color.DarkGray;
             this.btnResume.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnResume.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResume.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResume.ForeColor = System.Drawing.Color.Black;
             this.btnResume.Location = new System.Drawing.Point(30, 205);
             this.btnResume.Name = "btnResume";
@@ -87,7 +90,7 @@
             // 
             this.btnThemes.BackColor = System.Drawing.Color.DarkGray;
             this.btnThemes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnThemes.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemes.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemes.ForeColor = System.Drawing.Color.Black;
             this.btnThemes.Location = new System.Drawing.Point(30, 280);
             this.btnThemes.Name = "btnThemes";
@@ -102,7 +105,7 @@
             // 
             this.btnSound.BackColor = System.Drawing.Color.DarkGray;
             this.btnSound.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSound.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSound.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSound.ForeColor = System.Drawing.Color.Black;
             this.btnSound.Location = new System.Drawing.Point(30, 355);
             this.btnSound.Name = "btnSound";
@@ -116,13 +119,13 @@
             // 
             this.btnPolicy.BackColor = System.Drawing.Color.DarkGray;
             this.btnPolicy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPolicy.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPolicy.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPolicy.ForeColor = System.Drawing.Color.Black;
             this.btnPolicy.Location = new System.Drawing.Point(30, 430);
             this.btnPolicy.Name = "btnPolicy";
             this.btnPolicy.Size = new System.Drawing.Size(277, 69);
             this.btnPolicy.TabIndex = 3;
-            this.btnPolicy.Text = "POLICIES ";
+            this.btnPolicy.Text = "How to play";
             this.toolTip4.SetToolTip(this.btnPolicy, "Our polices");
             this.btnPolicy.UseVisualStyleBackColor = false;
             this.btnPolicy.Click += new System.EventHandler(this.btnPolicy_Click);
@@ -158,7 +161,7 @@
             // 
             // panelThemes
             // 
-            this.panelThemes.BackColor = System.Drawing.Color.Transparent;
+            this.panelThemes.BackColor = System.Drawing.Color.Silver;
             this.panelThemes.BackgroundImage = global::EuchreOOP3.Properties.Resources.shadow_border;
             this.panelThemes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelThemes.Controls.Add(this.button2);
@@ -313,6 +316,24 @@
             this.panel3.Size = new System.Drawing.Size(1273, 666);
             this.panel3.TabIndex = 5;
             // 
+            // pnlHowToPlay
+            // 
+            this.pnlHowToPlay.Controls.Add(this.textBoxHow);
+            this.pnlHowToPlay.Location = new System.Drawing.Point(406, 52);
+            this.pnlHowToPlay.Name = "pnlHowToPlay";
+            this.pnlHowToPlay.Size = new System.Drawing.Size(815, 666);
+            this.pnlHowToPlay.TabIndex = 6;
+            // 
+            // textBoxHow
+            // 
+            this.textBoxHow.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxHow.Location = new System.Drawing.Point(44, 44);
+            this.textBoxHow.Multiline = true;
+            this.textBoxHow.Name = "textBoxHow";
+            this.textBoxHow.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxHow.Size = new System.Drawing.Size(723, 594);
+            this.textBoxHow.TabIndex = 0;
+            // 
             // frmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,6 +342,7 @@
             this.BackgroundImage = global::EuchreOOP3.Properties.Resources.dark_Blue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1264, 793);
+            this.Controls.Add(this.pnlHowToPlay);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -339,6 +361,8 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.pnlHowToPlay.ResumeLayout(false);
+            this.pnlHowToPlay.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -371,5 +395,7 @@
         private System.Windows.Forms.ToolTip toolTip5;
         private System.Windows.Forms.ToolTip toolTip6;
         private System.Windows.Forms.ToolTip toolTip7;
+        private System.Windows.Forms.Panel pnlHowToPlay;
+        private System.Windows.Forms.TextBox textBoxHow;
     }
 }
