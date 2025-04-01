@@ -78,12 +78,12 @@
             this.panTrumpChoices = new System.Windows.Forms.Panel();
             this.lblPlayerDecideTrump = new System.Windows.Forms.Label();
             this.panTrumpSelection = new System.Windows.Forms.Panel();
+            this.lblSelectedSuit = new System.Windows.Forms.Label();
             this.lblPlayerName = new System.Windows.Forms.Label();
             this.btnSetTrump = new System.Windows.Forms.Button();
             this.pictureBox23 = new System.Windows.Forms.PictureBox();
             this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
-            this.lblSelectedSuit = new System.Windows.Forms.Label();
             this.lblMessage = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             this.panTop.SuspendLayout();
@@ -648,6 +648,17 @@
             this.panTrumpSelection.TabIndex = 15;
             this.panTrumpSelection.Visible = false;
             // 
+            // lblSelectedSuit
+            // 
+            this.lblSelectedSuit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.lblSelectedSuit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblSelectedSuit.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedSuit.Location = new System.Drawing.Point(372, 277);
+            this.lblSelectedSuit.Name = "lblSelectedSuit";
+            this.lblSelectedSuit.Size = new System.Drawing.Size(144, 44);
+            this.lblSelectedSuit.TabIndex = 6;
+            this.lblSelectedSuit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lblPlayerName
             // 
             this.lblPlayerName.BackColor = System.Drawing.Color.Silver;
@@ -698,17 +709,6 @@
             this.pictureBox21.Size = new System.Drawing.Size(107, 108);
             this.pictureBox21.TabIndex = 1;
             this.pictureBox21.TabStop = false;
-            // 
-            // lblSelectedSuit
-            // 
-            this.lblSelectedSuit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lblSelectedSuit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblSelectedSuit.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedSuit.Location = new System.Drawing.Point(372, 277);
-            this.lblSelectedSuit.Name = "lblSelectedSuit";
-            this.lblSelectedSuit.Size = new System.Drawing.Size(144, 44);
-            this.lblSelectedSuit.TabIndex = 6;
-            this.lblSelectedSuit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblMessage
             // 

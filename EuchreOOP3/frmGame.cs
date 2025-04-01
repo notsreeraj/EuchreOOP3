@@ -72,7 +72,9 @@ namespace EuchreOOP3
 
 
         }
-
+        /// <summary>
+        /// method which just subscirbe the event handler to the deckchange event
+        /// </summary>
         public  void SubscribeToDeckChangeEvent()
         {
             GameController.Game.Deck.DeckChanged += UpdateDeckVIew;
@@ -465,153 +467,174 @@ namespace EuchreOOP3
         private void btnOrderUp_Click(object sender, EventArgs e)
         {
 
-            if (GameController.Game.Turn != GameController.Game.Dealer)
+            if (GameController.Game.Dealer != GameController.Game.Turn)
             {
                 GameController.OrderedUp = true;
                 GameController.AssignTurnToDealer(lblPlayerDecideTrump);
                 
             }
-            else if(GameController.Game.Turn == GameController.Game.Dealer)
-            {
-                // now the human dealer has to take up the card and exchange the card with any card from his deck
-                // chang the game mode to tricks
-                MessageBox.Show("You Have chosen to Order up the potential trump , Now the game is initiated");
-                GameController.Game.GameMode = Constants.GameModes.Tricks;
-                
 
-            }
 
-            btnOrderUp.Enabled = false;
-            
-            // if this is called the the turn must be given to the dealer to set the trump
-            // which means that the ai should exchange a card the trump suit card from his own hand
         }
 
         private void btnPass_Click(object sender, EventArgs e)
         {
             if(GameController.Game.Dealer == GameController.Game.Turn)
             {
-                GameController.Passed = true;
+                Console.WriteLine("The user is the dealer");
+                GameController.DealerPassed = true;
             }
 
-            GameController.Passed = true;
+                GameController.Passed = true;
+
+                
             // when clikc the next player is given a chance
             GameController.UpdateCurrentPlayer(lblPlayerDecideTrump);
             Console.WriteLine($"From frmGame pass click : {GameController.Game.Turn.UserName} is the player in turn");
 
-            //btnPass.Enabled = false;
-        }
 
+        }
         private void lblPlayerDecideTrump_TextChanged(object sender, EventArgs e)
         {
+            Console.WriteLine("lblPlayerDecideTrump_TextChanged triggered");
 
             if (!IsLoading)
             {
+                Console.WriteLine("Not loading - proceeding with trump decision logic");
 
-                if ( GameController.Game.IsAIPlayer())
+                if (GameController.Game.IsAIPlayer())
                 {
-                Constants.GameModes gameMode = GameController.Game.GameMode;
-                GameController.MakeAIMove(gameMode, this);
-
-                    if(GameController.trumpSet && GameController.Game.GameMode == Constants.GameModes.Tricks)
-                    {
-                        MessageBox.Show($"The game has been set up");
-                        btnOrderUp.Enabled = false;
-                        btnPass.Enabled = false;
-                    }
+                    Console.WriteLine($"AI Player's turn: {GameController.Game.Turn.UserName}");
+                    Constants.GameModes gameMode = GameController.Game.GameMode;
+                    GameController.MakeAIMove(gameMode, this);
                 }
                 else
                 {
-                    // calling the event to subscribe to exchange event to each of the picture box in the hand 
-                    SubscribeExchangeCardToHand();
-
-
-                    HPlayer currrentPlayer = GameController.Game.Turn as HPlayer;
-                    Player dealer = GameController.Game.Dealer;
-                    Card.Suits potentialTrump = GameController.Game.Trump;
-                    btnOrderUp.Enabled = true;
-                    btnPass.Enabled = true;
-
-                    if (dealer as HPlayer != currrentPlayer)
-                    {
-                        // check two types of passes
-                        if (GameController.DealerPassed)
-                        {
-                            Console.WriteLine($@"[State] User is the current player but not the dealer 
-                                                ;User can choose any suit as trump now 
-                                                : Use can also pass
-                                                enable pass btn and enable the feature to  choose any suit as trump suit");
-                            // user can choose any suit as trump
-                            // use can also pass
-                            LoadTrumpSuitSelection();
-                            btnPass.Enabled = true;
-
-                            // enable pass btn and enable the feature to  choose any suit as trump suit 
-                            GameController.DealerPassed = false;
-                        }
-                        else
-                        {
-                            Console.WriteLine($@"// this would be a pass from a non dealer
-                                                // enable order up and pass buttons
-                                               // here the output can be either orderup true or pass true");
-                            // this would be a pass from a non dealer
-                            // enable order up and pass buttons
-
-                            btnPass.Enabled = true;
-                            btnOrderUp.Enabled=true;
-                            // here the output can be either orderup true or pass true
-                        }
-
-                    }
-                    else if(dealer as HPlayer == currrentPlayer)
-                    {
-                        if (GameController.Passed)
-                        {
-                            // give the hplayer chance to pass or choose any suit as trump or to pass
-                            if (GameController.DealerPassed)
-                            {
-
-                                Console.WriteLine("enable the feature to select any suit as trump and also the user can also pass");
-
-                                // enable the feature to select any suit as trump 
-                                // enable pass btn
-
-                                btnPass.Enabled=true;
-                                LoadTrumpSuitSelection();
-                                btnOrderUp.Enabled = false;
-                                GameController.DealerPassed = false;
-                            }
-                            else
-                            {
-                                Console.WriteLine("enable the featur to orderup button or pass , here the user can pass or order up");
-
-                                btnPass.Enabled = true;
-                                //btnOrderUp.Enabled = true;
-                                // enable the featur to orderup button or pass
-                                SubscribeExchangeCardToHand();
-                                // let the user know that they can click on any card to select the card to exchange 
-                            }
-
-                            GameController.Passed = false;
-                        }
-                        else if (GameController.OrderedUp)
-                        {
-                            Console.WriteLine("Here the user who is the dealer can orderup the trump suit as the previuos player passed");
-                            SubscribeExchangeCardToHand();
-                            // enable the order up button 
-                            btnOrderUp.Enabled = true;
-                            GameController.OrderedUp = false;
-                        }
-                    }
-                     
+                    Console.WriteLine($"Human Player's turn: {GameController.Game.Turn.UserName}");
+                    MakeHumanMove();
                 }
-                  
+                InitiateTricksRound();
+            }
+            else
+            {
+                Console.WriteLine("Game is still loading - skipping trump decision logic");
+            }
+        }
 
+        private void MakeHumanMove()
+        {
+            Console.WriteLine("MakeHumanMove called");
+
+            if (GameController.Game.Dealer == GameController.Game.Turn)
+            {
+                Console.WriteLine("Human player is the dealer");
+                HumanDealerMove();
+            }
+            else
+            {
+                Console.WriteLine("Human player is NOT the dealer");
+                HumanNonDealerMove();
+            }
+        }
+
+        private void HumanDealerMove()
+        {
+            Console.WriteLine("HumanDealerMove called");
+            Console.WriteLine($"OrderedUp: {GameController.OrderedUp}, Passed: {GameController.Passed}, DealerPassed: {GameController.DealerPassed}");
+
+            if (GameController.OrderedUp)
+            {
+                Console.WriteLine("Condition: Trump has been ordered up by non-dealer");
+                lblMessage.Text = "Trump suit has been order up";
+                // enable exchange event handler
+                SubscribeExchangeCardToHand();
+                btnOrderUp.Enabled = false;
+                btnPass.Enabled = false;
+
+                GameController.OrderedUp = false;
+            }
+            else if (GameController.Passed)// every player passed
+            {
+                Console.WriteLine("Condition: Non-dealer has passed");
+                lblMessage.Text = @"You can Exchange the card by click
+                            on any card from you deck and set trump
+                            or Pass this turn";
+                SubscribeExchangeCardToHand();
+                btnPass.Enabled = true;
+                btnOrderUp.Enabled = false;
+
+                GameController.Passed = false;
+            }
+            else if (GameController.Passed && GameController.DealerPassed)
+            {
+                Console.WriteLine("Condition: Both dealer and non-dealer have passed in first round");
+                LoadTrumpSuitSelection();
+                btnPass.Enabled = false;
+
+                GameController.Passed = false;
+                GameController.DealerPassed = false;
+            }
+            else
+            {
+                Console.WriteLine("HumanDealerMove: No condition matched");
+            }
+        }
+
+        private void HumanNonDealerMove()
+        {
+            Console.WriteLine("HumanNonDealerMove called");
+            Console.WriteLine($"OrderedUp: {GameController.OrderedUp}, Passed: {GameController.Passed}, DealerPassed: {GameController.DealerPassed}");
+
+            if (GameController.DealerPassed && GameController.Passed)
+            {
+                Console.WriteLine("Condition: Both dealer and non-dealer have passed");
+                lblMessage.Text = "Dealer has passed so you can select any suit as trump";
+                // any trump selection 
+                LoadTrumpSuitSelection();
+                btnOrderUp.Enabled = false;
+                btnPass.Enabled = false;
+
+                GameController.Passed = false;
+                GameController.DealerPassed = false;
+            }
+            else if (GameController.Passed)// non dealer passed
+            {
+                Console.WriteLine("Condition: Previous non-dealer player has passed");
+                lblMessage.Text = "Previous player has passed";
+                btnOrderUp.Enabled = true;
+                btnPass.Enabled = true;
+
+                GameController.Passed = false;
+            }
+            else if (!GameController.Passed && !GameController.DealerPassed)
+            {
+                Console.WriteLine("Condition: Initial trump decision state");
+                lblMessage.Text = "It is your chance";
+                btnOrderUp.Enabled = true;
+                btnPass.Enabled = true;
+            }
+            else
+            {
+                Console.WriteLine("HumanNonDealerMove: No condition matched");
+            }
+        }
+
+        /// <summary>
+        /// sets up the tricks gamemode of the game
+        /// </summary>
+        private void InitiateTricksRound()
+        {
+            Console.WriteLine("Calling Initiate Tricks round");
+            if (GameController.trumpSet && GameController.Game.GameMode == Constants.GameModes.Tricks)
+            {
+                MessageBox.Show($"The game has been set up");
+                btnOrderUp.Enabled = false;
+                btnPass.Enabled = false;
+                SubscribePlayCard();
 
             }
-                   
-        }  
-        
+        }
+
        /// <summary>
        /// exchange event handler for the hand of the human player when he is the dealer and must be trum selection mode
        /// This will be mapped to each picture box of the hand panel
@@ -669,14 +692,16 @@ namespace EuchreOOP3
 
         }
 
+        #region Any Trump Selection
         ///
         private void LoadTrumpSuitSelection()
         {
             // call the method to map the array of image of suits
 
-            if(!IsLoading)
+            if (!IsLoading)
             {
                 LoadPanelToLocation(panTrumpSelection, 600, 258);
+                panTrick.Visible = false;
                 // get the current player 
                 string currentPlayer = GameController.Game.Turn.UserName;
                 Card.Suits trump = GameController.Game.Trump;
@@ -806,6 +831,58 @@ namespace EuchreOOP3
             panTrumpSelection.Enabled = false;
             panTrumpSelection.Visible = false;
         }
+        #endregion
+
+        #region Play card 
+
+        
+        /// <summary>
+        /// Event to trigger the play card method by the user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PlayCard(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;  
+            List<PictureBox> handView = GameController.Game.Players[0].HandView;
+            List<Card> hand = GameController.Game.Players[0].Hand;
+
+            MessageBox.Show($"The Selected card is {hand[handView.IndexOf(pb)].ToString()}");
+        }
+
+
+        /// <summary>
+        ///  method to subsribe the play card event to the picture boxes of the user hand
+        /// </summary>
+        private void SubscribePlayCard()
+        {
+            Console.WriteLine("Subcribing play card even handler");
+            if(GameController.Game.Turn is HPlayer)
+            {
+                foreach(PictureBox hand in GameController.Game.Players[0].HandView)
+                {
+                    hand.Click += PlayCard;
+                }
+            }
+        }
+
+        /// <summary>
+        /// method to unsubcribe the play card event to the picture boxes of the user hand
+        /// </summary>
+        private void UnsSubscribePlayCard()
+        {
+            Console.WriteLine("UnSubcribing play card even handler");
+
+            if (GameController.Game.Turn is HPlayer)
+            {
+                foreach (PictureBox hand in GameController.Game.Players[0].HandView)
+                {
+                    hand.Click -= PlayCard;
+                }
+            }
+        }
+
+        #endregion
 
     } // class ends here
 } // namespace ends here

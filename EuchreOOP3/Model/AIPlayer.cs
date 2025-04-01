@@ -29,7 +29,7 @@ namespace EuchreView.model
             return deck.GetTopCard();
         }
 
-        public override Card PlayCard()
+        public override Card PlayCard( Card card , List<Card> tricks)
         {
             // Custom logic for AI player
             Console.WriteLine("AIPlayer: AI is playing a card.");
