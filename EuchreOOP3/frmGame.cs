@@ -1,5 +1,6 @@
 ﻿using Controller;
 using DBAL;
+using EuchreOOP3.Properties;
 using EuchreView.model;
 using Model;
 using System;
@@ -40,6 +41,7 @@ namespace EuchreOOP3
             get {return lblTrmpSuit; }                 
         }
 
+        public Label LblMessage { get { return lblMessage; } }
         public Button BtnPass { get { return btnPass; } }
         public Button BtnOrderUp { get { return btnOrderUp; } }
         public frmGame()
@@ -66,6 +68,7 @@ namespace EuchreOOP3
             
 
             IsLoading = false;
+            
 
 
         }
@@ -106,14 +109,7 @@ namespace EuchreOOP3
         
         private void SetPlayers()
         {
-            // set up everything related to a player in the form
-            /*
-             Player Identification 
-            Player points 
-            Player hand
 
-
-             */
             LoadPlayerControlObjects();
             GenerateTrickPictureBoxes(GameController.GetNumPlayers());
             // method to map the Player handVIew list to the pb in each panel
@@ -461,7 +457,8 @@ namespace EuchreOOP3
                 LoadCardsToEachPictureBox();
 
                 // initiate the next mode of the game by setting up the first non-dealer after the dealer to the label
-                GameController.UpdateCurrentPlayer(lblPlayerDecideTrump); }
+                GameController.UpdateCurrentPlayer(lblPlayerDecideTrump); 
+            }
             
         }
 
@@ -492,12 +489,17 @@ namespace EuchreOOP3
 
         private void btnPass_Click(object sender, EventArgs e)
         {
+            if(GameController.Game.Dealer == GameController.Game.Turn)
+            {
+                GameController.Passed = true;
+            }
+
             GameController.Passed = true;
             // when clikc the next player is given a chance
             GameController.UpdateCurrentPlayer(lblPlayerDecideTrump);
             Console.WriteLine($"From frmGame pass click : {GameController.Game.Turn.UserName} is the player in turn");
 
-            btnPass.Enabled = false;
+            //btnPass.Enabled = false;
         }
 
         private void lblPlayerDecideTrump_TextChanged(object sender, EventArgs e)
@@ -511,7 +513,7 @@ namespace EuchreOOP3
                 Constants.GameModes gameMode = GameController.Game.GameMode;
                 GameController.MakeAIMove(gameMode, this);
 
-                    if(GameController.trumpSet = true && GameController.Game.GameMode == Constants.GameModes.Tricks)
+                    if(GameController.trumpSet && GameController.Game.GameMode == Constants.GameModes.Tricks)
                     {
                         MessageBox.Show($"The game has been set up");
                         btnOrderUp.Enabled = false;
@@ -541,7 +543,7 @@ namespace EuchreOOP3
                                                 enable pass btn and enable the feature to  choose any suit as trump suit");
                             // user can choose any suit as trump
                             // use can also pass
-                            SubscribeExchangeCardToHand(); 
+                            LoadTrumpSuitSelection();
                             btnPass.Enabled = true;
 
                             // enable pass btn and enable the feature to  choose any suit as trump suit 
@@ -555,7 +557,7 @@ namespace EuchreOOP3
                             // this would be a pass from a non dealer
                             // enable order up and pass buttons
 
-                           // btnPass.Enabled = true;
+                            btnPass.Enabled = true;
                             btnOrderUp.Enabled=true;
                             // here the output can be either orderup true or pass true
                         }
@@ -574,16 +576,20 @@ namespace EuchreOOP3
                                 // enable the feature to select any suit as trump 
                                 // enable pass btn
 
-                                //btnPass.Enabled=true;
-                                SubscribeExchangeCardToHand();
+                                btnPass.Enabled=true;
+                                LoadTrumpSuitSelection();
+                                btnOrderUp.Enabled = false;
+                                GameController.DealerPassed = false;
                             }
                             else
                             {
                                 Console.WriteLine("enable the featur to orderup button or pass , here the user can pass or order up");
 
-                                //btnPass.Enabled = true;
-                                btnOrderUp.Enabled = true;
+                                btnPass.Enabled = true;
+                                //btnOrderUp.Enabled = true;
                                 // enable the featur to orderup button or pass
+                                SubscribeExchangeCardToHand();
+                                // let the user know that they can click on any card to select the card to exchange 
                             }
 
                             GameController.Passed = false;
@@ -591,6 +597,7 @@ namespace EuchreOOP3
                         else if (GameController.OrderedUp)
                         {
                             Console.WriteLine("Here the user who is the dealer can orderup the trump suit as the previuos player passed");
+                            SubscribeExchangeCardToHand();
                             // enable the order up button 
                             btnOrderUp.Enabled = true;
                             GameController.OrderedUp = false;
@@ -626,6 +633,7 @@ namespace EuchreOOP3
            ;
             player.ExchangeSelectedCard(player.Hand[cardIndex], GameController.Game.Deck,GameController.Game.Trump);
 
+            UnsubscribeExchangeCardFromHand();
             // Disable the buttons 
             btnOrderUp.Enabled = false;
             btnPass.Enabled = false;
@@ -661,8 +669,143 @@ namespace EuchreOOP3
 
         }
 
+        ///
+        private void LoadTrumpSuitSelection()
+        {
+            // call the method to map the array of image of suits
+
+            if(!IsLoading)
+            {
+                LoadPanelToLocation(panTrumpSelection, 600, 258);
+                // get the current player 
+                string currentPlayer = GameController.Game.Turn.UserName;
+                Card.Suits trump = GameController.Game.Trump;
+                LoadSuitsToView(trump, panTrumpSelection);
+            }
 
 
+
+        }
+
+
+        /// <summary>
+        /// Method to load the images of suits to the PictureBox controls in the specified panel, excluding the trump suit.
+        /// Reffered copilot
+        /// </summary>
+        /// <param name="trump">The trump suit to exclude.</param>
+        /// <param name="panel">The panel containing the PictureBox controls.</param>
+        private void LoadSuitsToView(Card.Suits trump, Panel panel)
+        {
+            // Dictionary to map suit enums to their corresponding images
+            Dictionary<Card.Suits, Image> suitImages = new Dictionary<Card.Suits, Image>
+    {
+        { Card.Suits.Heart, Resources.Heart },
+        { Card.Suits.Diamond, Resources.Diamond },
+        { Card.Suits.Spades, Resources.Spades },
+        { Card.Suits.Clubs, Resources.Clubs }
+    };
+
+            // Reset the selected suit label
+            if (panel.Controls["lblSelectedSuit"] is Label lblSelectedSuit)
+            {
+                lblSelectedSuit.Text = "Select a suit";
+                lblSelectedSuit.Tag = null; // Store the suit enum in the Tag property
+            }
+
+            // Get all PictureBox controls in the panel
+            List<PictureBox> pictureBoxes = new List<PictureBox>();
+            foreach (Control cont in panel.Controls)
+            {
+                if (cont is PictureBox pb)
+                {
+                    pictureBoxes.Add(pb);
+                    // Clear previous image and unsubscribe from events
+                    pb.BackgroundImage = null;
+                    pb.Click -= SuitPictureBox_Click;
+                    pb.Tag = null;
+                }
+            }
+
+            // Get valid suits (all suits except the trump suit)
+            List<Card.Suits> validSuits = new List<Card.Suits>();
+            foreach (Card.Suits suit in Enum.GetValues(typeof(Card.Suits)))
+            {
+                if (suit != trump)
+                {
+                    validSuits.Add(suit);
+                }
+            }
+
+            // Load images for valid suits into available PictureBoxes
+            int pictureBoxIndex = 0;
+            foreach (Card.Suits suit in validSuits)
+            {
+                if (pictureBoxIndex < pictureBoxes.Count)
+                {
+                    PictureBox pb = pictureBoxes[pictureBoxIndex];
+                    pb.BackgroundImage = suitImages[suit];
+                    pb.BackgroundImageLayout = ImageLayout.Stretch;
+                    pb.Tag = suit;
+                    pb.Click += SuitPictureBox_Click;
+                    pictureBoxIndex++;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Event handler for the click event of the suit PictureBox controls.
+        /// Reffered copilot
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SuitPictureBox_Click(object sender, EventArgs e)
+        {
+            if (sender is PictureBox pb && pb.Tag is Card.Suits suit)
+            {
+                // Find the label in the same panel as the PictureBox
+                if (pb.Parent.Controls["lblSelectedSuit"] is Label lblSelectedSuit)
+                {
+                    // Update the label text with the selected suit
+                    lblSelectedSuit.Text = $"Selected: {suit}";
+                    lblSelectedSuit.Tag = suit; // Store the suit enum in the Tag property
+                }
+            }
+        }
+
+        /// <summary>
+        /// Event handler for the click event of the Set Trump button.
+        /// Reffered copilot
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSetTrump_Click(object sender, EventArgs e)
+        {
+            // Find the label in the Trump Selection panel
+            if (panTrumpSelection.Controls["lblSelectedSuit"] is Label lblSelectedSuit && lblSelectedSuit.Tag is Card.Suits selectedSuit)
+            {
+                // Assign the selected suit as the new trump
+                GameController.Game.Trump = selectedSuit;
+                GameController.trumpSet = true;
+
+                // Update the trump suit label
+                lblTrmpSuit.Text = $"The Selected Trump for the Round is {selectedSuit}";
+
+                // Change the game mode to Tricks
+                GameController.Game.GameMode = Constants.GameModes.Tricks;
+
+                // Display a message to the user
+                MessageBox.Show($"Trump has been set to {selectedSuit}");
+            }
+            else
+            {
+                MessageBox.Show("Please select a suit first.");
+                return; // Don't hide the panel if no suit is selected
+            }
+
+            // Hide the Trump Selection panel
+            panTrumpSelection.Enabled = false;
+            panTrumpSelection.Visible = false;
+        }
 
     } // class ends here
 } // namespace ends here
