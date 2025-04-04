@@ -1,4 +1,5 @@
 ﻿
+using Controller;
 using DBAL;
 using EuchreView.model;
 using System;
@@ -42,7 +43,7 @@ namespace Model
         public GameState( int numberofPlayers)
         {
             try{// setting up the common properties of the games state
-                Deck = new Deck();
+                Deck = new Deck(GameController.Theme);
                 Trump = 0;
                 Dealer = null;
                 Trick = new List<Card>();
@@ -264,6 +265,16 @@ namespace Model
             return Turn is AIPlayer;
         }
 
+
+        /// <summary>
+        /// return true if the current player is human
+        /// </summary>
+        /// <returns></returns>
+        public bool IsHumanPlayerTurn()
+        {
+            return Turn is HPlayer;
+        }
+
         /// <summary>
         /// method to get the reference of the player whose turn it is
         /// </summary>
@@ -304,14 +315,6 @@ namespace Model
             return null; // Return null if no human player is found
         }
 
-        /// <summary>
-        /// return true if the current player is human
-        /// </summary>
-        /// <returns></returns>
-        public bool IsHumanPlayerTurn()
-        {
-            return Turn is HPlayer;
-        }
 
         /// <summary>
         /// returns true if the dealer is human player

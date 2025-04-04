@@ -44,7 +44,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbDeck = new System.Windows.Forms.PictureBox();
             this.pbPlayedCards = new System.Windows.Forms.PictureBox();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.panTrick = new System.Windows.Forms.Panel();
             this.panDealer = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -288,18 +287,6 @@
             this.pbPlayedCards.TabIndex = 4;
             this.pbPlayedCards.TabStop = false;
             // 
-            // btnSettings
-            // 
-            this.btnSettings.BackColor = System.Drawing.Color.Silver;
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSettings.Location = new System.Drawing.Point(1817, 32);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(75, 54);
-            this.btnSettings.TabIndex = 5;
-            this.btnSettings.Text = "Settings";
-            this.btnSettings.UseVisualStyleBackColor = false;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
             // panTrick
             // 
             this.panTrick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -311,6 +298,8 @@
             // panDealer
             // 
             this.panDealer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
+            this.panDealer.BackgroundImage = global::EuchreOOP3.Properties.Resources.backgorund_cards;
+            this.panDealer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panDealer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panDealer.Controls.Add(this.label5);
             this.panDealer.Controls.Add(this.label4);
@@ -577,7 +566,9 @@
             // lblTrmpSuit
             // 
             this.lblTrmpSuit.AutoSize = true;
+            this.lblTrmpSuit.BackColor = System.Drawing.Color.Transparent;
             this.lblTrmpSuit.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrmpSuit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblTrmpSuit.Location = new System.Drawing.Point(12, 484);
             this.lblTrmpSuit.Name = "lblTrmpSuit";
             this.lblTrmpSuit.Size = new System.Drawing.Size(173, 60);
@@ -624,7 +615,9 @@
             // lblPlayerDecideTrump
             // 
             this.lblPlayerDecideTrump.AutoSize = true;
+            this.lblPlayerDecideTrump.BackColor = System.Drawing.Color.Transparent;
             this.lblPlayerDecideTrump.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayerDecideTrump.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblPlayerDecideTrump.Location = new System.Drawing.Point(7, 585);
             this.lblPlayerDecideTrump.Name = "lblPlayerDecideTrump";
             this.lblPlayerDecideTrump.Size = new System.Drawing.Size(213, 90);
@@ -726,6 +719,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
+            this.BackgroundImage = global::EuchreOOP3.Properties.Resources.dark_Blue;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.ControlBox = false;
             this.Controls.Add(this.lblMessage);
@@ -735,7 +730,6 @@
             this.Controls.Add(this.panDealer);
             this.Controls.Add(this.panLeft);
             this.Controls.Add(this.panTrick);
-            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.pbPlayedCards);
             this.Controls.Add(this.pbDeck);
             this.Controls.Add(this.panBottom);
@@ -798,7 +792,6 @@
         private System.Windows.Forms.Panel panBottom;
         private System.Windows.Forms.PictureBox pbDeck;
         private System.Windows.Forms.PictureBox pbPlayedCards;
-        private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Panel panTrick;
         private System.Windows.Forms.Panel panDealer;
         private System.Windows.Forms.PictureBox pbDealerDeck;

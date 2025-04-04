@@ -36,23 +36,24 @@ namespace EuchreOOP3
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // validate the current user typed in user credentials 
-            // set the current user reference to the same user in the users list
-             User.CurrentUser = User.IsUserValid(txbEmail.Text, txbPassword.Text);
-            Console.WriteLine( "Current user called from Login button click"+ User.CurrentUser.Username);
-            if (User.CurrentUser == null)
+
+            try
             {
-                MessageBox.Show("[Error] Invalid User Credenrials");
-                
-            }
-            else
-            {
-                MessageBox.Show($"{User.CurrentUser.Username} Has logged in");
-                // load the main form back
+                 User.CurrentUser = User.IsUserValid(txbEmail.Text, txbPassword.Text);
+                if (User.CurrentUser == null)
+                {
+                    throw new Exception("Invalid user!!!, Please type in Valid User Credentials");
+                }
                 MainMenu.Show();
                 this.Close();
-
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+             
+            
 
             
         }

@@ -199,9 +199,6 @@
   <data name="MT_HQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MT_HQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MT_HT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MT_HT.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="openimage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\openimage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -216,6 +213,81 @@
   </data>
   <data name="pngegg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pngegg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_BACK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_BACK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_C10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_C10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_C9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_C9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_CA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_CA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_CJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_CJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_CK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_CK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_CQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_CQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_D10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_D10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_D9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_D9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_DA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_DA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_DJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_DJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_DK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_DK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_DQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_DQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_H10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_H10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_H9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_H9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_HA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_HA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_HJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_HJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_HK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_HK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_HQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_HQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_S10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_S10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_S9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_S9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_SA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_SA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_SJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_SJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_SK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_SK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RB_SQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RB_SQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="register" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\register.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -318,5 +390,230 @@
   </data>
   <data name="WG_ST" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WG_ST.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_BACK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_BACK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_C10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_C10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_C9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_C9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_CA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_CA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_CJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_CJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_CK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_CK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_CQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_CQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_D10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_D10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_D9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_D9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_DA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_DA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_DJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_DJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_DK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_DK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_DQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_DQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_H10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_H10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_H9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_H9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_HA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_HA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_HJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_HJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_HK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_HK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_HQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_HQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_S10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_S10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_S9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_S9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_SA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_SA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_SJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_SJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_SK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_SK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO_SQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WO_SQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_BACK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_BACK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_C10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_C10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_C9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_C9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_CA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_CA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_CJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_CJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_CK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_CK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_CQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_CQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_D10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_D10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_D9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_D9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_DA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_DA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_DJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_DJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_DK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_DK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_DQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_DQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_H10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_H10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_H9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_H9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_HA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_HA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_HJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_HJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_HK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_HK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_HQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_HQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_S10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_S10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_S9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_S9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_SA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_SA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_SJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_SJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_SK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_SK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRB_SQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRB_SQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_BACK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_BACK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_C10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_C10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_C9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_C9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_CA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_CA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_CJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_CJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_CK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_CK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_CQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_CQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_D10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_D10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_D9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_D9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_DA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_DA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_DJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_DJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_DK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_DK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_DQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_DQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_H10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_H10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_H9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_H9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_HA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_HA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_HJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_HJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_HK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_HK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_HQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_HQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_S10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_S10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_S9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_S9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_SA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_SA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_SJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_SJ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_SK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_SK.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WYB_SQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WYB_SQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

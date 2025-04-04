@@ -18,6 +18,7 @@ using DBAL;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Windows.Forms.VisualStyles;
 
 
 namespace DBAL
@@ -313,6 +314,9 @@ namespace DBAL
 
         #region Static Method
 
+
+
+
         public static string GetUseName(int UserID)
         {
             foreach (User user in Users)
@@ -334,17 +338,9 @@ namespace DBAL
         /// <returns></returns>
         public static User IsUserValid(string emailid, string password)
         {
-            Console.WriteLine($"emailid Input {emailid}");
-            Console.WriteLine($"Password Input {Tools.HashPassword(password)}");
+            
             foreach (User user in Users)
             {
-                Console.WriteLine($"Email Comparison: {user.Email == emailid}");
-                Console.WriteLine($"Password Comparison: {user.Password == Tools.HashPassword(password)}");
-                if (!(user.Password == Tools.HashPassword(password)))
-                {
-                    Console.WriteLine($@"Password from the user lisr : {user.Password}
-                                        Password from the input : {Tools.HashPassword(password)}");
-                }
                 if (user.Email == emailid && user.Password == Tools.HashPassword(password))
                 {
                     return user;
@@ -445,13 +441,7 @@ namespace DBAL
             }
         }
 
-
-
-
         #endregion
-
-
-
 
     }// class ends here
 }// namespace ends here

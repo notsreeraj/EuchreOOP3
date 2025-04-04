@@ -30,7 +30,7 @@ namespace EuchreOOP3
             {
                 Console.WriteLine("Populating Users");
                 User.PopulateUsers();
-                //User.PrintAllUsers();
+                
             }
             catch (Exception ex)
             {
@@ -53,13 +53,18 @@ namespace EuchreOOP3
         {
             frmOptions frmOption = new frmOptions();
             frmOption.ShowDialog();
-            this.Hide();
+            
         }
 
         private void btnQuckPlay_Click(object sender, EventArgs e)
         {
             try
-            {// create a gamestate object with 2 players
+            {
+                // let the use choose a theme from the options
+                frmTheme frmTheme = new frmTheme();
+                frmTheme.ShowDialog();
+
+                // create a gamestate object with 2 players
                 GameController.StartQuickplay();
                 frmGame frmGame = new frmGame();
                 frmGame.ShowDialog();
@@ -76,7 +81,12 @@ namespace EuchreOOP3
         private void btnCoUp_Click(object sender, EventArgs e)
         {
             try
-            {// create a gamestate object with 2 players
+            {
+
+                // let the use choose a theme from the options
+                frmTheme frmTheme = new frmTheme();
+                frmTheme.ShowDialog();
+
                 GameController.StartCOOP();
                 frmGame frmGame = new frmGame();
                  frmGame.ShowDialog();
@@ -93,6 +103,11 @@ namespace EuchreOOP3
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

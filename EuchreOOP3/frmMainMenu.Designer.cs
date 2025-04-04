@@ -96,6 +96,7 @@
             this.btnExit.Text = "EXIT";
             this.toolTip4.SetToolTip(this.btnExit, "Click to Exit");
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lblUserName
             // 

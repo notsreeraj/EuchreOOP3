@@ -107,6 +107,8 @@ namespace Model
         {
             // maybe add a verification 
 
+            ResetHandView();
+
             for (int i = 0; i < Hand.Count && i < HandView.Count; i++)
             {
                 
@@ -119,6 +121,17 @@ namespace Model
         }
 
         /// <summary>
+        /// method to reset the hand view
+        /// </summary>
+        public void ResetHandView()
+        {
+            foreach (PictureBox pb in HandView)
+            {
+                pb.BackgroundImage = null;
+            }
+        }
+
+        /// <summary>
         /// event handler for the HandChange event which update the handView property
         /// </summary>
         /// <param name="sender"></param>
@@ -127,6 +140,7 @@ namespace Model
         {
             // call the method to update the handView property
             // take the hand
+            
         }
 
         /// <summary>
