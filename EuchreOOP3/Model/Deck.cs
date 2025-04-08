@@ -29,9 +29,6 @@ namespace Model
         {
             SetDeck(theme);
             this.Shuffle();
-
-            // OnDeckChanged();
-
         }
 
 
@@ -89,7 +86,10 @@ namespace Model
                 new Card(Suits.Clubs, Ranks.Jack, Resources.WG_CJ),
                 new Card(Suits.Clubs, Ranks.Ten, Resources.WG_CT),
                 new Card(Suits.Clubs, Ranks.Nine, Resources.WG_C9)
+
+                
             };
+                    Card.BackTheme = Resources.WG_BACK;
                     break;
                 case 1:
                     DeckOfCards = new List<Card>
@@ -126,6 +126,7 @@ namespace Model
                 new Card(Suits.Clubs, Ranks.Ten, Resources.WYB_C10),
                 new Card(Suits.Clubs, Ranks.Nine, Resources.WYB_C9)
             };
+                    Card.BackTheme = Resources.WYB_BACK;
                     break;
                 case 2:
                     DeckOfCards = new List<Card>
@@ -162,6 +163,7 @@ namespace Model
                 new Card(Suits.Clubs, Ranks.Ten, Resources.WRB_C10),
                 new Card(Suits.Clubs, Ranks.Nine, Resources.WRB_C9)
             };
+                Card.BackTheme = Resources.WRB_BACK;
                     break;
                 case 3:
                     DeckOfCards = new List<Card>
@@ -198,6 +200,8 @@ namespace Model
                 new Card(Suits.Clubs, Ranks.Ten, Resources.WO_C10),
                 new Card(Suits.Clubs, Ranks.Nine, Resources.WO_C9)
             };
+                Card.BackTheme = Resources.WO_BACK;
+
                     break;
                 case 4:
                     DeckOfCards = new List<Card>
@@ -234,6 +238,7 @@ namespace Model
                 new Card(Suits.Clubs, Ranks.Ten, Resources.RB_C10),
                 new Card(Suits.Clubs, Ranks.Nine, Resources.RB_C9)
             };
+                    Card.BackTheme = Resources.RB_BACK;
                     break;
             }
         }

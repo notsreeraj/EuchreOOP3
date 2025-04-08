@@ -188,31 +188,33 @@ namespace Controller
                 Game.GameMode = Constants.GameModes.Tricks;
 
                 MessageBox.Show($"{currentPlayer.UserName} has decided  any trump as {Game.Trump.ToString()} [Inside AINonDealer method]");
-
-                
+             
             }
             else // this would be when the previus player has passed
             {
                 // get the ai decision on first chance 
                  if(currentPlayer.GetTrumpDecision(potentialTrump) == Constants.TrumpDecision.OrderUp)
                 {
-                    AssignTurnToDealer(gameForm.LblPlayerDecideTrump);
-
+                    OrderedUp = true;
+                    trumpSet = true;
+                    Game.Makers.Add(Game.Turn);
+                    AssignTurnToDealer(gameForm.LblPlayerDecideTrump);                   
                     MessageBox.Show($"{currentPlayer.UserName} has Order up [Inside AINonDealer method]");
-
-                    
+                 
                 }
                 else
                 {
+                    Passed = true;
                     UpdateCurrentPlayer(gameForm.LblPlayerDecideTrump);
-
                     MessageBox.Show($"{currentPlayer.UserName} has passed their turn [Inside AINonDealer method]");
-
-                    Console.WriteLine($"{currentPlayer.UserName} has passed their turn [Inside AINonDealer method]");
                 }
             }
         }
-
+        /// <summary>
+        /// Method to let ai make a choice when it is a dealer and the gamemode is trump decision. This is the only method which is called when ai is dealer no matter how many players it is 
+        /// We are also letting ai be dumb due to we are forcing it to make a decision where the game would initiate without passing the chance
+        /// </summary>
+        /// <param name="gameForm"></param>
         private static void AIDealerMove(frmGame gameForm)
         {
             AIPlayer currentPlayer = Game.Turn as AIPlayer;
@@ -233,18 +235,19 @@ namespace Controller
 
                 MessageBox.Show($"{currentPlayer.UserName} has exchanged the trump and trump is set [Inside AINonDealer method]");
 
-                Console.WriteLine($"{currentPlayer.UserName} has exchanged the trump and trump is set [Inside AINonDealer method]");
+                
             }
             else if (DealerPassed) // this is when everyone has passed second time
             {
                 Game.Trump = currentPlayer.DecideTrumpSuit(potentialTrump);
                 trumpSet = true;
                 Game.GameMode = Constants.GameModes.Tricks;
-                
+                Game.Makers.Add( currentPlayer );
+
 
                 MessageBox.Show($"{currentPlayer.UserName} has chosen any suit as trump , trump is {Game.Trump}[Inside AIDealer method]");
 
-                Console.WriteLine($"{currentPlayer.UserName} has chosen any suit as trump , trump is {Game.Trump}[Inside AIDealer method]");
+               
             }
             else // this would be when everyone has passd their first chance
             {
@@ -252,11 +255,13 @@ namespace Controller
                 Game.GameMode = Constants.GameModes.Tricks;
                 Game.Trump = potentialTrump;
                 trumpSet = true;
+
+                Game.Makers.Add( currentPlayer );
                 
 
                 MessageBox.Show($"{currentPlayer.UserName} as the dealer has choses any suit as trump and the trump is {Game.Trump} [Inside AINonDealer method]");
 
-                Console.WriteLine($"{currentPlayer.UserName} as the dealer has choses any suit as trump and the trump is {Game.Trump} [Inside AINonDealer method]");
+                
 
                 // here we are forcfully making ai pass , can be changed later
             }
@@ -293,7 +298,11 @@ namespace Controller
         public static void LoadHandToView(Panel HandPanel, Player player)
         {
             player.MapHand(HandPanel);
+            // only call this if the player is hplayer
             player.LoadPlayerHand();
+
+            // else call the method to load card back images for the ai player
+            
 
         }
 

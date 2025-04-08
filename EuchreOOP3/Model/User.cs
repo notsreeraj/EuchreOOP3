@@ -20,7 +20,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Windows.Forms.VisualStyles;
 
-
+// using custom namspaces for User class
 namespace DBAL
 {
     /// <summary>
@@ -424,21 +424,6 @@ namespace DBAL
                 }
             }
             throw new Exception("[ERROR]  Failed to retrieve guest info => Guest is not there in the Database.");
-        }
-
-        public static void IsPasswordValid(string password)
-        {
-            if (password.Length > 8)
-            {
-                throw new Exception("Password must be less than 9 characters long.");
-            }
-
-            // Check if the password contains only allowed characters
-            char[] allowedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$".ToCharArray();
-            if (!password.All(ch => allowedChars.Contains(ch)))
-            {
-                throw new Exception("Password can only contain letters, numbers, and the special characters @, #, $.");
-            }
         }
 
         #endregion

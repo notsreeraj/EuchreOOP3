@@ -48,6 +48,8 @@ namespace Model
                 Dealer = null;
                 Trick = new List<Card>();
                 Players = new List<Player>();
+                Makers = new List<Player>();
+                Defenders = new List<Player>();
                 switch (numberofPlayers)
                 {
                     case 2:
@@ -81,12 +83,7 @@ namespace Model
             int dealer = GetDealerPosition();
             // Start with the player after dealers position dealers position
             int currentPlayer = (dealer + 1) % numPlayers;
-            Console.WriteLine($@"
-            ********************************************
-            {Players[currentPlayer].UserName} is the current Player
-            ********************************************
 
-            ");
             bool Dealt = false;
 
             while (!Dealt)
@@ -96,7 +93,6 @@ namespace Model
                 Players[currentPlayer].Hand.Add(topCard);
                 Deck.RemoveCard(topCard);
 
-                Console.WriteLine($"Player {Players[currentPlayer].UserName} has ");
                 Card.PrintCards(Players[currentPlayer].Hand);
 
                 if (IsDealer(Players[currentPlayer]))
@@ -324,6 +320,78 @@ namespace Model
         {
             return Dealer is HPlayer;
         }
+
+
+        /// <summary>
+        /// Assigns players to Makers and Defenders lists based on team structure.
+        /// In 4-player game: players 0 and 2 are one team, players 1 and 3 are another.
+        /// In 2-player game: each player is on their own team.
+        /// used copilot to generate this method 
+        /// </summary>
+        public void AssigneMakerDefenders()
+        {
+            // Clear the defenders list to avoid duplicates
+            Defenders.Clear();
+
+            // Get the number of players
+            int playerCount = Players.Count;
+
+            if (playerCount == 4)
+            {
+                // For 4-player game, find team partners
+
+                // Check each player in Makers
+                foreach (Player maker in Makers.ToList()) // Use ToList to create a copy since we'll modify Makers
+                {
+                    int makerIndex = Players.IndexOf(maker);
+                    int partnerIndex = (makerIndex + 2) % 4; // Partner is across (0->2, 1->3, 2->0, 3->1)
+                    Player partner = Players[partnerIndex];
+
+                    // If partner is not already in Makers, add them
+                    if (!Makers.Contains(partner))
+                    {
+                        Makers.Add(partner);
+                        Console.WriteLine($"Added {partner.UserName} to Makers (partner of {maker.UserName})");
+                    }
+                }
+
+                // Now assign all remaining players to Defenders
+                foreach (Player player in Players)
+                {
+                    if (!Makers.Contains(player))
+                    {
+                        Defenders.Add(player);
+                        Console.WriteLine($"Added {player.UserName} to Defenders");
+                    }
+                }
+            }
+            else if (playerCount == 2)
+            {
+                // For 2-player game, the player who isn't in Makers goes to Defenders
+                foreach (Player player in Players)
+                {
+                    if (!Makers.Contains(player))
+                    {
+                        Defenders.Add(player);
+                        Console.WriteLine($"Added {player.UserName} to Defenders");
+                    }
+                }
+            }
+
+
+            foreach (Player maker in Makers)
+            {
+                Console.WriteLine($"Maker- {maker.UserName}");
+            }
+
+
+            foreach (Player defender in Defenders)
+            {
+                Console.WriteLine($"Defenders- {defender.UserName}");
+            }
+        }
+
+
     } // class ends here
 }// namespace ends here
 
