@@ -44,7 +44,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbDeck = new System.Windows.Forms.PictureBox();
             this.pbPlayedCards = new System.Windows.Forms.PictureBox();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.panTrick = new System.Windows.Forms.Panel();
             this.panDealer = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -85,6 +84,13 @@
             this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblTrickTurn = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             this.panTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -288,18 +294,6 @@
             this.pbPlayedCards.TabIndex = 4;
             this.pbPlayedCards.TabStop = false;
             // 
-            // btnSettings
-            // 
-            this.btnSettings.BackColor = System.Drawing.Color.Silver;
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSettings.Location = new System.Drawing.Point(1817, 32);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(75, 54);
-            this.btnSettings.TabIndex = 5;
-            this.btnSettings.Text = "Settings";
-            this.btnSettings.UseVisualStyleBackColor = false;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
             // panTrick
             // 
             this.panTrick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -310,7 +304,8 @@
             // 
             // panDealer
             // 
-            this.panDealer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
+            this.panDealer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(88)))), ((int)(((byte)(44)))));
+            this.panDealer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panDealer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panDealer.Controls.Add(this.label5);
             this.panDealer.Controls.Add(this.label4);
@@ -323,7 +318,7 @@
             this.panDealer.Controls.Add(this.pbHPickedCard);
             this.panDealer.Controls.Add(this.label1);
             this.panDealer.Controls.Add(this.pbDealerDeck);
-            this.panDealer.Location = new System.Drawing.Point(296, 945);
+            this.panDealer.Location = new System.Drawing.Point(250, 961);
             this.panDealer.Name = "panDealer";
             this.panDealer.Size = new System.Drawing.Size(1270, 687);
             this.panDealer.TabIndex = 7;
@@ -434,7 +429,6 @@
             // pbDealerDeck
             // 
             this.pbDealerDeck.BackColor = System.Drawing.Color.Silver;
-            this.pbDealerDeck.BackgroundImage = global::EuchreOOP3.Properties.Resources.WG_BACK;
             this.pbDealerDeck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbDealerDeck.Location = new System.Drawing.Point(150, 119);
             this.pbDealerDeck.Name = "pbDealerDeck";
@@ -577,7 +571,9 @@
             // lblTrmpSuit
             // 
             this.lblTrmpSuit.AutoSize = true;
+            this.lblTrmpSuit.BackColor = System.Drawing.Color.Transparent;
             this.lblTrmpSuit.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrmpSuit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblTrmpSuit.Location = new System.Drawing.Point(12, 484);
             this.lblTrmpSuit.Name = "lblTrmpSuit";
             this.lblTrmpSuit.Size = new System.Drawing.Size(173, 60);
@@ -624,12 +620,14 @@
             // lblPlayerDecideTrump
             // 
             this.lblPlayerDecideTrump.AutoSize = true;
+            this.lblPlayerDecideTrump.BackColor = System.Drawing.Color.Transparent;
             this.lblPlayerDecideTrump.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayerDecideTrump.Location = new System.Drawing.Point(7, 585);
+            this.lblPlayerDecideTrump.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblPlayerDecideTrump.Location = new System.Drawing.Point(35, 659);
             this.lblPlayerDecideTrump.Name = "lblPlayerDecideTrump";
-            this.lblPlayerDecideTrump.Size = new System.Drawing.Size(213, 90);
+            this.lblPlayerDecideTrump.Size = new System.Drawing.Size(31, 30);
             this.lblPlayerDecideTrump.TabIndex = 14;
-            this.lblPlayerDecideTrump.Text = "Current Player To \r\nDecide Trump Suit \r\n:";
+            this.lblPlayerDecideTrump.Text = " :";
             this.lblPlayerDecideTrump.TextChanged += new System.EventHandler(this.lblPlayerDecideTrump_TextChanged);
             // 
             // panTrumpSelection
@@ -721,21 +719,113 @@
             this.lblMessage.Size = new System.Drawing.Size(2, 37);
             this.lblMessage.TabIndex = 16;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label7.Location = new System.Drawing.Point(1424, 137);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 30);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Maker";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label8.Location = new System.Drawing.Point(1424, 34);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(108, 30);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Defender";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label9.Location = new System.Drawing.Point(1585, 34);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(72, 30);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Score";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label10.Location = new System.Drawing.Point(1585, 137);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 30);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Score";
+            // 
+            // lblTrickTurn
+            // 
+            this.lblTrickTurn.AutoSize = true;
+            this.lblTrickTurn.BackColor = System.Drawing.Color.Transparent;
+            this.lblTrickTurn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTrickTurn.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrickTurn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTrickTurn.Location = new System.Drawing.Point(144, 809);
+            this.lblTrickTurn.Name = "lblTrickTurn";
+            this.lblTrickTurn.Size = new System.Drawing.Size(2, 32);
+            this.lblTrickTurn.TabIndex = 21;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label11.Location = new System.Drawing.Point(4, 809);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(140, 30);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Trick Turn: ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label12.Location = new System.Drawing.Point(7, 576);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(213, 90);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Current Player To \r\nDecide Trump Suit \r\n:";
+            // 
             // frmGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
+            this.BackgroundImage = global::EuchreOOP3.Properties.Resources.dark_Blue;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.ControlBox = false;
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblTrickTurn);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.panDealer);
             this.Controls.Add(this.lblPlayerDecideTrump);
             this.Controls.Add(this.lblTrmpSuit);
             this.Controls.Add(this.lblDealerName);
-            this.Controls.Add(this.panDealer);
             this.Controls.Add(this.panLeft);
             this.Controls.Add(this.panTrick);
-            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.pbPlayedCards);
             this.Controls.Add(this.pbDeck);
             this.Controls.Add(this.panBottom);
@@ -798,7 +888,6 @@
         private System.Windows.Forms.Panel panBottom;
         private System.Windows.Forms.PictureBox pbDeck;
         private System.Windows.Forms.PictureBox pbPlayedCards;
-        private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Panel panTrick;
         private System.Windows.Forms.Panel panDealer;
         private System.Windows.Forms.PictureBox pbDealerDeck;
@@ -849,5 +938,12 @@
         private System.Windows.Forms.PictureBox pictureBox23;
         private System.Windows.Forms.Label lblSelectedSuit;
         private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblTrickTurn;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }

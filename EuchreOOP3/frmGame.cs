@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace EuchreOOP3
 {
@@ -98,8 +99,7 @@ namespace EuchreOOP3
         /// <param name="e"></param>
         private void UpdateDeckVIew(object sender , EventArgs e)
         {   
-                ShowDeck();
-    
+                ShowDeck();    
         }
 
         private  void ShowDeck()
@@ -111,6 +111,7 @@ namespace EuchreOOP3
         
         private void SetPlayers()
         {
+            pbDealerDeck.BackgroundImage = Card.BackTheme;
 
             LoadPlayerControlObjects();
             GenerateTrickPictureBoxes(GameController.GetNumPlayers());
@@ -139,13 +140,6 @@ namespace EuchreOOP3
             GameController.PickedCards.Add(pbAI3Pick);
         }
 
-        /// <summary>
-        /// method to map generated picture boxes to a list of pbs
-        /// </summary>
-        private void MapTrickPB()
-        {
-
-        }
 
         /// <summary>
         /// method to show the panel of player hands according to the number of players in the players list in gamestate
@@ -263,21 +257,15 @@ namespace EuchreOOP3
 
         
 
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            frmOptions settings = new frmOptions();
-            settings.ShowDialog();
-            // make sure to load resume button and whichever button is loaded
 
 
-           // AnimatePanelLeft();
-        }
-
-
-
+        /// <summary>
+        /// event handler which handler the action of picking a card from the deck to find a black jack and assign the dealer role
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pbDealerDeck_Click(object sender, EventArgs e)
         {
-            
 
             if( GameController.HasEnoughCardsForPlayers())
             {
@@ -306,18 +294,15 @@ namespace EuchreOOP3
                         MessageBox.Show($"{GameController.Game.Turn.UserName} got the First Black Jack!! He is the dealer");
                         MessageBox.Show("The Dealer has been Set. Click Ok to initiate the Trump deciding Mode");
 
-                        lblDealerName.Text += GameController.Game.Dealer.UserName;
                         AnimatePanelDown(panDealer, 50);
-                        //AnimatePanelToLocation(panTrumpChoices, 650, 648, 50);
+                        lblDealerName.Text += GameController.Game.Dealer.UserName;
 
-
-                        // run the method to set up the new deck and deal the hands
                     }
             }
             else
             {
                 MessageBox.Show("We are out of cards. Click Ok to set a new deck of cards");
-                GameController.Game.Deck = new Deck();
+                GameController.Game.Deck = new Deck(GameController.Theme);
 
             }
 
@@ -408,7 +393,6 @@ namespace EuchreOOP3
                             LblDealerName.Text += GameController.Game.Dealer.UserName;
                             AnimatePanelDown(panDealer, 50);
                             //LblDealerName.Text += GameController.Game.Dealer.UserName;
-
                         }
                         else
                         {
@@ -422,7 +406,7 @@ namespace EuchreOOP3
                 else
                 {
                     MessageBox.Show("We are out of cards. Click Ok to set a new deck of cards");
-                    GameController.Game.Deck = new Deck();
+                    GameController.Game.Deck = new Deck(GameController.Theme);
                 }
             }
         }
@@ -438,10 +422,9 @@ namespace EuchreOOP3
         {
             if(!IsLoading)
             {
-                Console.WriteLine($"Current Player in Turn is : {GameController.Game.Turn.UserName}");
 
                 // setting up new deck
-                GameController.Game.Deck = new Deck();
+                GameController.Game.Deck = new Deck(GameController.Theme);
                 SubscribeToDeckChangeEvent();
 
 
@@ -450,6 +433,9 @@ namespace EuchreOOP3
                 GameController.Game.Deal(); // dealing the cards among players
                 ShowDeck(); // setting the deck to view
                 pbDeck.Visible = true;
+
+                // calll the method to change the image of the hands of ai player
+                Player.ChangeAIHandView();
 
                 // assign the intitial potential trump
                 GameController.Game.Trump = GameController.Game.Deck.GetTopCard().Suit;
@@ -469,6 +455,9 @@ namespace EuchreOOP3
 
             if (GameController.Game.Dealer != GameController.Game.Turn)
             {
+                // add the current player in turn to makers list 
+                GameController.Game.Makers.Add(GameController.Game.Turn);
+
                 GameController.OrderedUp = true;
                 GameController.AssignTurnToDealer(lblPlayerDecideTrump);
                 
@@ -496,11 +485,11 @@ namespace EuchreOOP3
         }
         private void lblPlayerDecideTrump_TextChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("lblPlayerDecideTrump_TextChanged triggered");
+            Console.WriteLine("*********************************Initializing trump decision mode*********************************");
 
             if (!IsLoading)
             {
-                Console.WriteLine("Not loading - proceeding with trump decision logic");
+                
 
                 if (GameController.Game.IsAIPlayer())
                 {
@@ -521,17 +510,24 @@ namespace EuchreOOP3
             }
         }
 
+        #region Human Move
+
         private void MakeHumanMove()
         {
             Console.WriteLine("MakeHumanMove called");
 
+            MessageBox.Show($"OrderedUp: {GameController.OrderedUp}, Passed: {GameController.Passed}, DealerPassed: {GameController.DealerPassed}");
+           
+
             if (GameController.Game.Dealer == GameController.Game.Turn)
             {
-                Console.WriteLine("Human player is the dealer");
+                UnsubscribeExchangeCardFromHand();
+                MessageBox.Show("You are the dealer");
                 HumanDealerMove();
             }
             else
             {
+                UnsubscribeExchangeCardFromHand();
                 Console.WriteLine("Human player is NOT the dealer");
                 HumanNonDealerMove();
             }
@@ -540,7 +536,7 @@ namespace EuchreOOP3
         private void HumanDealerMove()
         {
             Console.WriteLine("HumanDealerMove called");
-            Console.WriteLine($"OrderedUp: {GameController.OrderedUp}, Passed: {GameController.Passed}, DealerPassed: {GameController.DealerPassed}");
+            
 
             if (GameController.OrderedUp)
             {
@@ -557,8 +553,8 @@ namespace EuchreOOP3
             {
                 Console.WriteLine("Condition: Non-dealer has passed");
                 lblMessage.Text = @"You can Exchange the card by click
-                            on any card from you deck and set trump
-                            or Pass this turn";
+ on any card from you deck and set trump
+ or Pass this turn";
                 SubscribeExchangeCardToHand();
                 btnPass.Enabled = true;
                 btnOrderUp.Enabled = false;
@@ -567,6 +563,7 @@ namespace EuchreOOP3
             }
             else if (GameController.Passed && GameController.DealerPassed)
             {
+                UnsubscribeExchangeCardFromHand();
                 Console.WriteLine("Condition: Both dealer and non-dealer have passed in first round");
                 LoadTrumpSuitSelection();
                 btnPass.Enabled = false;
@@ -576,6 +573,7 @@ namespace EuchreOOP3
             }
             else
             {
+                UnsubscribeExchangeCardFromHand();
                 Console.WriteLine("HumanDealerMove: No condition matched");
             }
         }
@@ -583,7 +581,7 @@ namespace EuchreOOP3
         private void HumanNonDealerMove()
         {
             Console.WriteLine("HumanNonDealerMove called");
-            Console.WriteLine($"OrderedUp: {GameController.OrderedUp}, Passed: {GameController.Passed}, DealerPassed: {GameController.DealerPassed}");
+            //Console.WriteLine($"OrderedUp: {GameController.OrderedUp}, Passed: {GameController.Passed}, DealerPassed: {GameController.DealerPassed}");
 
             if (GameController.DealerPassed && GameController.Passed)
             {
@@ -619,21 +617,34 @@ namespace EuchreOOP3
             }
         }
 
+        #endregion
+
         /// <summary>
         /// sets up the tricks gamemode of the game
         /// </summary>
         private void InitiateTricksRound()
         {
-            Console.WriteLine("Calling Initiate Tricks round");
+            
             if (GameController.trumpSet && GameController.Game.GameMode == Constants.GameModes.Tricks)
             {
+                Console.WriteLine("Calling Initiate Tricks round");
                 MessageBox.Show($"The game has been set up");
                 btnOrderUp.Enabled = false;
                 btnPass.Enabled = false;
                 SubscribePlayCard();
 
+                GameController.Game.AssigneMakerDefenders();
+
+                // call the method to assign makers and defenders
+
+                // give the first player in the defender list first chance to play or the player after the turn
+                GameController.UpdateCurrentPlayer(lblTrickTurn);
             }
+            else Console.WriteLine("The game has not been initiated as the trump is not set");
         }
+
+
+       
 
        /// <summary>
        /// exchange event handler for the hand of the human player when he is the dealer and must be trum selection mode
@@ -653,10 +664,19 @@ namespace EuchreOOP3
             MessageBox.Show($"The selected card index is {cardIndex} ");
 
             HPlayer player = GameController.Game.Turn as HPlayer;
-           ;
+           
             player.ExchangeSelectedCard(player.Hand[cardIndex], GameController.Game.Deck,GameController.Game.Trump);
+            // Add the dealer to Makers when they exchange a card
+            if (!GameController.Game.Makers.Contains(player))
+            {
+                GameController.Game.Makers.Add(player);
+            }
 
-            UnsubscribeExchangeCardFromHand();
+            // assign the new trump
+            GameController.trumpSet = true;
+
+
+            
             // Disable the buttons 
             btnOrderUp.Enabled = false;
             btnPass.Enabled = false;
@@ -665,7 +685,7 @@ namespace EuchreOOP3
         /// <summary>
         /// method to subscribe the hand of the player to the exchange event when the dealer is not ai , this must be only called when the human player is dealer and it is trump selection game mode
         /// </summary>
-        private void SubscribeExchangeCardToHand()
+        private  void SubscribeExchangeCardToHand()
         {
             if (GameController.Game.Dealer is HPlayer && GameController.Game.GameMode == Constants.GameModes.TrumpSetting)
             {
@@ -681,15 +701,22 @@ namespace EuchreOOP3
         /// </summary>
         private void UnsubscribeExchangeCardFromHand()
         {
-            if (GameController.Game.Dealer is HPlayer)
+            try
             {
-                List<PictureBox> HandView = GameController.Game.Dealer.HandView;
-                foreach (PictureBox Hand in HandView)
+                if (GameController.Game.Dealer is HPlayer)
                 {
-                    Hand.Click -= ExchangeCard;
+                    List<PictureBox> HandView = GameController.Game.Dealer.HandView;
+                    foreach (PictureBox Hand in HandView)
+                    {
+                        Hand.Click -= ExchangeCard;
+                    }
                 }
             }
-
+            catch (Exception ex)
+            { 
+              Console.WriteLine(ex.ToString());  
+                    
+            }
         }
 
         #region Any Trump Selection
@@ -815,6 +842,11 @@ namespace EuchreOOP3
                 // Update the trump suit label
                 lblTrmpSuit.Text = $"The Selected Trump for the Round is {selectedSuit}";
 
+                if (!GameController.Game.Makers.Contains(GameController.Game.Turn))
+                {
+                    GameController.Game.Makers.Add(GameController.Game.Turn);
+                }
+
                 // Change the game mode to Tricks
                 GameController.Game.GameMode = Constants.GameModes.Tricks;
 
@@ -843,12 +875,53 @@ namespace EuchreOOP3
         /// <param name="e"></param>
         private void PlayCard(object sender, EventArgs e)
         {
-            PictureBox pb = sender as PictureBox;  
-            List<PictureBox> handView = GameController.Game.Players[0].HandView;
-            List<Card> hand = GameController.Game.Players[0].Hand;
 
-            MessageBox.Show($"The Selected card is {hand[handView.IndexOf(pb)].ToString()}");
+            if (GameController.Game.IsHumanPlayerTurn())
+            {
+                PictureBox pb = sender as PictureBox;
+                Player hPlayer = GameController.Game.Players[0];
+
+                List<PictureBox> handView = hPlayer.HandView;
+                List<Card> hand = hPlayer.Hand;
+                
+
+                MessageBox.Show($"The Selected card is {hand[handView.IndexOf(pb)].ToString()}");
+                Card PlayCard = hand[handView.IndexOf(pb)];
+
+                // remove this card from the hand view and  make the pb visible false and 
+                hand.Remove(PlayCard);
+                hPlayer.LoadPlayerHand();
+                GameController.Game.Trick.Add(PlayCard);
+                UpdateTricksView(GameController.Game.Trick);
+
+                UnsSubscribePlayCard();
+
+            }
+            else
+            {
+                Console.WriteLine("Player is Not Human");
+            }
+
         }
+
+        /// <summary>
+        /// method to update the tricks list
+        /// </summary>
+        /// <param name="trick"></param>
+        public void UpdateTricksView(List<Card> trick)
+        {
+            for (int i = 0; i < trick.Count && i < Tricks.Count; i++)
+            {
+
+                Tricks[i].BackgroundImage = trick[i].View;
+                Tricks[i].BackgroundImageLayout = ImageLayout.Stretch;
+
+            }
+        }
+
+        /// <summary>
+        /// Method to update Tricks view
+        /// </summary>
 
 
         /// <summary>
@@ -856,14 +929,12 @@ namespace EuchreOOP3
         /// </summary>
         private void SubscribePlayCard()
         {
-            Console.WriteLine("Subcribing play card even handler");
-            if(GameController.Game.Turn is HPlayer)
-            {
-                foreach(PictureBox hand in GameController.Game.Players[0].HandView)
+               
+                Console.WriteLine("Subcribing play card even handler");
+                foreach (PictureBox hand in GameController.Game.Players[0].HandView)
                 {
                     hand.Click += PlayCard;
-                }
-            }
+                }           
         }
 
         /// <summary>

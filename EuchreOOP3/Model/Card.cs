@@ -28,6 +28,8 @@ namespace Model
             Ace
 
         }
+
+       public static Image BackTheme;
         #endregion
 
         #region Properties

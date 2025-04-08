@@ -18,8 +18,9 @@ using DBAL;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Windows.Forms.VisualStyles;
 
-
+// using custom namspaces for User class
 namespace DBAL
 {
     /// <summary>
@@ -313,6 +314,9 @@ namespace DBAL
 
         #region Static Method
 
+
+
+
         public static string GetUseName(int UserID)
         {
             foreach (User user in Users)
@@ -334,17 +338,9 @@ namespace DBAL
         /// <returns></returns>
         public static User IsUserValid(string emailid, string password)
         {
-            Console.WriteLine($"emailid Input {emailid}");
-            Console.WriteLine($"Password Input {Tools.HashPassword(password)}");
+            
             foreach (User user in Users)
             {
-                Console.WriteLine($"Email Comparison: {user.Email == emailid}");
-                Console.WriteLine($"Password Comparison: {user.Password == Tools.HashPassword(password)}");
-                if (!(user.Password == Tools.HashPassword(password)))
-                {
-                    Console.WriteLine($@"Password from the user lisr : {user.Password}
-                                        Password from the input : {Tools.HashPassword(password)}");
-                }
                 if (user.Email == emailid && user.Password == Tools.HashPassword(password))
                 {
                     return user;
@@ -430,28 +426,7 @@ namespace DBAL
             throw new Exception("[ERROR]  Failed to retrieve guest info => Guest is not there in the Database.");
         }
 
-        public static void IsPasswordValid(string password)
-        {
-            if (password.Length > 8)
-            {
-                throw new Exception("Password must be less than 9 characters long.");
-            }
-
-            // Check if the password contains only allowed characters
-            char[] allowedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$".ToCharArray();
-            if (!password.All(ch => allowedChars.Contains(ch)))
-            {
-                throw new Exception("Password can only contain letters, numbers, and the special characters @, #, $.");
-            }
-        }
-
-
-
-
         #endregion
-
-
-
 
     }// class ends here
 }// namespace ends here

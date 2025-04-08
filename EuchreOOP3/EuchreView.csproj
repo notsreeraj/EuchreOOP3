@@ -83,6 +83,12 @@
     <Compile Include="frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTheme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTheme.Designer.cs">
+      <DependentUpon>frmTheme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\AIPlayer.cs" />
     <Compile Include="Model\Card.cs" />
     <Compile Include="Model\Deck.cs" />
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTheme.resx">
+      <DependentUpon>frmTheme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -333,6 +342,306 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_CQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_D9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_D10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_DA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_DJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_DK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_DQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_H9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_H10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_HA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_HJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_HK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_HQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_S9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_S10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_SA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_SJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_SK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_SQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_BACK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_C9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_C10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_CA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_CJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WYB_CK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_BACK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_SQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_C9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_C10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_CA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_CJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_CK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_CQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_D9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_D10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_DA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_DJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_DK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_DQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_H9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_H10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_HA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_HJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_HK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_HQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_S9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_S10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_SA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_SJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRB_SK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_BACK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_C9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_C10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_CA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_CJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_CK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_CQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_D9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_D10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_DA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_DJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_DK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_DQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_H9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_H10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_HA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_HJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_HK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_HQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_S9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_S10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_SA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_SJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_SK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WO_SQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_HJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_HK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_HQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_S9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_S10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_SA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_SJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_SK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_SQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_BACK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_C9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_C10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_CA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_CJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_CK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_CQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_D9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_D10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_DA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_DJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_DK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_DQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_H9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_H10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RB_HA.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

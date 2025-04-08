@@ -1,4 +1,7 @@
-﻿using DBAL;
+﻿using Controller;
+using DBAL;
+using EuchreOOP3.Properties;
+using EuchreView.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -107,6 +110,8 @@ namespace Model
         {
             // maybe add a verification 
 
+            ResetHandView();
+
             for (int i = 0; i < Hand.Count && i < HandView.Count; i++)
             {
                 
@@ -114,8 +119,42 @@ namespace Model
                 HandView[i].BackgroundImageLayout = ImageLayout.Stretch; 
                 
             }
+
+            //if(this is AIPlayer)
+            //{
+            //    HandView[i].BackgroundImage = ;
+            //    HandView[i].BackgroundImageLayout = ImageLayout.Stretch;
+            //}
             // this will raise the HandChange Event
             OnHandChange();
+        }
+
+        // 
+        public static void ChangeAIHandView()
+        {
+            foreach (Player player in GameController.Game.Players)
+            {
+                if (!(player is HPlayer))
+                {
+                    foreach (Card card in player.Hand)
+                    {
+                        card.View = Card.BackTheme;
+                    }
+                }
+            }
+        }
+        
+        
+
+        /// <summary>
+        /// method to reset the hand view
+        /// </summary>
+        public void ResetHandView()
+        {
+            foreach (PictureBox pb in HandView)
+            {
+                pb.BackgroundImage = null;
+            }
         }
 
         /// <summary>
@@ -127,6 +166,7 @@ namespace Model
         {
             // call the method to update the handView property
             // take the hand
+            
         }
 
         /// <summary>
@@ -145,11 +185,6 @@ namespace Model
                 }
             }
             return -1;
-        }
-
-        public void ExchangeSelectedCard(Card selectedCard , Deck deck)
-        {
-
         }
 
         #endregion

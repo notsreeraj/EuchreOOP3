@@ -127,7 +127,6 @@
             this.txbEmail.Name = "txbEmail";
             this.txbEmail.Size = new System.Drawing.Size(393, 30);
             this.txbEmail.TabIndex = 0;
-            this.txbEmail.Text = "guest@domain.com";
             this.toolTip1.SetToolTip(this.txbEmail, "Enter your email ID");
             // 
             // txbPassword
@@ -137,8 +136,8 @@
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(393, 30);
             this.txbPassword.TabIndex = 1;
-            this.txbPassword.Text = "guestpassword";
             this.toolTip2.SetToolTip(this.txbPassword, "Enter your password");
+            this.txbPassword.UseSystemPasswordChar = true;
             // 
             // timerEuchre
             // 
